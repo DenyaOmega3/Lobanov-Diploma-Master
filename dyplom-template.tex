@@ -160,10 +160,35 @@ $I_{(r)}$ & набір інваріантів $r$-го порядку, $r\geq 1$
 
 \newpage
 
-\chapter{Назва розділу}\label{chaper1}
+\chapter{Коли нерозкладених зображень скінченна кількість}\label{chaper1}
 
-\section{Назва секції}\label{section1.1}
+\section{Попередні відомості про кубічні кільця}\label{section1.1}
+Для початку необхідно пригадати важливі означення та важливі результати.
+\begin{definition}
+\textbf{Кубічним кільцем} $\Lambda$ називають вільним $\mathbb{Z}$-модулем рангу $3$.
+\end{definition}
 
+\begin{definition}
+Базис $\{1,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$ називається \textbf{нормальним}, якщо
+\begin{center}
+$\omega_1 \cdot \omega_2 \in \mathbb{Z}$
+\end{center}
+\end{definition}
+
+Зафіксуємо базис $\{1,\omega_1,\omega_2\}$ кільця $\Lambda$. Тоді $\omega_1 \cdot \omega_2 = k \omega_1 + l \omega_2 + m$ при $k,lm, \in \mathbb{Z}$. Замінивши $\omega_1$ на $\omega_1-l$ та $\omega_2$ на $\omega_2 - k$, отримуємо нормальний базис $\{1,\omega_1 - l, \omega_2 - k\}$. Отже, надалі всі базиси в кубічних кільцях -- нормальні.
+
+Запишемо таблицю множення для базиса $\{1,\omega_1,\omega_2\}$:
+\begin{align*}
+\omega_1^2 & = b \omega_1 + a \omega_2 + r \\
+\omega_1 \omega_2 & = s \\
+\omega_2^2 & = d \omega_1 + c \omega_2 + t
+\end{align*}
+Прирівнявши $(\omega_1^2) \cdot \omega_2 = \omega_1 \cdot (\omega_1 \cdot \omega_2)$ та $\omega_1 \cdot (\omega_2^2) = (\omega_1 \cdot \omega_2) \cdot \omega$, отримуємо співвідношення $r = -ac,\ s = ad,\ t = -bd$. Отже, таблиця множення задається чотирма числами $a,b,c,z \in \mathbb{Z}$:
+\begin{align*}
+\omega_1^2 & = b \omega_1 + a \omega_2 - ac \\
+\omega_1 \omega_2 & = ad \\
+\omega_2^2 & = d \omega_1 + c \omega_2 + -bd
+\end{align*}
 \newpage
 
 \chapter{Назва розділу}\label{chaper2}
