@@ -1,6 +1,7 @@
 \documentclass{thesis}
 
 \renewcommand{\baselinestretch}{1.20}
+\DeclareMathOperator{\tr}{tr}
 
 
 \begin{document}
@@ -165,8 +166,12 @@ $I_{(r)}$ & набір інваріантів $r$-го порядку, $r\geq 1$
 \section{Попередні відомості про кубічні кільця}\label{section1.1}
 Необхідно пригадати важливі означення та результати.
 \begin{definition}
-\textbf{Кубічним кільцем} $\Lambda$ називають вільним $\mathbb{Z}$-модулем рангу $3$.
+\textbf{Кубічним кільцем} $\Lambda$ називають вільний $\mathbb{Z}$-модулем рангу $3$.
 \end{definition}
+
+\begin{remark}
+Розглянемо базис $\{\omega_0,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$. Тоді ми можемо завжди обрати базис так, щоб перший елемент був $1$. Тому надалі обирамємо базис $\{1,\omega_1,\omega_2\}$.
+\end{remark}
 
 \begin{definition}
 Базис $\{1,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$ називається \textbf{нормальним}, якщо
@@ -175,7 +180,9 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$
 \end{center}
 \end{definition}
 
+\begin{remark}
 Зафіксуємо базис $\{1,\omega_1,\omega_2\}$ кільця $\Lambda$. Тоді $\omega_1 \cdot \omega_2 = k \omega_1 + l \omega_2 + m$ при $k,l,m \in \mathbb{Z}$. Замінивши $\omega_1$ на $\omega_1-l$ та $\omega_2$ на $\omega_2 - k$, отримуємо нормальний базис $\{1,\omega_1 - l, \omega_2 - k\}$. Отже, надалі всі базиси в кубічних кільцях -- нормальні.
+\end{remark}
 
 Запишемо таблицю множення для базиса $\{1,\omega_1,\omega_2\}$:
 \begin{align*}
@@ -189,6 +196,124 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$
 \omega_1 \omega_2 & = ad \\
 \omega_2^2 & = d \omega_1 + c \omega_2 + -bd
 \end{align*}
+
+\section{Критерій максимальності кільця}
+\begin{theorem}
+Кільце $\Lambda$ -- не максимальне $\iff$ існує такий цілий елемент $\theta$, що $\theta \notin \Lambda$. 
+\end{theorem}
+
+Варто відповісти на питання, що означає, що $\theta$ -- цілий елемент. Розглянемо оператор множення на $\theta$ (тобто $\lambda \mapsto \theta \lambda$). Запишемо матрицю $[\theta]$ оператора множення. Розглянемо характеристичний многочлен $\chi_{[\theta]}(t)$ даної матриці. Тоді $\theta$ називають \textbf{цілим}, якщо коефіцієнти характеристичного многочлен $\chi$ -- цілі числа.
+
+Нагадаємо, що для випадку матриці $3 \times 3$ характеристичний многочлен має вигляд
+\begin{align*}
+\chi_{[\theta]}(t) = \det [\theta] - M_{2 \times 2}[\theta] \cdot t + \tr [\theta] t^2 - t^3,
+\end{align*}
+де
+\begin{align*}
+M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta]
+\end{align*}
+
+Розглянемо випадок, коли $\theta = \dfrac{\alpha + \beta \omega_1}{p}$. Знайдемо матрицю $[\theta]$ оператора множення в базисі $\{1,\omega_1,\omega_2\}$.
+\begin{align*}
+\theta \cdot 1 = \dfrac{\alpha + \beta \omega_1 p}{p} = \dfrac{\alpha}{p} \cdot 1 + \dfrac{\beta}{p} \omega_1 + 0 \cdot \omega_2
+\end{align*}
+\begin{align*}
+\theta \cdot \omega_1 & = \dfrac{\alpha + \beta \omega_1}{p} \cdot \omega_1 = \dfrac{\alpha \omega_1}{p} + \dfrac{\beta (-ac + b \omega_1 + a \omega_2)}{p} = \\
+& = \dfrac{-\beta a c}{p} \cdot 1 + \dfrac{\alpha + \beta b}{p} \cdot \omega_1 + \dfrac{\beta a}{p} \cdot \omega_2
+\end{align*}
+\begin{align*}
+\theta \cdot \omega_2 = \dfrac{\alpha + \beta \omega_1}{p} \cdot \omega_2 = \dfrac{\alpha \omega_2 + \beta ad}{p} = \dfrac{\beta a d}{p} \cdot 1 + 0 \cdot \omega_1 + \dfrac{\alpha}{p} \cdot \omega_2
+\end{align*}
+
+Зібравши всі коефіцієнти, отримуємо такий вигляд матриці:
+\begin{align*}
+[\theta] = \dfrac{1}{p} \begin{pmatrix}
+\alpha & -\beta a c & \beta a d \\
+\beta & \alpha + \beta b & 0 \\
+0 & \beta a & \alpha
+\end{pmatrix}
+\end{align*}
+
+Оскільки наша мета -- це $\theta$ бути цілим, треба вимагати, щоб характеристичний многочлен мав цілі коефіцієнти. Зокрема необхідно розглянути $\tr [\theta],\ \det [\theta]$, а також $M_{2 \times 2}[\theta]$.
+
+\begin{align*}
+\tr [\theta] = \dfrac{1}{p} (3 \alpha + \beta b) \\
+\det [\theta] = \dfrac{1}{p^3} \left( \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 ac \right)
+\end{align*}
+Детальніше розпишемо знаходження $M_{2 \times 2}[\theta]$. Маємо
+\begin{align*}
+M_{2 \times 2}[\theta] & = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta] = \\
+& = \dfrac{1}{p^2} \det \begin{pmatrix}
+\alpha & -\beta \alpha c \\
+\beta & \alpha + \beta b
+\end{pmatrix} + \dfrac{1}{p^2} \det \begin{pmatrix}
+\alpha & \beta a \alpha \\
+0 & \alpha
+\end{pmatrix} + \dfrac{1}{p^2} \det \begin{pmatrix}
+\alpha + \beta b & 0 \\
+\beta a & \alpha
+\end{pmatrix} = \\
+& = \dfrac{1}{p^2} \left( \alpha^2 + \alpha \beta b + \beta^2 \alpha c + \alpha^2 + \alpha^2 + \alpha \beta b \right) = \\ 
+& = \dfrac{1}{p^2} \left( 3 \alpha^2 + \beta^2 a c + 2 \alpha \beta b\right)
+\end{align*}
+
+Наша вимога -- це $\tr [\theta],\ \det [\theta],\ M_{2 \times 2}[\theta] \in \mathbb{Z}$. Запишемо умову в термінах конгруентних рівнянь:
+\begin{equation}
+    \begin{cases}
+      \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 a c & \equiv 0 \pmod {p^3} \\
+    3\alpha^2 + \beta^2 ac + 2 \alpha \beta b & \equiv 0 \pmod {p^2} \\
+      3 \alpha + \beta b & \equiv 0 \pmod p 
+    \end{cases}\,.
+\end{equation}
+Припускаючи, що $p$ -- просте число та $\alpha \neq 0$, ми можемо підібрати елемент $\alpha^{-1}$ -- оборотний елемент класу лишків $\mathbb{Z}_p$ відносно множення. Третє, друге, перше рівняння домножуємо на відповідно $\alpha^{-1},\ \alpha^{-2},\ \alpha^{-3}$ -- отримуємо наступне:
+\begin{equation*}
+    \begin{cases}
+      1 + (\beta \alpha^{-1}) b + (\beta \alpha^{-1})^{3} a^2 d + (\beta \alpha^{-1})^2 a c & \equiv 0 \pmod {p^3} \\
+    3 + ((\beta \alpha^{-1})^2 ac + 2 (\beta \alpha^{-1}) b & \equiv 0 \pmod {p^2} \\
+      3 + (\beta \alpha^{-1})b & \equiv 0 \pmod p 
+    \end{cases}\,.
+\end{equation*}
+Проведемо заміну:
+\begin{align}
+t = \beta \alpha^{-1}
+\end{align}
+Задача звелась до розв'язання системи конгруентних рівнянь відносно $t$, якщо $p$ -- просте число: 
+\begin{equation}
+    \begin{cases}
+      a^2 d t^3 + ac t^2 + bt + 1 & \equiv 0 \pmod {p^3} \\
+      act^2 + 2bt + 3 & \equiv 0 \pmod {p^2} \\
+      3 + bt & \equiv 0 \pmod p 
+    \end{cases}\,.
+\end{equation}
+
+\section{Розв'язання системи конгруентних рівнянь}
+
+\iffalse
+Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
+\begin{align*}
+\omega_1 \cdot 1 = \omega_1 = 0 \cdot 1 + 1 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\omega_1 \cdot \omega_1 = -ac + b \omega_1 + a \omega_2 \\
+\omega_1 \cdot \omega_2 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2
+\end{align*}
+Водночас для множення на $\omega_2$ маємо
+\begin{align*}
+\omega_2 \cdot 1 = \omega_2 = 0 \cdot 1 + 0 \cdot \omega_1 + 1 \cdot \omega_2 \\
+\omega_2 \cdot \omega_1 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\omega_2 \cdot \omega_2 = -bd + d \omega_1 + c 
+\end{align*}
+Звідси отримуємо матриці
+\begin{align*}
+[\omega_1] = \begin{pmatrix}
+0 & -ac & ad \\
+1 & b & 0 \\
+0 & a & 0
+\end{pmatrix},\quad [\omega_2] = \begin{pmatrix}
+0 & ad & -bd \\
+0 & 0 & d \\
+1 & 0 & c
+\end{pmatrix}
+\end{align*}
+\fi
 
 \newpage
 

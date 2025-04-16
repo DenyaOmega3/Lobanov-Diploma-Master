@@ -9,6 +9,7 @@
 \RequirePackage{inputenc}
 \RequirePackage{babel}
 \RequirePackage{amsmath}
+\RequirePackage{systeme}
 \RequirePackage{amsthm}
 \RequirePackage{latexsym}
 \RequirePackage{amssymb}
