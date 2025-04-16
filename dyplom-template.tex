@@ -279,6 +279,7 @@ t = \beta \alpha^{-1}
 \end{align}
 Задача звелась до розв'язання системи конгруентних рівнянь відносно $t$, якщо $p$ -- просте число: 
 \begin{equation}
+\label{system_congruent_equations}
     \begin{cases}
       a^2 d t^3 + ac t^2 + bt + 1 & \equiv 0 \pmod {p^3} \\
       act^2 + 2bt + 3 & \equiv 0 \pmod {p^2} \\
@@ -287,6 +288,99 @@ t = \beta \alpha^{-1}
 \end{equation}
 
 \section{Розв'язання системи конгруентних рівнянь}
+Розглянемо випадок, коли просте число $p > 3$. Маємо рівняння
+\begin{align*}
+bt \equiv p-3 \pmod p.
+\end{align*}
+Дане рівняння має розв'язок $\iff \gcd(b,p) \mid p-3$. Оскільки $p$ -- просте, то $\gcd(b,p) \in \{1,p\}$. Якби $\gcd(b,p) = p$, то отримали би $p \mid p-3$ -- неможливо.
+
+Отже, якщо $p \nmid b$, то вищезгадане рівняння має розв'язок. При цьому оскільки $\gcd(b,p) = 1$, то рівняння має лише єдиний розв'язок вигляду
+\begin{align*}
+t \equiv -3b^{-1} \pmod p
+\end{align*}
+
+Єдиний можливий розв'язок необхідно підставити в інші два рівняння системи. Для початку піднімемо розв'язок до $\pmod {p^2}$ -- отримуємо наступне:
+\begin{align*}
+t \equiv -3b^{-1} + kp \pmod {p^2},
+\end{align*}
+де $k \in \{0,1,\dots,p-1\}$. Щойно отримане $t$ підставимо в друге рівняння:
+\begin{align*}
+act^2 + 2bt + 3 & \equiv ac(-3b^{-1} + kp)^2 + 2b(-3b^{-1}+kp) + 3 \\
+& \equiv ac(k^2p^2 - 6kpb^{-1} + 9b^{-2}) + 2b(kp - 3b^{-1}) + 3 \\
+& \equiv -6kp acb^{-1} + 9 acb^{-2} + 2bkp - 3 \equiv 0 \pmod {p^2}
+\end{align*}
+Домножимо обидві частини на $b^2$ -- отримуємо:
+\begin{align*}
+-6kpabc + 9ac + 2b^3kp - 3b^2 & \equiv 2bkp(b^2 - 3ac) - 3(b^2 - 3ac) \\
+& \equiv (b^2 - 3ac)(2bkp -1) \equiv 0 \pmod {p^2}
+\end{align*}
+Зауважимо, що $\gcd(2bkp-1, p^2) = 1$, тому можемо скоротити рівняння:
+\begin{align*}
+b^2 - 3 ac \equiv 0 \pmod {p^2}
+\end{align*}
+
+Отже, якщо $p \nmid b$, а також $b^2 \equiv 3ac \pmod {p^2}$, то наш єдиний розв'язок задовольняє систему із останніх двох рівнянь. Причому $t \equiv -3b^{-1} + kp \pmod {p^2}$ не залежить від параметру $k$.
+
+Зробимо аналогічно для першого рівняння системи, тільки замість $\pmod {p^3}$ розглядається $\pmod {p^2}$ -- маємо:
+\begin{multline*}
+a^2 dt^3 + act^2 + bt + 1 \\ \equiv a^2 d (-3b^{-1} + kp)^3 + ac (-3b^{-1} + kp)^2 + b (-3b^{-1} + kp) + 1 \\
+\equiv a^2 d (-27 b^{-3} + 27kp b^{-2}) + ac (9b^{-2} - 6b^{-1}kp) + b(-3b^{-1} + kp) + 1 \\ \equiv 0 \pmod {p^2}
+\end{multline*}
+Домножимо обидві частини рівності на $p^{-3}$ -- із урахуванням рівності $b^2 \equiv 3 ac \pmod {p^2}$ отримуємо:
+\begin{multline*}
+a^2 d(-27 + 27 kpb) + ac(9b - 6b^2 kp) + b^4(-3b^{-1} + kp) + b^3 \\
+\equiv -27a^2d  + 27 a^2 b d k p + 9abc - 6 ab^2 c kp - 3b^3 + b^4 kp + b^3 \\
+\equiv -27a^2d + 27 a^2 b d k p + 3b^3 - 2 b^4 kp - 3b^3 + b^4 kp + b^3 \\
+\equiv -27a^2d (1 - bkp) + b^3(1 - bkp) \equiv (1-bkp)(b^3 - 27a^2d) \equiv 0 \pmod {p^2}
+\end{multline*}
+Зауважимо, що $\gcd(1-bkp, p^2) = 1$, тому можемо скоротити рівняння:
+\begin{align*}
+b&3 - 27a^2 d \equiv 0 \pmod {p^2}
+\end{align*}
+
+Нарешті, розглянемо перше рівняння:
+\begin{align*}
+a^2 dt^3 + act^2 + bt + 1 \equiv 0 \pmod {p^3}
+\end{align*}
+Оскільки $t \equiv -3b^{-1} + kp \pmod {p^2}$ буде розв'язком системи останніх двох рівнянь при вищезгаданих умов, причому нема залежності від $k$, то для спрощення оберемо $t \equiv -3b^{-1} \pmod {p^2}$. Піднімемо це рівняння до $\pmod {p^3}$ -- отримуємо наступне:
+\begin{align*}
+t \equiv -3b^{-1} + lp^2 \pmod {p^2},
+\end{align*} 
+де $l \in \{0,1,\dots,p-1\}$. Щойно отримане $t$ підставимо в перше рівняння:
+\begin{multline*}
+a^2 dt^3 + act^2 + bt + 1 \\ 
+\equiv a^2 d (-3b^{-1} + lp^2)^3 + ac(-3b^{-1} + lp^2)^2 + b(-3b^{-1} + lp^2) + 1 \\
+\equiv a^2d (-27b^{-3} + 27b^{-2} lp^2) + ac (9b^{-2} - 6 l b^{-1} p^2) + b (-3b^{-1} + lp^2) + 1 \\ 
+\equiv 0 \pmod {p^3}
+\end{multline*}
+Домножимо обидві частини рівності на $b^3$ -- отримуємо:
+\begin{multline*}
+a^2d (-27 + 27b lp^2) + ac (9b - 6 l b^2 p^2) + (-3 b^3 + lp^2 b^4) + b^3 \\ 
+\equiv 0 \pmod {p^3}
+\end{multline*}
+Пригадаємо, що необхідно $b^2 \equiv ac \pmod {p^2}$, а також $27a^2 d \equiv b^3 \pmod {p^2}$. Підмінаючи до $\pmod {p^3}$, отримуємо:
+\begin{align*}
+3ac \equiv b^2 + \xi p^2 \pmod {p^3} \\
+27a^2 d \equiv b^3 + \eta p^2 \pmod {p^3},
+\end{align*}
+де $\xi,\eta \in \{0,1,\dots,p-1\}$. Внаслідок чого
+\begin{multline*}
+27 a^2d (-1+ b lp^2) + 3ac (3b - 2 l b^2 p^2) + (-3 b^3 + lp^2 b^4) + b^3 \\ \equiv (b^3 + \eta p^2)(-1 + b lp^2) + (b^2 + \xi p^2)(3b - 2 l b^2 p^2) + (-3 b^3 + lp^2 b^4) + b^3 \\ \equiv -b^3 + b^4 lp^2 - \eta p^2 + 3b^3 - 2b^4 lp^2 + 3 \xi p^2 b - 3b^3 + b^4 lp^2 + b^3 \\
+\equiv - \eta p^2 + 3\xi p^2 b \equiv 0 \pmod {p^3}
+\end{multline*}
+Отже, ми отримали наступне:
+\begin{align*}
+\eta p^2 \equiv 3 \xi p^2 b \pmod {p^3}
+\end{align*}
+Тоді зауважимо, що
+\begin{align*}
+27 a^2 d \equiv b^3 + \eta p^2 \equiv b^3 + 3 \xi p^2 b \equiv b^3 + 3b(3ac - b^2) \equiv -2b^3 + 9abc \pmod {p^3}
+\end{align*}
+Підсумуємо:
+
+\begin{lemma}
+Нехай $p > 3$ -- просте число. Відомо, що $p \nmid b,\ b^2 \equiv 3ac \pmod {p^2}$, а також $27a^2d \equiv 9abc - 2b^3 \pmod {p^3}$. Тоді система конгруентних рівнянь \eqref{system_congruent_equations} має єдиний розв'язок $t \equiv -3 b^{-1} \pmod {p^3}$.
+\end{lemma}
 
 \iffalse
 Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
