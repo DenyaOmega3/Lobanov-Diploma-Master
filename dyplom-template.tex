@@ -197,6 +197,23 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$
 \omega_2^2 & = d \omega_1 + c \omega_2 + -bd
 \end{align*}
 
+\begin{definition}
+\textbf{Ступінчастий базис відносно $\omega$} кубічного кільця $\Lambda$ має вигляд:
+\begin{align*}
+\left\{ 1,\ \dfrac{u\omega + v}{\Delta},\ \dfrac{\lambda \omega^2 + \mu \omega + \nu}{\Delta} \right\},
+\end{align*}
+де $u,v,\lambda,\mu,\nu,\Delta \in \mathbb{Z}$.
+\end{definition}
+
+\begin{theorem}
+Нехай $\rho$ -- ціле число, що задовольняє рівняння $F(\rho) = \rho^3 - s \rho^2 - q \rho - n = 0$. Нехай $\delta,a,\Delta_{\Lambda},t \in \mathbb{Z}$ задовольняють такі умови:
+\begin{align*}
+\Delta = \delta^6 a^2 \Delta_\Lambda \\
+\dfrac{1}{2} F''(t) \equiv 0 \pmod {\delta}, \quad F'(t) \equiv 0 \pmod {\delta^2 a}, \quad F(t) \equiv 0 \pmod{\delta^3 a^2}
+\end{align*}
+Тоді система $\left\{ 1,\ \dfrac{\rho - t}{\delta},\ \dfrac{\rho^2 + (t-s)\rho + (t^2 - st + q)}{\delta^2 a} \right\}$ -- нормальний та ступінчастий базис відносно $\rho$.
+\end{theorem}
+
 \section{Критерій максимальності кільця}
 \begin{theorem}
 Кільце $\Lambda$ -- не максимальне $\iff$ існує такий цілий елемент $\theta$, що $\theta \notin \Lambda$. 
@@ -288,7 +305,9 @@ t = \beta \alpha^{-1}
 \end{equation}
 
 \section{Розв'язання системи конгруентних рівнянь}
-Розглянемо випадок, коли просте число $p > 3$. Маємо рівняння
+\subsection{Випадок, коли $p$ -- просте число, причому $p > 3$}
+
+Маємо рівняння
 \begin{align*}
 bt \equiv p-3 \pmod p.
 \end{align*}
@@ -326,7 +345,7 @@ b^2 - 3 ac \equiv 0 \pmod {p^2}
 a^2 dt^3 + act^2 + bt + 1 \\ \equiv a^2 d (-3b^{-1} + kp)^3 + ac (-3b^{-1} + kp)^2 + b (-3b^{-1} + kp) + 1 \\
 \equiv a^2 d (-27 b^{-3} + 27kp b^{-2}) + ac (9b^{-2} - 6b^{-1}kp) + b(-3b^{-1} + kp) + 1 \\ \equiv 0 \pmod {p^2}
 \end{multline*}
-Домножимо обидві частини рівності на $p^{-3}$ -- із урахуванням рівності $b^2 \equiv 3 ac \pmod {p^2}$ отримуємо:
+Домножимо обидві частини рівності на $b^{-3}$ -- із урахуванням рівності $b^2 \equiv 3 ac \pmod {p^2}$ отримуємо:
 \begin{multline*}
 a^2 d(-27 + 27 kpb) + ac(9b - 6b^2 kp) + b^4(-3b^{-1} + kp) + b^3 \\
 \equiv -27a^2d  + 27 a^2 b d k p + 9abc - 6 ab^2 c kp - 3b^3 + b^4 kp + b^3 \\
@@ -335,7 +354,7 @@ a^2 d(-27 + 27 kpb) + ac(9b - 6b^2 kp) + b^4(-3b^{-1} + kp) + b^3 \\
 \end{multline*}
 Зауважимо, що $\gcd(1-bkp, p^2) = 1$, тому можемо скоротити рівняння:
 \begin{align*}
-b&3 - 27a^2 d \equiv 0 \pmod {p^2}
+b^3 - 27a^2 d \equiv 0 \pmod {p^2}
 \end{align*}
 
 Нарешті, розглянемо перше рівняння:
@@ -344,7 +363,7 @@ a^2 dt^3 + act^2 + bt + 1 \equiv 0 \pmod {p^3}
 \end{align*}
 Оскільки $t \equiv -3b^{-1} + kp \pmod {p^2}$ буде розв'язком системи останніх двох рівнянь при вищезгаданих умов, причому нема залежності від $k$, то для спрощення оберемо $t \equiv -3b^{-1} \pmod {p^2}$. Піднімемо це рівняння до $\pmod {p^3}$ -- отримуємо наступне:
 \begin{align*}
-t \equiv -3b^{-1} + lp^2 \pmod {p^2},
+t \equiv -3b^{-1} + lp^2 \pmod {p^3},
 \end{align*} 
 де $l \in \{0,1,\dots,p-1\}$. Щойно отримане $t$ підставимо в перше рівняння:
 \begin{multline*}
@@ -395,6 +414,118 @@ a^2d (-27 + 27b lp^2) + ac (9b - 6 l b^2 p^2) + (-3 b^3 + lp^2 b^4) + b^3 \\
 \begin{align*}
 \Delta'_d \equiv 0 \pmod {p^3}
 \end{align*}
+
+\subsection{Випадок, коли $p = 3$}. Третє рівняння системи спроститься до вигляду
+\begin{align*}
+bt \equiv 0 \pmod 3
+\end{align*}
+
+Припустимо, що $3 \nmid b$. Тоді система може має єдиний розв'язок $t \equiv 0 \pmod 3$. Якщо піднятися до $\pmod 9$, то в нас існують три опції:
+\begin{align*}
+t \equiv 0 \pmod 9,\qquad t \equiv 3 \pmod 9,\qquad t \equiv 6 \pmod 9
+\end{align*}
+Якщо $t \equiv 0 \pmod 9$, то із другого рівняння випливає, що $3 \equiv 0 \pmod 9$, що неможливо. Якщо $t \equiv 3 \pmod 9$, то із першого рівняння випливає, що
+\begin{align*}
+3b \equiv 8 \pmod 9
+\end{align*}
+Оскільки $\gcd(3,9) = 3 \nmid 8$, то розв'язків не має -- неможливо. Нарешті, якщо $t \equiv 6 \pmod 9$, то із першого рівняння випливає, що
+\begin{align*}
+6b \equiv 8 \pmod 9
+\end{align*}
+Аналогічними міркуваннями розв'язків нема -- неможливо.
+
+\begin{lemma}
+Система конгруентних рівнянь \eqref{system_congruent_equations} не має розв'язків при $3 \nmid b$.
+\end{lemma}
+
+Надалі розглядається випадок $3 \mid b$. Третє рівняння автоматично виконується, тому залишається система
+\begin{equation}
+\label{system_congruent_equations}
+    \begin{cases}
+      a^2 d t^3 + ac t^2 + bt + 1 & \equiv 0 \pmod {27} \\
+      act^2 + 2bt + 3 & \equiv 0 \pmod {9} 
+    \end{cases}\,.
+\end{equation}
+Тимчасово опустимося до системи рівнянь за $\pmod 3$. Зважаючи на умову $3 \mid b$, маємо
+\begin{equation*}
+\label{system_congruent_equations}
+    \begin{cases}
+      a^2 d t^3 + ac t^2 + 1 & \equiv 0 \pmod {3} \\
+      act^2 & \equiv 0 \pmod {3} 
+    \end{cases}\,.
+\end{equation*}
+
+Припустимо, що $3 \nmid ac$. Тоді із другого рівняння отримуємо $t \equiv 0 \pmod 3$. Але, підставляючи в перше рівняння, матимемо $1 \equiv 0 \pmod 3$, що неможливо.
+
+Отже, надалі $3 \mid ac$. Звідси ми маємо $3 \mid a$ або $3 \mid c$.
+
+Якщо $3 \mid a$, то знову $1 \equiv 0 \pmod 3$ із першого рівняння, що неможливо.
+
+\begin{lemma}
+Система конгруентних рівнянь \eqref{system_congruent_equations} не має розв'язків при $3 \nmid ac$ або $3 \mid a$.
+\end{lemma}
+
+Отже, залишається випадок, коли $3 \mid c$. Значить, перше рівняння дає
+\begin{align*}
+a^2 dt^3 \equiv 2 \pmod 3
+\end{align*}
+Зауважимо, що розв'язок існує при $3 \nmid a^2d$.
+\begin{corollary}
+Система конгруентних рівнянь \eqref{system_congruent_equations} не має розв'язків при $3 \mid d$.
+\end{corollary}
+
+У нас існують два варіанти за $\pmod 3$: $a^2 d \in \{1,2\}$.
+
+Нехай $a^2 d \equiv 1 \pmod 3$, тоді маємо $t^3 \equiv 2 \pmod 3$, внаслідок чого отримуємо $t \equiv 2 \pmod 3$ -- єдиний кандидат на розв'язок системи \eqref{system_congruent_equations} з урахуванням певних умов.
+
+Нехай $a^2 d \equiv 2 \pmod 3$, тоді маємо $2t^3 \equiv 2 \pmod 3$, внаслідок чого отримуємо $t \equiv 1 \pmod 3$ -- також єдиний кандидат.
+
+Умову $a^2 d \equiv 1 \pmod 3$ можна трошки детально розписати. Уже відомо, що $3 \nmid d$, а тому звідси $d \in \{1,2\}$, якщо брати за $\pmod 3$. Якщо $d = 2$, то звідси $2a^2 \equiv 1 \pmod 3$, або $a^2 \equiv 2 \pmod 3$. Проте зазначимо, що $2$ не є квадратичним лишком $\pmod 3$, тому розв'язків відносно $a$ не має. Водночас якщо $d = 1$, то $a^2 \equiv 1 \pmod 3$, де існує розв'язок.
+
+Аналогічними міркуваннями розглянемо $a^2 d \equiv 2 \pmod 3$. Цього разу при $d = 1$ не знайдеться розв'язку відносно $a$, коли водночас при $d = 2$ розв'язок існує.
+
+Підіб'ємо певний підсумок: 
+
+\begin{proposition}
+Нехай $3 \nmid a,\ 3 \mid b,\  3 \mid c$. Тоді із системи рівнянь \eqref{system_congruent_equations} випливають можливі розв'язки: 
+\begin{enumerate}
+\item $t \equiv 2 \pmod 3$ за умовою, що $d \equiv 1 \pmod 3$;
+\item $t \equiv 1 \pmod 3$ за умовою, що $d \equiv 2 \pmod 3$.
+\end{enumerate}
+\end{proposition}
+
+Маючи накладені умови з твердження, перевіримо, чи будуть вищезгадані $t$ дійсно розв'язками системи.
+
+\subsubsection{Випадок $t \equiv 2 \pmod 3$}
+Отже, в цьому випадку $a^2d \equiv 1 \pmod 3$.
+
+Спочатку піднімемося до $\pmod 9$. Тоді маємо три потенційних кандидати: $t \in \{2,5,8\}$.
+
+Нехай $t \equiv 2 \pmod 9$. Маємо наступне:
+\begin{equation*}
+    \begin{cases}
+      8 a^2 d  + 4 ac + 2b + 1 & \equiv 0 \pmod {27} \\
+      4ac + 4b + 3 & \equiv 0 \pmod {9} 
+    \end{cases}\,.
+\end{equation*}
+Оскільки $a^2 d \equiv 1 \pmod 3$, то звідси за $\pmod 9$ маємо $a^2 d \in \{1,4,7\}$. Якщо систему рівнянь спустити до $\pmod 9$, отримуємо три варіанти
+\begin{align*}
+    \begin{cases}
+      8  + 4 ac + 2b + 1 & \equiv 0 \pmod {9} \\
+      4ac + 4b + 3 & \equiv 0 \pmod {9} 
+    \end{cases}\, \\    \begin{cases}
+      32  + 4 ac + 2b + 1 & \equiv 0 \pmod {9} \\
+      4ac + 4b + 3 & \equiv 0 \pmod {9} 
+    \end{cases}\, \\     \begin{cases}
+      49  + 4 ac + 2b + 1 & \equiv 0 \pmod {9} \\
+      4ac + 4b + 3 & \equiv 0 \pmod {9} 
+    \end{cases}\,.
+\end{align*}
+Розглянемо першу систему. Ми отримуємо $4ac \equiv -2b \pmod 9$. Значить, звідси
+\begin{align*}
+4ac + 4b + 3 \equiv 2b + 3 \equiv 0 \pmod 9
+\end{align*}
+Останнє можливе лише при $b \equiv 3 \pmod 9$. Також маємо $4ac \equiv -6 \equiv 3 \pmod 9$.
 
 \iffalse
 Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
