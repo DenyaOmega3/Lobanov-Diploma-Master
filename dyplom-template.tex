@@ -169,14 +169,10 @@ $I_{(r)}$ & набір інваріантів $r$-го порядку, $r\geq 1$
 \textbf{Кубічним кільцем} $\Lambda$ називають вільний $\mathbb{Z}$-модулем рангу $3$.
 \end{definition}
 
-\begin{remark}
-Розглянемо базис $\{\omega_0,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$. Тоді ми можемо завжди обрати базис так, щоб перший елемент був $1$. Тому надалі обирамємо базис $\{1,\omega_1,\omega_2\}$.
-\end{remark}
-
 \begin{definition}
 Базис $\{1,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$ називається \textbf{нормальним}, якщо
 \begin{center}
-$\omega_1 \cdot \omega_2 \in \mathbb{Z}$
+$\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 \end{center}
 \end{definition}
 
@@ -206,6 +202,7 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$
 \end{definition}
 
 \begin{theorem}
+\label{voronogo}
 Нехай $\rho$ -- ціле число, що задовольняє рівняння $F(\rho) = \rho^3 - s \rho^2 - q \rho - n = 0$. Нехай $\delta,a,\Delta_{\Lambda},t \in \mathbb{Z}$ задовольняють такі умови:
 \begin{align*}
 \Delta = \delta^6 a^2 \Delta_\Lambda \\
@@ -215,24 +212,27 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$
 \end{theorem}
 
 \section{Критерій максимальності кільця}
-\begin{theorem}
-Кільце $\Lambda$ -- не максимальне $\iff$ існує такий цілий елемент $\theta$, що $\theta \notin \Lambda$. 
-\end{theorem}
+\begin{definition}
+Кубічне кільце $\Lambda$ будемо називати \textbf{немаксимальним}, якщо існує більше кубічне кільце $\tilde{\Lambda} \supsetneq \Lambda$.
+\end{definition}
 
-Варто відповісти на питання, що означає, що $\theta$ -- цілий елемент. Розглянемо оператор множення на $\theta$ (тобто $\lambda \mapsto \theta \lambda$). Запишемо матрицю $[\theta]$ оператора множення. Розглянемо характеристичний многочлен $\chi_{[\theta]}(t)$ даної матриці. Тоді $\theta$ називають \textbf{цілим}, якщо коефіцієнти характеристичного многочлен $\chi$ -- цілі числа.
+Іншими словами, існує елемент $\theta \in \tilde{\Lambda}$, при цьому $\theta \notin \Lambda$. Запишемо інший вигляд більшого кільця $\tilde{\Lambda}$.
 
-Нагадаємо, що для випадку матриці $3 \times 3$ характеристичний многочлен має вигляд
+Розглянемо числа $\delta = 1, a = 1, t = 0$. Маємо кубічне число $\theta$, для якого можна підібрати незвідне рівняння $\theta^3 - n = 0$. Оскільки $\delta = 1$, то конгруентні рівності теореми Вороного виконуються автоматично (TODO: перевірити дискримінант). Отже, маємо ступінчастиу нормальний базис $\left<1,\theta,\theta^2\right>$.
+
+Отже, більше кільце матиме вигляд $\tilde{\Lambda} = \left<1,\theta,\theta^2\right>$.
+
+Якщо $\Lambda = \left<1,\omega_1,\omega\right>$, то елемент $\theta$ можна подати в такому вигляді:
 \begin{align*}
-\chi_{[\theta]}(t) = \det [\theta] - M_{2 \times 2}[\theta] \cdot t + \tr [\theta] t^2 - t^3,
+\theta = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p},
 \end{align*}
-де
-\begin{align*}
-M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta]
-\end{align*}
+де числа $\alpha,\beta,\gamma,p \in \mathbb{Z}$. Для того, щоб $\tilde{\Lambda}$ стало кільцем, досить вимагати, щоб $\theta^3 \in \left<1,\omega,\omega^2\right>$.
 
-Розглянемо випадок, коли $\theta = \dfrac{\alpha + \beta \omega_1}{p}$. Знайдемо матрицю $[\theta]$ оператора множення в базисі $\{1,\omega_1,\omega_2\}$.
+Надалі обмежуємось випадком, коли $\gamma = 0$.
+
+Розглянемо оператор множення на елемент $\theta$, тобто $\lambda \mapsto \theta \cdot \lambda$. З'ясуємо, як буде виглядати матриця $[\theta]$ даного оператора.
 \begin{align*}
-\theta \cdot 1 = \dfrac{\alpha + \beta \omega_1 p}{p} = \dfrac{\alpha}{p} \cdot 1 + \dfrac{\beta}{p} \omega_1 + 0 \cdot \omega_2
+\theta \cdot 1 = \dfrac{\alpha + \beta \omega_1}{p} = \dfrac{\alpha}{p} \cdot 1 + \dfrac{\beta}{p} \omega_1 + 0 \cdot \omega_2
 \end{align*}
 \begin{align*}
 \theta \cdot \omega_1 & = \dfrac{\alpha + \beta \omega_1}{p} \cdot \omega_1 = \dfrac{\alpha \omega_1}{p} + \dfrac{\beta (-ac + b \omega_1 + a \omega_2)}{p} = \\
@@ -251,7 +251,22 @@ M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}
 \end{pmatrix}
 \end{align*}
 
-Оскільки наша мета -- це $\theta$ бути цілим, треба вимагати, щоб характеристичний многочлен мав цілі коефіцієнти. Зокрема необхідно розглянути $\tr [\theta],\ \det [\theta]$, а також $M_{2 \times 2}[\theta]$.
+Запишемо характеристичний многочлен даної матриці:
+\begin{align*}
+\chi_{[\theta]}(t) = \det [\theta] - M_{2 \times 2}[\theta] \cdot t + \tr [\theta] \cdot t^2 - t^3,
+\end{align*}
+де
+\begin{align*}
+M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta].
+\end{align*}
+Іншими словами, $M_{2 \times 2}[\theta]$ -- сума всіх діагональних мінорів $2 \times 2$.
+
+Отже, $\chi_{[\theta]}(\theta) = 0$. Це означає, $\theta^3 = \det [\theta] - M_{2 \times 2}[\theta] \cdot \theta + \tr [\theta] \cdot \theta^2$. Оскільки нам необхідно $\theta^3 \in \left<1,\theta,\theta^2\right>$, треба вимагати, щоб
+\begin{align*}
+\det [\theta],\ M_{2 \times 2}p\theta],\ \tr [\theta] \in \mathbb{Z}.
+\end{align*}
+
+Обчислимо кожний коефіцієнт.
 
 \begin{align*}
 \tr [\theta] = \dfrac{1}{p} (3 \alpha + \beta b) \\
@@ -274,7 +289,7 @@ M_{2 \times 2}[\theta] & = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{2
 & = \dfrac{1}{p^2} \left( 3 \alpha^2 + \beta^2 a c + 2 \alpha \beta b\right)
 \end{align*}
 
-Наша вимога -- це $\tr [\theta],\ \det [\theta],\ M_{2 \times 2}[\theta] \in \mathbb{Z}$. Запишемо умову в термінах конгруентних рівнянь:
+Із урахуванням необіхдних умов на ці числа, запишемо цю умову в термінах конгруентних рівнянь:
 \begin{equation}
     \begin{cases}
       \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 a c & \equiv 0 \pmod {p^3} \\
