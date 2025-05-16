@@ -117,6 +117,15 @@ Kyiv Academic University, Kyiv, 2025, ??~pages, ??~references.
 
 \newpage
 
+\begin{center}
+\Large \bf Acknowledges
+\end{center}
+
+$\mathbb{Q}$uando si soffre, si appare il senso della vita. Essere sempre d'accordo significa comportarsi come una idiota, invece avere costantemente i dubbi non è altro che camminare nella foresta. Questa, sebbene la fiducia diminuisce grazie gli errori, deva magari fare bene alla salute. Ne vale la pena?
+
+Sono felice di aver un'opportunità dire semplicemente 'grazie' per superare insieme l'avventura. Сергію Івановичу, дякую Вам.
+
+\newpage
 
 \tableofcontents
 
@@ -194,6 +203,55 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 \end{align*}
 
 \begin{definition}
+Нехай $\Lambda$ -- кубічне кільце та $M \subset \Lambda$ -- решітка, тобто $M = \left<\theta_1,\theta_2,\theta_3\right>$. Розкладемо кожний $\theta_i$ за базисом $\{1,\omega_1,\omega_2\}$ таким чином:
+\begin{align*}
+\theta_1 = c_{10} \cdot 1 + c_{11} \cdot \omega_1 + c_{12} \omega_2 \\
+\theta_2 = c_{20} \cdot 1 + c_{21} \cdot \omega_1 + c_{22} \omega_2 \\
+\theta_3 = c_{30} \cdot 1 + c_{31} \cdot \omega_1 + c_{32} \omega_2
+\end{align*}
+\textbf{Індексом решітки $M$} називатимемо індекс значення:
+\begin{align*}
+[\Lambda : M] = \left| \det \begin{pmatrix}
+c_{10} & c_{20} & c_{30} \\
+c_{11} & c_{21} & c_{31} \\
+c_{12} & c_{22} & c_{32} \\
+\end{pmatrix} \right|.
+\end{align*}
+\end{definition}
+
+Розглянемо кубічне кільце $\Lambda = \left<1,\omega_1,\omega_2\right>$, а також решітку $\mathbb{Z}(\alpha) = \left<1,\alpha,\alpha^2\right>$, де елемент $\alpha = z + x \omega_1 + y \omega_2$. Знайдемо індекс $[\Lambda : \mathbb{Z}(\alpha)]$. Детально розпишемо елемент $\alpha^2$.
+\begin{align*}
+\alpha^2 & = (z + x \omega_1 + y \omega_2)^2 = z^2 + x^2 \omega_1^2 + y^2 \omega_2^2 + 2zx \omega_1 + 2zy \omega_2 + 2 xy \omega_1 \omega_2 \\
+& = z^2 + x^2 (b \omega_1 + a \omega_2 - ac) +y^2 (d \omega_1 + c \omega_2 - bd) \\ 
+& + 2zx \omega_1 + 2yz \omega_2 + 2xyad
+\end{align*} 
+Отже, маємо ось такий розклад:
+\begin{multline*}
+1 = 1 \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\alpha = z \cdot 1 + x \omega_1 + y \omega_2 \\
+\alpha^2 = (z^2 - x^2 ac - y^2 bd + 2xyad) \cdot 1 + (x^2 b + y^2 d + 2xz) \omega_1 + (x^2 a + y^2 c + 2yz) \omega_2
+\end{multline*}
+Отже, індекс обчислюється таким чином:
+\begin{align*}
+[\Lambda : \mathbb{Z}(\alpha)] & = \left| \det \begin{pmatrix}
+1 & z & z^2-x^2ac-y^2bd+2xyad \\
+0 & x & x^2b+y^2d+2xz \\
+0 & y & x^2a+y^2c+2yz
+\end{pmatrix} \right| \\
+& = |x(x^2a+y^2c+2yz) -y(x^2b+y^2d+2xz)| \\
+& = |ax^3 + cxy^2 - bx^2y - dy^3|
+\end{align*}
+
+У результаті отримали, що кожному кубічному кільцю $\Lambda$ відповідатиме з точністю до знаку кубічна форма (або ще називають індексформою)
+\begin{align*}
+f(x,y) = ax^2 + cxy^2 - bx^2y - dy^2.
+\end{align*}
+Його дискримінант обчислюється за формулою:
+\begin{align*}
+\Delta_\Lambda = b^2 c^2 - 4c^2 a - 4b^3 d + 18 abcd - 27a^2d^2.
+\end{align*}
+
+\begin{definition}
 \textbf{Ступінчастий базис відносно $\omega$} кубічного кільця $\Lambda$ має вигляд:
 \begin{align*}
 \left\{ 1,\ \dfrac{u\omega + v}{\Delta},\ \dfrac{\lambda \omega^2 + \mu \omega + \nu}{\Delta} \right\},
@@ -201,14 +259,14 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 де $u,v,\lambda,\mu,\nu,\Delta \in \mathbb{Z}$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Вороного]
 \label{voronogo}
-Нехай $\rho$ -- ціле число, що задовольняє рівняння $F(\rho) = \rho^3 - s \rho^2 - q \rho - n = 0$. Нехай $\delta,a,\Delta_{\Lambda},t \in \mathbb{Z}$ задовольняють такі умови:
+Нехай $\rho$ -- кубічне ціле число, що задовольняє незвідне рівняння $F(\rho) = \rho^3 - s \rho^2 - q \rho - n = 0$. Нехай $\delta,a,\Delta_{\Lambda},t \in \mathbb{Z}$ задовольняють такі умови:
 \begin{align*}
-\Delta = \delta^6 a^2 \Delta_\Lambda \\
+\Delta = \delta^6 a^2 \Delta_\Lambda, \\
 \dfrac{1}{2} F''(t) \equiv 0 \pmod {\delta}, \quad F'(t) \equiv 0 \pmod {\delta^2 a}, \quad F(t) \equiv 0 \pmod{\delta^3 a^2}
 \end{align*}
-Тоді система $\left\{ 1,\ \dfrac{\rho - t}{\delta},\ \dfrac{\rho^2 + (t-s)\rho + (t^2 - st + q)}{\delta^2 a} \right\}$ -- нормальний та ступінчастий базис відносно $\rho$.
+Число $\Delta$ -- дискримінант рівняння $F(\rho) = 0$. Тоді система $\left\{ 1,\ \dfrac{\rho - t}{\delta},\ \dfrac{\rho^2 + (t-s)\rho + (t^2 - st + q)}{\delta^2 a} \right\}$ -- нормальний та ступінчастий базис відносно $\rho$.
 \end{theorem}
 
 \section{Критерій максимальності кільця}
@@ -222,13 +280,26 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 
 Отже, більше кільце матиме вигляд $\tilde{\Lambda} = \left<1,\theta,\theta^2\right>$.
 
-Якщо $\Lambda = \left<1,\omega_1,\omega\right>$, то елемент $\theta$ можна подати в такому вигляді:
+Якщо $\Lambda = \left<1,\omega_1,\omega_2\right>$, то елемент $\theta$ можна подати в такому вигляді:
 \begin{align*}
 \theta = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p},
 \end{align*}
-де числа $\alpha,\beta,\gamma,p \in \mathbb{Z}$. Для того, щоб $\tilde{\Lambda}$ стало кільцем, досить вимагати, щоб $\theta^3 \in \left<1,\omega,\omega^2\right>$.
+де числа $\alpha,\beta,\gamma,p \in \mathbb{Z}$. Для того, щоб $\tilde{\Lambda}$ стало кільцем, досить вимагати, щоб $\theta^3 \in \left<1,\theta,\theta^2\right>$.
 
-Надалі обмежуємось випадком, коли $\gamma = 0$.
+\begin{remark}
+Вибір $\alpha,\beta,\gamma$ може бути обмеженим до $\pmod p$.
+\end{remark}
+
+Справді, нехай $\Lambda = \left< 1,\omega_1,\omega_2\right>$ та припустимо ми маємо два розширення $\tilde{\Lambda}_1 = \left< 1, \theta, \theta^2\right>$ та $\tilde{\Lambda}_2 = \left< 1, \sigma, \sigma^2\right>$, де елементи $\theta = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p}$ та $\sigma = \dfrac{\beta' \omega_1 + \gamma' \omega_2 + \alpha'}{p}$, причому $\alpha' \equiv \alpha,\ \beta' \equiv \beta,\ \gamma' \equiv \gamma \pmod p$. Іншими словами, $\alpha' = \alpha + px,\ \beta' = \beta + py,\ \gamma' = \gamma + pz$ при деяких $x,y,z \in \mathbb{Z}$. Розпишемо $\sigma$ на основі цих рівностей:
+\begin{align*}
+\sigma & = \dfrac{\beta \omega_1 + py \omega_1 + \gamma \omega_2 + pz \omega_2 + \alpha + px}{p} \\
+& = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p} + y \omega_1 + z \omega_2 + x = \theta + x + y \omega_1 + z \omega_2
+\end{align*}
+Оскільки $1,\omega_1,\omega_2 \in \tilde{\Lambda}_1$ та $\theta \in \tilde{\Lambda}_1$, то звідси $\sigma \in \tilde{\Lambda}_1$. Водночас окільки $1,\omega_1,\omega_2 \in \tilde{\Lambda}_2$ та $\sigma \in \tilde{\Lambda}_2$, то, виразивши $\theta$, отримуємо $\theta \in \tilde{\Lambda}_2$.
+
+Отже, отримуємо $\tilde{\Lambda}_1 = \tilde{\Lambda}_2$.
+
+Надалі обмежуємось випадком, коли $\gamma = 0$, а решта $\alpha,\beta$ визначаються з точністю до $\pmod p$.
 
 Розглянемо оператор множення на елемент $\theta$, тобто $\lambda \mapsto \theta \cdot \lambda$. З'ясуємо, як буде виглядати матриця $[\theta]$ даного оператора.
 \begin{align*}
@@ -263,7 +334,7 @@ M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}
 
 Отже, $\chi_{[\theta]}(\theta) = 0$. Це означає, $\theta^3 = \det [\theta] - M_{2 \times 2}[\theta] \cdot \theta + \tr [\theta] \cdot \theta^2$. Оскільки нам необхідно $\theta^3 \in \left<1,\theta,\theta^2\right>$, треба вимагати, щоб
 \begin{align*}
-\det [\theta],\ M_{2 \times 2}p\theta],\ \tr [\theta] \in \mathbb{Z}.
+\det [\theta],\ M_{2 \times 2}[\theta],\ \tr [\theta] \in \mathbb{Z}.
 \end{align*}
 
 Обчислимо кожний коефіцієнт.
@@ -319,14 +390,75 @@ t = \beta \alpha^{-1}
     \end{cases}\,.
 \end{equation}
 
+Підіб'ємо підсумок:
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Тоді $\Lambda$ -- немаксимальне $\iff$ існує розв'язок системи рівнянь \eqref{system_congruent_equations}.
+\end{proposition}
+
+Розпишемо елемент $\omega_1$ через лінійну комбінацію $\{1,\theta,\theta^2\}$. Маємо наступне:
+\begin{align*}
+\omega_1 = \xi \cdot 1 + \eta \cdot \dfrac{\alpha + \beta \omega_1}{p} + \zeta \cdot \dfrac{\alpha^2 + 2 \alpha \beta \omega_1 + \beta^2 (b \omega_1 + a \omega_2 - ac)}{p^2}
+\end{align*}
+Прирівнюючи коефіцієнти, отримуємо наступне:
+\begin{align*}
+\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0 \\
+\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 1 \\
+\zeta \cdot \dfrac{\beta^2 a}{p^2} = 0
+\end{align*}
+Отже, звідси $\zeta = 0$, а також $\eta = \dfrac{p}{\beta}$. Проте оскільки $p$ -- просте число за припущенням, то $\beta \in \{1,p\}$. Далі, маємо $\xi = - \dfrac{\alpha}{\beta}$.
+
+Якщо $\beta = 1$, то звідси $\xi = -\alpha$, отримуємо цілий коефіцієнт.
+
+Якщо $\beta = p$, то звідси $\xi = -\dfrac{\alpha}{p}$. Отже, вимагаємо $\alpha \equiv 0 \pmod p$. Проте в цьому випадку $\theta = \dfrac{\alpha + \beta \omega_1}{p} = \dfrac{\alpha}{p} + \omega_1 \in \Lambda$. Тобто буде $\Lambda = \tilde{\Lambda}$, не виникне розширення. 
+
+\textcolor{red}{Надалі припускаємо, що $\beta = 1$.}
+
+Аналогічно проведемо процедуру для $\omega_2$. Отримуємо:
+\begin{align*}
+\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0 \\
+\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 0 \\
+\zeta \cdot \dfrac{\beta^2 a}{p^2} = 1
+\end{align*}
+
+Звідси $\zeta = \dfrac{p^2}{a}$. Отже, $a \in \{1,p,p^2\}$. Далі, $\eta \cdot \dfrac{1}{p} + \dfrac{p^2}{a} \cdot \dfrac{2\alpha + b}{p^2} = 0$. Звідси $\eta = -\dfrac{p(2\alpha+b)}{a}$. Нарешті, $\xi = \dfrac{\alpha^2 + \alpha b + ac}{a}$.
+
+Розглянемо кожний $a$ окремо. Якщо $a = 1$, то всі числа $\zeta,\eta,\xi$ -- цілі, тож не потребує додаткових обмежень.
+
+Якщо $a = p$, то $\zeta,\eta$ -- цілі, але $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p}$, тож додатково треба $\alpha^2 + \alpha b + ac \equiv 0 \pmod p$.
+
+Якщо $a = p^2$, то $\zeta$ -- ціле, решта $\eta = -\dfrac{2\alpha + b}{p}$ та $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p^2}$.
+
+\begin{lemma}
+Нехай кільце $\Lambda$ визначається числом $a = 1$ та числа $b,c,d$ -- такі, що задовольняють систему. Тоді елемент $\theta = \dfrac{\alpha + \omega_1}{p}$ допускає розширення $\Lambda \subset \tilde{\Lambda}$.
+\end{lemma}
+
+Нормалізуємо новоутворене кубічне кільце $\tilde{\Lambda}$. Маємо наступне:
+\begin{align*}
+\theta \cdot \theta^2 = \theta^3 = \det [\theta] - M_{2 \times 2}[\theta] \cdot \theta + \tr[\theta] \cdot \theta^2
+\end{align*}
+Оберемо новий базис $\left\{ 1,\ \theta-\tr[\theta],\ \theta^2 + M_{2 \times 2}[\theta] \right\}$. Для зручності позначу цей базис за $\{1,\tilde{\omega}_1,\tilde{\omega}_2\}$. У результаті за процедурою нормалізації базису вище отримуємо
+\begin{align*}
+\tilde{\omega}_1 \cdot \tilde{\omega}_2 = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta]
+\end{align*}
+Визначимо, які числа $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$ визначені в кільці $\tilde{\Lambda} = \left< 1, \tilde{\omega}_1,\tilde{\omega}_2 \right>$.
+\begin{align*}
+\tilde{\omega}_1^2 = (\theta - \tr [\theta])^2 = \theta^2 - 2 \theta \tr [\theta] + (\tr [\theta])^2 \\ = \tilde{b} (\theta - \tr [\theta]) + \tilde{a} (\theta^2 + M_{2 \times 2}[\theta]) - \tilde{a} \tilde{c} = \tilde{b} \tilde{\omega}_1 + \tilde{a} \tilde{\omega}_2 - \tilde{a} \tilde{c}
+\end{align*}
+Звідси випливає, що $\tilde{a} = 1,\ \tilde{b} = - 2 \tr [\theta]$ та $\tilde{c} = \tr^2 [\theta] + M_{2 \times 2}[\theta]$. Далі,
+\begin{align*}
+\tilde{\omega}_1 \cdot \tilde{\omega}_2 = (\theta - \tr [\theta])(\theta^2 + M_{2 \times 2}[\theta]) =\\ = (\det [\theta] - M_{2 \times 2}[\theta] \theta + \tr [\theta] \theta^2) + M_{2 \times 2}[\theta] \theta - \tr[\theta] \theta^2 - \tr [\theta] M_{2 \times 2}[\theta] \\
+= \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta] = \tilde{a} \tilde{d}
+\end{align*}
+Звідси $\tilde{d} = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta]$.
+
 \section{Розв'язання системи конгруентних рівнянь}
-\subsection{Випадок, коли $p$ -- просте число, причому $p > 3$}
+\subsection{Випадок, коли $p$ -- просте число, де $p \neq 3$}
 
 Маємо рівняння
 \begin{align*}
 bt \equiv p-3 \pmod p.
 \end{align*}
-Дане рівняння має розв'язок $\iff \gcd(b,p) \mid p-3$. Оскільки $p$ -- просте, то $\gcd(b,p) \in \{1,p\}$. Якби $\gcd(b,p) = p$, то отримали би $p \mid p-3$ -- неможливо.
+Дане рівняння має розв'язок $\iff \gcd(b,p) \mid p-3$. Оскільки $p$ -- просте, то $\gcd(b,p) \in \{1,p\}$. Якби $\gcd(b,p) = p$, то отримали би $p \mid p-3$, що неможливо.
 
 Отже, якщо $p \nmid b$, то вищезгадане рівняння має розв'язок. При цьому оскільки $\gcd(b,p) = 1$, то рівняння має лише єдиний розв'язок вигляду
 \begin{align*}
@@ -414,7 +546,7 @@ a^2d (-27 + 27b lp^2) + ac (9b - 6 l b^2 p^2) + (-3 b^3 + lp^2 b^4) + b^3 \\
 
 \begin{lemma}
 \label{system_when_p_is_prime_and_bigger_than_three}
-Нехай $p > 3$ -- просте число. Відомо, що $p \nmid b,\ b^2 \equiv 3ac \pmod {p^2}$, а також $27a^2d \equiv 9abc - 2b^3 \pmod {p^3}$. Тоді система конгруентних рівнянь \eqref{system_congruent_equations} має єдиний розв'язок $t \equiv -3 b^{-1} \pmod {p^3}$.
+Нехай $p > 3$ -- просте число або $p = 2$. Припустимо, що $p \nmid b,\ b^2 \equiv 3ac \pmod {p^2}$, а також $27a^2d \equiv 9abc - 2b^3 \pmod {p^3}$. Тоді система конгруентних рівнянь \eqref{system_congruent_equations} має єдиний розв'язок $t \equiv -3 b^{-1} \pmod {p}$, де число $b^{-1}$ -- оборотний елемент класу лишків $\mathbb{Z}_p$ відносно множення.
 \end{lemma}
 
 Пригадаємо, що кубічному кільцю відповідає кубічна форма, дискримінант якої обчислюється за формулою
@@ -509,6 +641,13 @@ a^2 dt^3 \equiv 2 \pmod 3
 \end{enumerate}
 \end{proposition}
 
+\subsubsection*{Експериментальні результати}
+Піднімаючись до $\!\! \pmod 27$, ми маємо вісімнадцять потенційних розв'язків у залежності від параметра $d$: \begin{align*}
+t \in \{1,4,7,10,13,16,19,22,25\} \text{ при } d \equiv 2 \pmod 3 \\
+t \in \{2,5,8,11,14,17,20,23,26\} \text{ при } d \equiv 1 \pmod 3
+\end{align*}
+
+\subsubsection*{Теоретичний пошук}
 Маючи накладені умови з твердження, перевіримо, чи будуть вищезгадані $t$ дійсно розв'язками системи.
 
 \subsubsection{Випадок $t \equiv 2 \pmod 3$}
@@ -541,6 +680,89 @@ a^2 dt^3 \equiv 2 \pmod 3
 4ac + 4b + 3 \equiv 2b + 3 \equiv 0 \pmod 9
 \end{align*}
 Останнє можливе лише при $b \equiv 3 \pmod 9$. Також маємо $4ac \equiv -6 \equiv 3 \pmod 9$.
+
+\section{Про зображення кубічних кілець}
+Нехай $\Lambda$ -- кубічне кільце та $M \subset \Lambda$ -- максимальне надкільце. Можемо записати факторкільце
+\begin{align*}
+M/_\Lambda = \mathbb{Z}_{n_1(\Lambda)} \oplus \mathbb{Z}_{n_2(\Lambda)},
+\end{align*}
+де числа $n_1(\Lambda) \mid n_2(\Lambda)$.
+
+\begin{theorem}
+Кубічне кільце $\Lambda$ має скінченне число неізоморфних нерозкладених зображень $\iff n_1(\Lambda)$ -- вільне від квадратів.
+\end{theorem}
+
+\section{Частинний випадок максимального кубічного кільця}
+Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Продемонструємо кілька можливих частинних випадків.
+
+Нехай система розв'язна відносно $\! \pmod 2$. Тоді це кільце $\Lambda$ має розширення $\tilde{\Lambda}$. Доля даного кільця невідмова, чи можна розширитися, чи ні.
+
+\section{Частинний випадок максимального кубічного кільця}
+Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Спробуємо розширити кільце елементом $\theta = \dfrac{\alpha + \beta \omega_1}{p}$ при $p = 2$. Оскільки ми хочемо $\tilde{\Lambda} \supsetneq \Lambda$, то перш за все уникнемо випадків, коли $2 \mid \alpha$ та $2 \mid \beta$ водночас (інакше $\theta \in \Lambda$). Для розширення нам необхідно, щоб система \eqref{system_congruent_equations} була розв'язною.
+
+Із точністю до $\pmod 2$, єдина опція залишається -- це обрати $b = 1$. Решта чисел $a,c,d$ із точністю до $\pmod {2^3}$ зобов'язані приймати такі значення:
+\begin{center}
+\begin{tabular}{c|c|c}
+$a$ & $c$ & $d$ \\
+\hline
+$1$ & $3$ & $3$ \\
+$1$ & $7$ & $7$ \\
+$3$ & $1$ & $3$ \\
+$3$ & $5$ & $7$ \\
+$5$ & $3$ & $7$ \\
+$5$ & $7$ & $3$ \\
+$7$ & $1$ & $7$ \\
+$7$ & $5$ & $3$
+\end{tabular}
+\end{center}
+Отримуємо розв'язок $t \equiv -3 \cdot (1)^{-1} = 3 \equiv 5 \pmod 8$. Іншими словами, $\beta \equiv 5 \alpha \pmod 8$. Запишемо всі можливі значення $\alpha,\beta$:
+\begin{center}
+\begin{tabular}{c|c}
+$\alpha$ & $\beta$ \\
+\hline
+$1$ & $5$ \\
+\iffalse $2$ & $2$ \\ \fi
+$3$ & $7$ \\
+\iffalse $4$ & $4$ \\ \fi
+$5$ & $1$ \\
+\iffalse $6$ & $6$ \\ \fi
+$7$ & $3$ \\
+\end{tabular}
+\end{center}
+Саме при таких параметрах можливе строге розширення $\tilde{\Lambda} \supset \Lambda$. Чи можна буде ще розширити, залежить від значень $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$, які формують кільце $\tilde{\Lambda}$.
+
+Експериментально були отримані наступні дані:
+\begin{itemize}
+\item Якщо $\alpha = 1,\ \beta = 5$, тобто $\theta = \dfrac{1 + 5 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{5}$.
+\iffalse
+\begin{tabular}{c|c|c|c|c}
+$a$ & $c$ & $d$ & $\alpha$ & $\beta$ \\
+\hline
+$1$ & $3$ & $3$ & $1$ & $5$ \\
+$1$ & $7$ & $7$ & $1$ & $5$ \\
+$3$ & $1$ & $3$ & $1$ & $5$ \\
+$3$ & $5$ & $7$ & $1$ & $7$ \\
+$5$ & $3$ & $7$ & $1$ & $5$ \\
+$5$ & $7$ & $3$ & $1$ & $5$ \\
+$7$ & $1$ & $7$ & $1$ & $5$ \\
+$7$ & $5$ & $3$ & $1$ & $5$ \\
+\end{tabular}
+\fi
+\item Якщо $\alpha = 3,\ \beta = 7$, тобто $\theta = \dfrac{3 + 7 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{7}$.
+\item У всіх інших випадках, тобто при $\omega = \dfrac{5 + \omega_1}{2}$ або $\omega = \dfrac{7 + 3 \omega_1}{2}$ розширення не існує (простим $p \neq 3$).
+\end{itemize}
+
+Розглянемо тепер $\tilde{\Lambda} \supset \Lambda$, що заданий числами $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$. При певних умов спробуємо дістати ще одне розширення $\tilde{\tilde{\Lambda}} \supset \tilde{\Lambda} \supset \Lambda$.
+
+Експериметально було встановлено, що при $b \in \{1,3,5,7\}$ та всіх можливих $a,c,d$ (які задані до $\pmod 8$), які утворюють кільця, а також задовольняють умову системи, ми маємо розширення $\Lambda \supset \tilde{\Lambda}$. Подальше розширення елементом $\tilde{\tilde{\theta}} = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{q}$, де $q = 2$ або $q > 3$ -- просте, не допускається. Залишається перевірити, чи можливе розширення при простому $q = 3$.
+
+Виявляється, що при $q = 3$ теж нема можливостей для розширення.
+
+Зауважимо, що при $\alpha = 1, \beta = 1$ маємо $\tr [\theta] = \dfrac{1}{2} (3+b)$, звідси $2 \tr [\theta] = 3 + b$, або $\tilde{b} = -3 - b$.
+
+Отже, для розширення треба, щоб $3 \mid \tilde{b}$, тобто треба $3 \mid b$.
+
+
 
 \iffalse
 Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
