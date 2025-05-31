@@ -1,7 +1,6 @@
 \documentclass{thesis}
 
 \renewcommand{\baselinestretch}{1.20}
-\DeclareMathOperator{\tr}{tr}
 
 
 \begin{document}
@@ -132,19 +131,10 @@ $\mathbb{Z}$ & кільце цілих чисел\\
 $\Lambda$ & кубічне кільце\\
 $f$ & кубічна форма (індекс-форма) кільця\\
 $\Delta$ & дискримінант кубічної форми\\
-$G$ & група Лі\\
-$\mathfrak g$ & алгебра Лі\\
-$Q$ & оператор однопараметричної групи Лі\\[1mm]
-$\mathbb R^n$ & $n$-вимірний евклідів простір\\[1mm]
-$X\simeq {\mathbb R}^n$ & простір незалежних змінних~$x=(x^1,x^2,\ldots, x^n)$ \\[1mm]
-$U\simeq {\mathbb R}^m$ & простір залежних змінних $u=\big(u^1, u^2, \ldots, u^m\big)$\\[1mm]
-$u^\alpha_i=\dfrac{\partial u^\alpha}{\partial x^i}$ & частинна похідна від залежної змінної $u^\alpha$\\[1mm]
-& за незалежною змінною $x^i$\\[1mm]
-$D_{i}$ & оператор повної похідної за змінною $x^{i}$\\[1mm]
-$\underset{r}{Q}$ & $r$-те продовження оператора $Q$\\[1mm]
-$I$ & набір інваріантів нульового порядку\\[1mm]
-$I_{(r)}$ & набір інваріантів $r$-го порядку, $r\geq 1$
-
+$\Delta_\Lambda$ & дискримінант кубічного кільця $\Lambda$\\
+$[\theta]$ & матриця оператора множення на елемент $\theta$\\
+$M_{2 \times 2}$ & сума всіх діагональних мінорів $2 \times 2$\\
+$\left( \dfrac{\cdot}{p} \right)$ & символ Лежандра
 \end{tabular}
 
 
@@ -649,7 +639,7 @@ bd \equiv 0 \pmod 4
 Дане рівняння має розв'язок $\iff (\tilde{d} \tilde{a}^{-1})^{2} \equiv 1 \pmod 3$. Іншими словами, $\tilde{d}^2 \equiv \tilde{a}^2 \pmod 3$.
 \bigskip \\
 
-Надалі $a \not\equiv 0 \pmod p$. Маємо систему
+\textcolor{red}{Надалі $a \not\equiv 0 \pmod p$}. Нехай кільце $\Lambda$ задовольняє умову $p \nmid c$. Маємо систему
 \begin{equation*}
 \begin{cases}
 d - \beta c - \alpha \beta & \equiv 0 \pmod p \\
@@ -659,182 +649,146 @@ c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
 -\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
 \end{cases}
 \end{equation*}
-
-
-Розв'язок $\alpha$ можна знайти із другого рівняння:
+Для початку розглянемо випадок, коли $p > 3$. Із другого рівняння знайдемо $\alpha$:
 \begin{align*}
-\alpha \equiv \beta^2 \alpha - \beta b \pmod p
+\alpha \equiv \beta^2 a - \beta b \pmod p
 \end{align*}
-Залишилося знайти, чому дорівнює $\beta$. Підставивши $\alpha$ в перше та спустивши четверте рівняння до $\pmod p$, отримуємо
+Підставивши $\alpha$ в перше рівняння та знизивши четверте рівняння до $\pmod p$, отримуємо два рівняння, які віднімемо -- у результаті
 \begin{align*}
-d - \beta c + \beta^2 b - \beta^3 a \equiv 0 \pmod p \\
-d + \beta^2 b - \beta^2 c - \beta^3 a \equiv 0 \pmod p
+c \beta (\beta - 1) \equiv 0 \pmod p
 \end{align*}
-Віднімаючи два рівняння, здобудемо
-\begin{align*}
-c \beta (\beta -1) \equiv 0 \pmod p
-\end{align*}
-
-Нехай $c \equiv 0 \pmod p$. Тоді із другого та третього рівняння системи випливає, що
-\begin{align*}
-\beta (-2b + 3 \beta a) \equiv 0 \pmod p
-\end{align*}
-Припускаючи, що $p > 3$, розглянемо два випадки.
-
-Якщо $\beta \equiv 0 \pmod p$, то автоматично $\alpha \equiv 0 \pmod p$. Тоді четверте рівняння каже, що $d \equiv 0 \pmod {p^2}$ (це можливо й при $p =2$ або $p = 3$).
-
+Отримали необхідну умову для розв'язання системи.
 \begin{lemma}
-Кільце $\Lambda$ -- немаксимальне $\iff \alpha = \beta = 0$ за умовою, що $p \nmid a,\ p \mid c,\ p^2 \mid d$. (тут допускається $p = 2$ та будь-яке інше просте)
+Нехай задано кубічне кільце $\Lambda$ при $p \nmid a,\ p \nmid c$. Припустимо $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$. Тоді $\beta = 0$ або $\beta = 1$.
 \end{lemma}
 
-Зокрема:
-\begin{lemma}
-Кубічне кільце $\Lambda$ має розширення $\tilde{\Lambda}$ елементом $\theta = \dfrac{\omega_2}{p} \iff p \nmid a,\ p \mid c,\ p^2 \mid d $.\\
-(при $p = 2$).
-\end{lemma}
+Отже, кільце $\Lambda$ при $p \nmid a,\ p \nmid c$, можливо, розширюється елементами вигляду $\theta = \dfrac{\alpha + \omega_2}{p}$ або $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$. Інших варіантів нема.
 
-Ми можемо склеїти дві леми в одне твердження:
-\begin{proposition}
-Кубічне кільце $\Lambda$ має розширення $\tilde{\Lambda}$ елементом $\theta = \dfrac{\omega_2}{p} \iff p \mid c,\ p^2 \mid d $.\\
-(при $p = 2$).
-\end{proposition}
-
-Якщо $-2b + 3 \beta a \equiv 0 \pmod p$ (при $p > 3$), то маємо таку систему:
+\subsection*{$\beta = 0$}
+Підставивши дане значення, отримуємо систему:
 \begin{equation*}
 \begin{cases}
-d - \alpha \beta & \equiv 0 \pmod p \\
-\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p \\
-2 \alpha & \equiv - \beta^2 a \pmod p \\
+d & \equiv 0 \pmod p \\
+\alpha & \equiv 0 \pmod p \\
+c & \equiv 0 \pmod p \\
+d & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Оскільки ми розглядали кільце $\Lambda$, де $p \nmid c$, то цей випадок не підходить.
+
+\subsection*{$\beta = 1$}
+Підставимо це значення:
+\begin{equation*}
+\begin{cases}
+d - \beta c - \alpha \beta & \equiv 0 \pmod p \\
+\alpha & \equiv a - b \pmod p \\
+c + a + 2\alpha & \equiv 0 \pmod p \\
+ b + d - c - a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Перше рівняння після підставлення $\alpha$ дає $b+d-c-a \equiv 0 \pmod p$, яке можна опустити через четверте рівняння. Також підставимо $\alpha$ в третє рівняння.
+\begin{equation*}
+\begin{cases}
+\alpha & \equiv a - b \pmod p \\
+c + 3a - 2b & \equiv 0 \pmod p \\
+ b + d - c - a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Залишилося підставити $\alpha \equiv a-b + pm \pmod {p^2}$ в останнє рівняння. Враховуючи решта рівнянь системи, отримуємо наступне:
+\begin{align*}
+b (a-b+c-d) \equiv 0 \pmod {p^2}
+\end{align*}
+Отже, останнє рівняння виконується автоматично.
+
+\begin{proposition}
+Нехай задано кубічне кільце $\Lambda$ при $p \nmid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$, де число $\alpha \equiv a -b \pmod p \iff \begin{cases} p \mid c + 3a - 2b \\ p^2 \mid -a+b-c+d \end{cases}$.
+\end{proposition}
+
+Тепер розглянемо кільце $\Lambda$ при $p \mid c$. Система рівнянь матиме такий вигляд:
+\begin{equation*}
+\begin{cases}
+d - \beta^3 a + \beta^2 b & \equiv 0 \pmod p \\
+\alpha & \equiv \beta^2 a - \beta b \pmod p \\
+3 \beta^2 a & \equiv 2 \beta b \pmod p \\
 \beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+-\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
 \end{cases}
 \end{equation*}
-Друге рівняння домножимо на $2$ та підставимо $2\alpha$ -- отримуємо:
+Із третього рівняння випливає, що або $\beta = 0$ та $\alpha = 0$, або дана змінна шукається за рівнянням $3 \beta a \equiv 2 b \pmod p$. Для другого випадку, якщо друге рівняння домножимо на $9a$, отримуємо
 \begin{align*}
-\beta (-3\beta a + 2b) \equiv 0 \pmod p.
-\end{align*} 
-Оскільки вже не розглядаємо $\beta \equiv 0 \pmod p$, то звідси маємо
-\begin{align*}
-2b \equiv 3 \beta a \pmod p.
+9 a \alpha \equiv (3 \beta a)^2 - (3 \beta a) 3 \beta \pmod p \\
+9 a \alpha \equiv -2b^2 \pmod p
 \end{align*}
-До третього рівняння системи домножимо на $9\alpha$ та підставимо щойно отримане $3 \beta \alpha$ -- в результаті:
-\begin{align*}
-9 \alpha a \equiv -2b^2 \pmod p
-\end{align*}
-Перше рівняння домножимо на $27 a^2$ та підставимо $9 \alpha a$ разом з $3 a \beta$ -- матимемо:
-\begin{align*}
-27 a^2 d + 4b^3 \equiv 0 \pmod p
-\end{align*} 
-Оновимо систему рівнянь:
-\begin{equation*}
-\begin{cases}
-3 a \beta & \equiv 2b \pmod p \\
-9 \alpha a & \equiv -2b^2 \pmod p \\
-27 a^2 d + 4b^3 & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Розглянемо четверте рівняння системи. Домножимо на $27a^2$. Запишемо ось таким чином:
-\begin{align*}
-(3b-3c) (3a\beta)^2 + 27da^2 - (3 a \beta)^3 \equiv 0 \pmod {p^2}
-\end{align*}
-Оскільки $3 a \beta \equiv 2b \pmod p$, то звідси $3 a \beta \equiv 2b + pk \pmod {p^2}$. Якщо дане представлення підставити в рівняння вище, після алгебраїчних перетворень отримуємо
-\begin{align*}
-4b^3 + 27a^2d -12 b^2 c \equiv 0 \pmod {p^2}
-\end{align*}
-Розглянемо п'яте рівняння системи. Домноимо на $81a^2$. Запишемо ось таким чином:
-\begin{align*}
--(9 \alpha a)^2 - 9ac (3 a \beta)^3 - 81 a^2 bd + 54 (3 a \beta) da^2 - 9ac (9 \alpha a) - (9 \alpha a) (3 a \beta)^2 \equiv 0 \pmod {p^2}
-\end{align*}
-Відомо, що $3 a \beta \equiv 2b + pk \pmod {p^2}$. Аналогічним чином $9 \alpha a \equiv -2b^2 + pm \pmod {p^2}$. Підставивши в рівняння вище та спростивши, отримуємо:
-\begin{align*}
-b (27 a^2 d + 4b^3) - 18 ab^2c \equiv 0 \pmod {p^2}
-\end{align*}
-Отже, маємо таку систему за $\pmod {p^2}$:
-\begin{equation}
-\begin{cases}
-27 a^2 d + 4b^3 & \equiv 12 b^2 c \pmod {p^2} \\
-b (27 a^2d + 4b^3) & \equiv 18 ab^2 c \pmod {p^2}
-\end{cases}
-\end{equation}
-Звідси випливає, що $2b^3 c \equiv 3ab^2c \pmod {p^2}$. Оскільки $c \equiv 0 \pmod p$, то $c \equiv pk \pmod {p^2}$. Підставимо:
-\begin{align*}
-2b^3 k \equiv 3ab^2 k \pmod {p}
-\end{align*}
-Звідси або $k \equiv 0 \pmod p$ (тобто $c \equiv 0 \pmod {p^2}$), або $2b^3 \equiv 3ab^2 \pmod p$.
 
-Якщо $c \equiv 0 \pmod {p^2}$, то звідси $27a^2 d + 4b^3 \equiv 0 \pmod {p^2}$.
-
-Якщо $2b^3 \equiv 3ab^2 \pmod p$, то знову розбиття на кілька випадків.
-
-Якщо $b \equiv 0 \pmod p$, то $\beta \equiv 0 \pmod p$ -- нічого нового.
-
-Якщо $2b \equiv 3a \pmod p$, то ми отримуємо наступну систему:
-\begin{equation*}
-\begin{cases}
-2b & \equiv 3a \pmod p \\
-\beta & \equiv 1 \pmod p \\
-\alpha & \equiv d \pmod p \\
-3d & \equiv -b \pmod p \\
--a + b - c + d & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-
-\begin{proposition}
-Кільце $\Lambda$ -- немаксимальне $\iff \alpha \equiv 1 \pmod p$ та $\beta = 1$ за умовою, що $p \nmid a,\ p \nmid b,\ p \mid c,\ p^2 \nmid c$, а також $p \mid 2b - 3a$, $p \mid 3d+b$, також $p^2 \mid -a+b-c+d$.
-\end{proposition}
-
-Нехай $c \not\equiv 0 \pmod p$. Тоді в нас два розв'язки: або $\beta \equiv 0 \pmod p$, або $\beta \equiv 1 \pmod p$. Залишилося з'ясувати, за яких умов вони задовольнятимуть систему.
-
-Розглянемо $\beta \equiv 0 \pmod p$. Перше рівняння дає $d \equiv 0 \pmod p$, друге рівняння дає $\alpha \equiv 0 \pmod p$, внаслідок чого третє рівняння дає $c \equiv 0 \pmod p$, що неможливо за припущенням.
-
-Залишився $\beta \equiv 1 \pmod p$. Підставивши в перше, друге, третє рівняння, отримуємо $\alpha \equiv d-c \pmod p$ за умовою, що:
-\begin{equation*}
-\begin{cases}
-c -d + b - a & \equiv 0 \pmod p \\
-a - c + 2d &\equiv 0 \pmod p
-\end{cases}
-\end{equation*}
-Якщо $p = 2$, то ми отримуємо:
 \begin{lemma}
-Кубічне кільце $\Lambda$ має розширення елементом $\theta = \dfrac{(d-c) \mod p + \omega_1 + \omega_2}{p} \iff p \nmid a,\ p \nmid c,\ p \mid a + c,\ p^2 \mid -a+b-c+d$.
+Нехай задано кубічне кільце $\Lambda$ при $p \nmid a,\ p \mid c$. Припустимо $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$. Тоді $\theta = \dfrac{\omega_2}{2}$ або $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{2}$ при $\begin{cases} 9 a \alpha \equiv -2b^2 \pmod p \\  3 \beta a \equiv 2 b \pmod p \end{cases}$.
 \end{lemma}
-Переконаємось, щоб $\alpha,\beta$ задовольняли рівнянням за $\pmod {p^2}$. Запишемо
-\begin{align*}
-\alpha \equiv d -c + pl \pmod {p^2} \\
-\beta \equiv 1 + pk \pmod {p^2},
-\end{align*} 
-де числа $p,k \in \{0,1,\dots,p-1\}$. Підставимо їх в четверте рівняння системи. Із урахуванням отриманих конгруентних рівнянь, отримуємо
-\begin{align*}
--a + b - c + d - pkc \equiv 0 \pmod {p^2}
-\end{align*}
-Аналогічно підставимо їх в п'яте рівняння системи -- у результаті:
-\begin{align*}
-d (a - b + d -d) \equiv 0 \pmod {p^2}
-\end{align*}
-Із щойно отриманих двох рівнянь випливає, що
-\begin{align*}
-dpkc \equiv 0 \pmod {p^2}
-\end{align*}
-Оскільки $c \not\equiv 0 \pmod p$, то залишається $dk \equiv 0 \pmod {p}$. Знову розбиття на два випадки.
 
-Нехай $d \equiv 0 \pmod p$. Підставивши, де можливо, матимемо умови: $\alpha \equiv - c \pmod p,\ b \equiv 2c \pmod p,\ a \equiv c \pmod p$.
-
-Нехай $k = 0$. Тоді миттєво отримуємо обмеження $a-b+c-d \equiv 0 \pmod {p^2}$.
-
+\subsubsection*{$\beta = 0$} Тоді система дає обмеження $p \mid d^2$.
 \begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце та $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$.\\
-$\Lambda$ -- не максимальне $\iff$ $p \nmid a,c$, а також одна з двох умов:
-\begin{enumerate}
-\item $\alpha \equiv -c \pmod p$ та $\beta \equiv 1 \pmod p$ при $p \mid a-c,\ p \mid b -2c,\ p \mid d$;
-\item $\alpha \equiv d - c \pmod p$ та $\beta \equiv 1 \pmod p$ при $p \mid a-c+2d,\ p^2 \mid -a+b+c-d$.
-\end{enumerate}
+Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{p} \iff p^2 \mid d$. 
 \end{proposition}
 
+\subsubsection*{$3 a \beta \equiv 2 b \pmod p$} Третє рівняння домножимо на $27a^2$ -- отримуємо
+\begin{align*}
+27a^2 d - (3 \beta a)^3 + 3b (3 \beta a)^2 \equiv 0 \pmod p \\
+27 a^2 d + 4 b^3 \equiv 0 \pmod p
+\end{align*}
+Перепишемо систему рівнянь:
+\begin{equation*}
+\begin{cases}
+27 a^2 d + 4 b^3 & \equiv 0 \pmod p \\
+9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \\
+\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Зробимо підстановку $3a \beta$ та $9a \alpha$ в останні два рівняння. Для цього піднімемо їх:
+\begin{align*}
+3 a \beta \equiv 2b + pk \pmod {p^2} \\
+9a \alpha \equiv -2b^2 + pm \pmod {p^2}
+\end{align*}
+Четверте рівняння домножимо на $27a^2$ -- після перетворень отримуємо
+\begin{align*}
+27 a^2 d + 4b^3 - 12 b^2 c \equiv 0 \pmod {p^2}
+\end{align*}
+Отже, перше рівняння системи можна опустити.
+
+Останнє рівняння домножимо на $81a^2$ -- в результаті:
+\begin{align*}
+-(9 a \alpha)^2 - 9 a c (3a\beta)^2 - 81 a^2bd + 54 a^2 d (3\beta a) - 9 ac (9 a \alpha) - (9 a \alpha) (3 a \beta)^2 \\ \equiv 0 \pmod {p^2}
+\end{align*}
+Підставивши та розкривши дужки, одержимо
+\begin{align*}
+27a^2 bd + 54a^2 dkp - 18ab^2 c + 4b^4 + 8b^3 kp \equiv 0 \pmod {p^2}
+\end{align*}
+Згрупуємо доданки таким чином:
+\begin{align*}
+b (27a^2 d + 4b^3) - 18ab^2c + (4b^3 + 27a^2d) 2k p \equiv 0 \pmod {p^2}
+\end{align*}
+Знаючи, що $27a^2 d + 4b^3 \equiv 12 b^2c \pmod {p^2}$, підставимо це.
+\begin{align*}
+12b^3 c - 18ab^2c \equiv 0 \pmod {p^2}
+\end{align*}
+Доданок $12b^2 c \cdot 2kp$ зник, оскільки $pc \equiv 0 \pmod {p^2}$. Отже, система має вигляд:
+\begin{equation*}
+\begin{cases}
+9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \\
+27 a^2 d + 4b^3 - 12 b^2 c & \equiv 0 \pmod {p^2} \\
+b^2 c (2b - 3a) & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+
 \begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце та $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$.\\
-$\Lambda$ -- не максимальне $\iff$ $p \nmid a,c$, а також одна з двох умов:
+Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$ при $\begin{cases} 9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \end{cases} \iff \begin{cases} p^2 \mid 27 a^2 d + 4b^3 - 12b^2 c \\ p^2 \mid b^2 c (2b-3a) \end{cases}$.
 \end{proposition}
 
 \section{Розв'язання системи конгруентних рівнянь}
@@ -1213,11 +1167,20 @@ $7$ & $5$ & $3$ & $1$ & $5$ \\
 
 \newpage
 
-\chapter{Назва розділу}\label{chaper2}
+\chapter{Опис кубічних кілець}\label{chaper2}
+Розпочати необхідно з такого результату.
 
-\section{Назва секції}\label{section2.1}
+\begin{proposition}
+Нехай кубічне кільце $\Lambda$ має розширення $\tilde{\Lambda}$, причому $[\tilde{\Lambda}: \Lambda] = p$. Тоді $\Delta_\Lambda = p^2 \Delta_{\tilde{\Lambda}}$. Іншими словами, $p^2 \mid \Delta_\Lambda$.
+\end{proposition}
 
+На жаль, у зворотний бік дане твердження не працює. Зокрема можна розглянути кубічне кільце $\Lambda$, яке задається числами $(0,6,5,0)$. Його дискримінант $\Delta_\Lambda = 900$, причому $2^2 \mid 900$. Утім не існує розширення $\tilde{\Lambda}$, щоб було $[\tilde{\Lambda}:\Lambda] = 2$.
 
+\section{Розширення простим числом $p=2$}\label{section2.1}
+Нехай $\Lambda$ -- кубічне кільце, що задається числами $(a,b,c,d)$, причому $\Delta_\Lambda \neq 0$. Воно може мати розширення такого формату:\\
+$\left< 1,\omega_1, \dfrac{\omega_2}{2} \right>$, якщо $2 \mid c,\ 4 \mid d$\\
+$\left< 1, \omega_1, \dfrac{\omega_1 + \omega_2}{2} \right>$, якщо $2 \mid a,\ 2 \mid c,\ 2 \mid b,\ 4 \mid bd,\ 4 \mid -a+b-c+d$\\
+$\left<1,\omega_1, \dfrac{(d-c) + \omega_1 + \omega_2}{2}\right>$, якщо $2 \nmid a,\ 2 \nmid c,\ 2 \mid a + c,\ 4 \mid -a+b-c+d$ (число $d-c$ береться за $\mod 2$).
 \newpage
 
 \phantomsection

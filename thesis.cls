@@ -418,6 +418,6 @@
 
 \newcommand{\MyTableCaption}{\refstepcounter{table}\vspace*{-2.5ex}\null \hfill{\it Таблиця~\thetable}}
 
-
+\DeclareMathOperator{\tr}{tr}
 
 \endinput
