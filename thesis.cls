@@ -9,6 +9,7 @@
 \RequirePackage{inputenc}
 \RequirePackage{babel}
 \RequirePackage{amsmath}
+\RequirePackage{tikz-cd}
 \RequirePackage{systeme}
 \RequirePackage{amsthm}
 \RequirePackage{latexsym}
@@ -24,6 +25,9 @@
 \RequirePackage{color}
 \RequirePackage{url}
 \RequirePackage[labelsep=period]{caption}
+\usetikzlibrary{arrows}
+\usetikzlibrary{babel}
+
 
 \RequirePackage[
  pdftex,
