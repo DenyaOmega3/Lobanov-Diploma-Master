@@ -2,10 +2,11 @@
 \ProvidesClass{thesis}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions
-\LoadClass[fleqn,12pt,a4paper]{report}
+\LoadClass[12pt,a4paper]{report}
 \PassOptionsToPackage{utf8}{inputenc}
 \PassOptionsToPackage{english,ukrainian}{babel}
-\PassOptionsToPackage{fleqn}{amsmath}
+%\PassOptionsToPackage{fleqn}{amsmath}
+\RequirePackage{amsmath}
 \RequirePackage{inputenc}
 \RequirePackage{babel}
 \RequirePackage{amsmath}

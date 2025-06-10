@@ -49,9 +49,12 @@
 
 \begin{flushright}
 \begin{minipage}{90mm}
-\large {\bf Науковий керівник}\\
-доктор фіз.-мат. наук, професор\\
+\large {\bf Наукові керівники}\\
+член-кореспондент НАН України, \\ доктор фіз.-мат. наук, професор\\
 {\bf Дрозд Юрій Анатолійович}\\
+\underline{\hspace{48mm}}\\
+академік НАН України, \\ доктор фіз.-мат. наук, професор\\
+{\bf Максименко Сергій Іванович}\\
 \underline{\hspace{48mm}}
 
 \end{minipage}
@@ -89,7 +92,7 @@
 \bigskip
 
 \noindent
-{\bf Ключові слова:} кубічне кільце, система конгруентних рівнянь, символ Лежандра, цілочисельне зображення, відповідність Делоне-Фадєєва.
+{\bf Ключові слова:} кубічне кільце, система конгруентних рівнянь, символ Лежандра, цілочисельне зображення, відповідність Делоне--Фадєєва.
 \bigskip
 
 \newpage
@@ -122,7 +125,7 @@ The further plan will be to continue to isolate some classes of cubic rings that
 \bigskip
 
 \noindent
-{\bf Key words:} cubic ring, system of congruent equations, Legendre symbol, integral representation, Delone-Faddeev correspondence.
+{\bf Key words:} cubic ring, system of congruent equations, Legendre symbol, integral representation, Delone--Faddeev correspondence.
 
 \newpage
 
@@ -139,13 +142,20 @@ The further plan will be to continue to isolate some classes of cubic rings that
 
 \begin{tabular}{ll}
 $\mathbb{Z}$ & кільце цілих чисел\\
+$p$ & просте число\\
+$\gcd(\cdot,\cdot)$ & найбільший спільний дільник чисел\\
+$\left( \dfrac{\cdot}{p} \right)$ & символ Лежандра\\
+$u \mod n$ & число від $0$ до $n-1$, яке конгруентне $u$ за модулем $n$\\
 $\Lambda$ & кубічне кільце\\
 $f$ & кубічна форма (індекс-форма) кільця\\
 $\Delta$ & дискримінант кубічної форми\\
 $\Delta_\Lambda$ & дискримінант кубічного кільця $\Lambda$\\
 $[\theta]$ & матриця оператора множення на елемент $\theta$\\
-$M_{2 \times 2}$ & сума всіх діагональних мінорів $2 \times 2$\\
-$\left( \dfrac{\cdot}{p} \right)$ & символ Лежандра
+$\chi_A$ & характеристичний многочлен матриці $A$\\
+$\tr A$ & слід матриці\\
+$M_{2 \times 2}(A)$ & сума всіх діагональних мінорів $2 \times 2$ матриці $A$\\
+$\det A$ & визначник матриці $A$\\
+$GL_2(\mathbb{Z})$ & група цілочисельних оборотних матриць\\
 \end{tabular}
 
 
@@ -153,25 +163,29 @@ $\left( \dfrac{\cdot}{p} \right)$ & символ Лежандра
 
 \phantomsection
 \chapter*{Вступ}\label{Introduction}
+Сучасна теорія кубічних кілець тісно пов'язана з алгебраїчною теорією чисел, досліджуючи кубічні розширення, та розпочалась математиками Б.~ Делоне та Д.~ Фадєєвим у своїх перших роботах \cite{delone1964theory}. Саме там вперше з'явився фундаментальний зв'язок, який суттєво полегшують дослідження, як-от: канонічна бієкція між класами ізоморфних кубічних кілець та класами $GL_2(\mathbb{Z})$-еквівалентностей цілочисельних кубічних форм.
+
+Пізніше виникло питання про їхні $\mathbb{Z}$-зображення, яке є також важливим важелем для топології (наприклад, теорія кнутів) та для визначення структури груп. Відповідь на дане питання дав Ю.~Дрозд в статті \cite{drozd1967representations}. Однак залишається лише єдина проблема: описати конкретно такі кубічні кільця, що можуть задовольняти теорему. Для цього в гру вступає дослідження максимального надкільця, пошук якого є цілком алгоритмічним. Лише зараз, маючи необхідні програмні забезпечення та бібліотеки, ми можемо швидше наблизитись до визначень необхідних кілець, знайти певну закономірність, а далі робити спроби теоретичного обґрунтування.
+
+
+
 \addcontentsline{toc}{chapter}{Вступ}
 
-??????????
-\cite{boyko-thesis,boyko2021,PopovychBoykoNesterenkoLutfullin2003}
 
 \newpage
 
 \chapter{Максимальне кубічне кільце}\label{chaper1}
 
 \section{Попередні відомості про кубічні кільця}\label{section1.1}
-Необхідно пригадати важливі означення та результати.
+Необхідно пригадати важливі означення та результати із \cite{faddeev1965theory}.
 \begin{definition}
-\textbf{Кубічним кільцем} $\Lambda$ називають вільний $\mathbb{Z}$-модулем рангу $3$.
+\textit{Кубічним кільцем} $\Lambda$ називають вільний $\mathbb{Z}$-модулем рангу $3$.
 \end{definition}
 
 Оскільки кубічне кільце містить елемент $1$, то буде зручніше надалі обирати базис вигляду $\{1,\omega_1,\omega_2\}$.
 
 \begin{definition}
-Базис $\{1,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$ називається \textbf{нормальним}, якщо
+Базис $\{1,\omega_1,\omega_2\}$ кубічного кільця $\Lambda$ називається \textit{нормальним}, якщо
 \begin{center}
 $\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 \end{center}
@@ -181,29 +195,29 @@ $\omega_1 \cdot \omega_2 \in \mathbb{Z}$.
 Зафіксуємо базис $\{1,\omega_1,\omega_2\}$ кільця $\Lambda$. Тоді $\omega_1 \cdot \omega_2 = k \omega_1 + l \omega_2 + m$ при $k,l,m \in \mathbb{Z}$. Замінивши $\omega_1$ на $\omega_1-l$ та $\omega_2$ на $\omega_2 - k$, отримуємо нормальний базис $\{1,\omega_1 - l, \omega_2 - k\}$.
 \end{remark}
 
-Отже, \textcolor{red}{надалі всі базиси в кубічних кільцях -- нормальні}.
+Отже, надалі всі базиси в кубічних кільцях -- нормальні.
 
 Запишемо таблицю множення для базиса $\{1,\omega_1,\omega_2\}$:
 \begin{align*}
-\omega_1^2 & = b \omega_1 + a \omega_2 + r \\
-\omega_1 \omega_2 & = s \\
-\omega_2^2 & = d \omega_1 + c \omega_2 + t
+\omega_1^2 & = b \omega_1 + a \omega_2 + r, \\
+\omega_1 \omega_2 & = s, \\
+\omega_2^2 & = d \omega_1 + c \omega_2 + t.
 \end{align*}
 Прирівнявши $(\omega_1^2) \cdot \omega_2 = \omega_1 \cdot (\omega_1 \cdot \omega_2)$ та $\omega_1 \cdot (\omega_2^2) = (\omega_1 \cdot \omega_2) \cdot \omega$, отримуємо співвідношення $r = -ac,\ s = ad,\ t = -bd$. Отже, таблиця множення задається чотирма числами $a,b,c,z \in \mathbb{Z}$:
 \begin{align*}
-\omega_1^2 & = b \omega_1 + a \omega_2 - ac \\
-\omega_1 \omega_2 & = ad \\
-\omega_2^2 & = d \omega_1 + c \omega_2 + -bd
+\omega_1^2 & = b \omega_1 + a \omega_2 - ac, \\
+\omega_1 \omega_2 & = ad, \\
+\omega_2^2 & = d \omega_1 + c \omega_2 -bd.
 \end{align*}
 
 \begin{definition}
 Нехай $\Lambda$ -- кубічне кільце та $M \subset \Lambda$ -- решітка, тобто $M = \left<\theta_1,\theta_2,\theta_3\right>$. Розкладемо кожний $\theta_i$ за базисом $\{1,\omega_1,\omega_2\}$ таким чином:
 \begin{align*}
-\theta_1 = c_{10} \cdot 1 + c_{11} \cdot \omega_1 + c_{12} \omega_2 \\
-\theta_2 = c_{20} \cdot 1 + c_{21} \cdot \omega_1 + c_{22} \omega_2 \\
-\theta_3 = c_{30} \cdot 1 + c_{31} \cdot \omega_1 + c_{32} \omega_2
+\theta_1 = c_{10} \cdot 1 + c_{11} \cdot \omega_1 + c_{12} \cdot \omega_2, \\
+\theta_2 = c_{20} \cdot 1 + c_{21} \cdot \omega_1 + c_{22} \cdot  \omega_2, \\
+\theta_3 = c_{30} \cdot 1 + c_{31} \cdot \omega_1 + c_{32} \cdot  \omega_2.
 \end{align*}
-\textbf{Індексом решітки $M$} називатимемо значення:
+\textit{Індексом решітки $M$} називатимемо значення
 \begin{align*}
 [\Lambda : M] = \left| \det \begin{pmatrix}
 c_{10} & c_{20} & c_{30} \\
@@ -215,16 +229,17 @@ c_{12} & c_{22} & c_{32} \\
 
 Розглянемо кубічне кільце $\Lambda = \left<1,\omega_1,\omega_2\right>$, а також решітку $\mathbb{Z}(\alpha) = \left<1,\alpha,\alpha^2\right>$, де елемент $\alpha = z + x \omega_1 + y \omega_2$. Знайдемо індекс $[\Lambda : \mathbb{Z}(\alpha)]$. Детально розпишемо елемент $\alpha^2$.
 \begin{align*}
-\alpha^2 & = (z + x \omega_1 + y \omega_2)^2 = z^2 + x^2 \omega_1^2 + y^2 \omega_2^2 + 2zx \omega_1 + 2zy \omega_2 + 2 xy \omega_1 \omega_2 \\
+\alpha^2 & = (z + x \omega_1 + y \omega_2)^2 \\
+& = z^2 + x^2 \omega_1^2 + y^2 \omega_2^2 + 2zx \omega_1 + 2zy \omega_2 + 2 xy \omega_1 \omega_2 \\
 & = z^2 + x^2 (b \omega_1 + a \omega_2 - ac) +y^2 (d \omega_1 + c \omega_2 - bd) \\ 
-& + 2zx \omega_1 + 2yz \omega_2 + 2xyad
+& + 2zx \omega_1 + 2yz \omega_2 + 2xyad.
 \end{align*} 
 Отже, маємо ось такий розклад:
-\begin{multline*}
-1 = 1 \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
-\alpha = z \cdot 1 + x \omega_1 + y \omega_2 \\
-\alpha^2 = (z^2 - x^2 ac - y^2 bd + 2xyad) \cdot 1 + (x^2 b + y^2 d + 2xz) \omega_1 + (x^2 a + y^2 c + 2yz) \omega_2
-\end{multline*}
+\begin{align*}
+1 & = 1 \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\alpha & = z \cdot 1 + x \cdot \omega_1 + y \cdot \omega_2 \\
+\alpha^2 & = (z^2 - x^2 ac - y^2 bd + 2xyad) \cdot 1 \\ & + (x^2 b + y^2 d + 2xz) \cdot \omega_1 + (x^2 a + y^2 c + 2yz)\cdot \omega_2.
+\end{align*}
 Отже, індекс обчислюється таким чином:
 \begin{align*}
 [\Lambda : \mathbb{Z}(\alpha)] & = \left| \det \begin{pmatrix}
@@ -237,30 +252,31 @@ c_{12} & c_{22} & c_{32} \\
 \end{align*}
 
 \begin{definition}
-\textbf{Кубічною формою} (або \textbf{індекформою}) називатимемо вираз
+\textit{Кубічною формою} (або \textit{індекформою}) називають вираз
 \begin{align*}
-f(x,y) = ax^2 + cxy^2 - bx^2y - dy^2
+f(x,y) = ax^2 + cxy^2 - bx^2y - dy^2.
 \end{align*}
 Його дискримінант обчислюється за формулою:
-\begin{align*}
+\begin{equation}
+\label{discriminant_of_cubic_form}
 \Delta = b^2 c^2 - 4c^3 a - 4b^3 d + 18 abcd - 27a^2d^2.
-\end{align*}
+\end{equation}
 \end{definition}
 
 У результаті отримали, що кожному кубічному кільцю $\Lambda$ відповідатиме з точністю до знаку кубічна форма $f(x,y)$.
 
-І навпаки, будь-якою кубічною формою $f(x,y)$, що задається числами $a,b,c,d \in \mathbb{Z}$ з ненулевим дискримінантом, можна визначити кубічне кільце $\Lambda$.
+І навпаки, будь-якою кубічною формою $f(x,y)$, що задається числами $a,b,c,d \in \mathbb{Z}$ з ненулевим дискримінантом, можна визначити кубічне кільце $\Lambda$. Ми отримали так звану відповідність Делоне--Фадєєва.
 
 Нехай $\Lambda$ -- кубічне кільце та $\alpha \in R$. Розглянемо оператор множення на елемент $\alpha$, тобто $x \mapsto \alpha x$. Якщо $\{\alpha_1,\alpha_2,\alpha_3\}$ -- базис кільця $\Lambda$ (довільний базис), то оператору відповідатиме матриця $[\alpha]$, від якої можна знайти слід $\tr \alpha$.
  
 \begin{definition}
-\textbf{Дискримінантом кубічного кільця}  $\Lambda$ назвемо матрицю:
+\textit{Дискримінантом кубічного кільця}  $\Lambda$ назвемо матрицю:
 \begin{align*}
 \Delta_\Lambda = \det \begin{pmatrix}
 \tr(\alpha_1 \alpha_1) & \tr(\alpha_1 \alpha_2) & \tr(\alpha_1 \alpha_3) & \\
 \tr(\alpha_2 \alpha_1) & \tr(\alpha_2 \alpha_2) & \tr(\alpha_2 \alpha_3) & \\
 \tr(\alpha_3 \alpha_1) & \tr(\alpha_3 \alpha_2) & \tr(\alpha_3 \alpha_3) & \\
-\end{pmatrix}
+\end{pmatrix}.
 \end{align*}
 \end{definition}
 
@@ -281,29 +297,9 @@ c & 3ad & c^2-2bd
 Отже, дискримінант кубічного кільця $\Lambda$ дорівнює дискримінанту кубічної форми $f(x,y)$.
 \end{remark}
 
-\iffalse
-\begin{definition}
-\textbf{Ступінчастий базис відносно $\omega$} кубічного кільця $\Lambda$ має вигляд:
-\begin{align*}
-\left\{ 1,\ \dfrac{u\omega + v}{\Delta},\ \dfrac{\lambda \omega^2 + \mu \omega + \nu}{\Delta} \right\},
-\end{align*}
-де $u,v,\lambda,\mu,\nu,\Delta \in \mathbb{Z}$.
-\end{definition}
-
-\begin{theorem}[Вороного]
-\label{voronogo}
-Нехай $\rho$ -- кубічне ціле число, що задовольняє незвідне рівняння $F(\rho) = \rho^3 - s \rho^2 - q \rho - n = 0$. Нехай $\delta,a,\Delta_{\Lambda},t \in \mathbb{Z}$ задовольняють такі умови:
-\begin{align*}
-\Delta = \delta^6 a^2 \Delta_\Lambda, \\
-\dfrac{1}{2} F''(t) \equiv 0 \pmod {\delta}, \quad F'(t) \equiv 0 \pmod {\delta^2 a}, \quad F(t) \equiv 0 \pmod{\delta^3 a^2}
-\end{align*}
-Число $\Delta$ -- дискримінант рівняння $F(\rho) = 0$. Тоді система $\left\{ 1,\ \dfrac{\rho - t}{\delta},\ \dfrac{\rho^2 + (t-s)\rho + (t^2 - st + q)}{\delta^2 a} \right\}$ -- нормальний та ступінчастий базис відносно $\rho$.
-\end{theorem}
-\fi
-
 \section{Умови розширення кільця}
 \begin{definition}
-Кубічне кільце $\Lambda$ будемо називати \textbf{немаксимальним}, якщо існує більше кубічне кільце $\tilde{\Lambda} \supsetneq \Lambda$. Іншими словами, існує елемент $\theta \in \tilde{\Lambda}$, при цьому $\theta \notin \Lambda$.
+Кубічне кільце $\Lambda$ будемо називати \textit{немаксимальним}, якщо існує більше кубічне кільце $\tilde{\Lambda} \supsetneq \Lambda$. Іншими словами, існує елемент $\theta \in \tilde{\Lambda}$, при цьому $\theta \notin \Lambda$.
 \end{definition}
 
 Якщо кубічне кільце $\Lambda$ є немаксимальним, то, взявши елемент $\theta \notin \Lambda$, можемо розглянути розширення $\tilde{\Lambda} = \Lambda[\theta]$. З'ясуємо, за яких умов $\tilde{\Lambda}$ стане кубічним кільцем також.
@@ -319,13 +315,13 @@ c & 3ad & c^2-2bd
 \begin{align*}
 \theta = \dfrac{\alpha + \beta \omega_1 + \gamma \omega_2}{p}
 \end{align*}
-при $\alpha,\beta,\gamma \in \mathbb{Z}$ та також $p \in \mathbb{Z}$. 
+при $\alpha,\beta,\gamma \in \mathbb{Z}$ та також $p \in \mathbb{Z}$.
 
 \begin{remark}
 Вибір $\alpha,\beta,\gamma$ може бути обмеженим до $\pmod p$.
 \end{remark}
 
-Справді, нехай $\Lambda = \left< 1,\omega_1,\omega_2\right>$ та припустимо ми маємо два розширення $\tilde{\Lambda}_1 = \left< 1, \theta, \theta^2\right>$ та $\tilde{\Lambda}_2 = \left< 1, \sigma, \sigma^2\right>$, де елементи $\theta = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p}$ та $\sigma = \dfrac{\beta' \omega_1 + \gamma' \omega_2 + \alpha'}{p}$, причому $\alpha' \equiv \alpha,\ \beta' \equiv \beta,\ \gamma' \equiv \gamma \pmod p$. Іншими словами, $\alpha' = \alpha + px,\ \beta' = \beta + py,\ \gamma' = \gamma + pz$ при деяких $x,y,z \in \mathbb{Z}$. Розпишемо $\sigma$ на основі цих рівностей:
+Справді, нехай $\Lambda = \left< 1,\omega_1,\omega_2\right>$ та припустимо, що маємо два розширення $\tilde{\Lambda}_1 = \left< 1, \theta, \theta^2\right>$ та $\tilde{\Lambda}_2 = \left< 1, \sigma, \sigma^2\right>$, де елементи $\theta = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p}$ та $\sigma = \dfrac{\beta' \omega_1 + \gamma' \omega_2 + \alpha'}{p}$, причому $\alpha' \equiv \alpha,\ \beta' \equiv \beta,\ \gamma' \equiv \gamma \pmod p$. Іншими словами, $\alpha' = \alpha + px,\ \beta' = \beta + py,\ \gamma' = \gamma + pz$ при деяких $x,y,z \in \mathbb{Z}$. Розпишемо $\sigma$ на основі цих рівностей:
 \begin{align*}
 \sigma & = \dfrac{\beta \omega_1 + py \omega_1 + \gamma \omega_2 + pz \omega_2 + \alpha + px}{p} \\
 & = \dfrac{\beta \omega_1 + \gamma \omega_2 + \alpha}{p} + y \omega_1 + z \omega_2 + x = \theta + x + y \omega_1 + z \omega_2.
@@ -334,27 +330,25 @@ c & 3ad & c^2-2bd
 
 Отже, отримуємо $\tilde{\Lambda}_1 = \tilde{\Lambda}_2$.
 
-\textcolor{red}{Надалі обмежуємось випадком, коли $\gamma = 0$}.
-
 Час відповісти на питання, коли $\theta^3 \in \tilde{\Lambda}$. Для цього розглянемо оператор множення на елемент $\theta$, тобто $\lambda \mapsto \theta \cdot \lambda$. З'ясуємо, як буде виглядати матриця $[\theta]$ даного оператора.
 \begin{align*}
-\theta \cdot 1 = \dfrac{\alpha + \beta \omega_1}{p} = \dfrac{\alpha}{p} \cdot 1 + \dfrac{\beta}{p} \omega_1 + 0 \cdot \omega_2
+\theta \cdot 1 & = \dfrac{\alpha+\beta \omega_1 + \gamma \omega_1}{p} = \dfrac{\alpha}{p} \cdot 1 + \dfrac{\beta}{p} \cdot \omega_1 + \dfrac{\gamma}{p} \cdot \omega_2.
 \end{align*}
 \begin{align*}
-\theta \cdot \omega_1 & = \dfrac{\alpha + \beta \omega_1}{p} \cdot \omega_1 = \dfrac{\alpha \omega_1}{p} + \dfrac{\beta (-ac + b \omega_1 + a \omega_2)}{p} = \\
-& = \dfrac{-\beta a c}{p} \cdot 1 + \dfrac{\alpha + \beta b}{p} \cdot \omega_1 + \dfrac{\beta a}{p} \cdot \omega_2
+\theta \cdot \omega_1 & = \dfrac{\alpha + \beta \omega_1 + \gamma \omega_2}{p} \cdot \omega_1 = \dfrac{\alpha \omega_1}{p} + \dfrac{\beta (-ac+b\omega_1 + a\omega_2)}{p} + \dfrac{\gamma ad}{p} \\
+& = \dfrac{-\beta a c + \gamma ad}{p} \cdot 1 + \dfrac{\alpha + b\beta}{p}\cdot \omega_1 + \dfrac{\beta a}{p} \cdot \omega_2.
 \end{align*}
 \begin{align*}
-\theta \cdot \omega_2 = \dfrac{\alpha + \beta \omega_1}{p} \cdot \omega_2 = \dfrac{\alpha \omega_2 + \beta ad}{p} = \dfrac{\beta a d}{p} \cdot 1 + 0 \cdot \omega_1 + \dfrac{\alpha}{p} \cdot \omega_2
+\theta \cdot \omega_2 & = \dfrac{\alpha+\beta \omega_1 + \gamma \omega_2}{p} \cdot \omega_2 = \dfrac{\alpha \omega_2}{p} + \dfrac{\beta ad}{p} + \dfrac{\gamma (-db + d \omega_1 + c \omega_2)}{p} \\
+& = \dfrac{\beta a d - \gamma d b}{p}\cdot 1 + \dfrac{\gamma d}{p} \cdot \omega_1 + \dfrac{\alpha + \gamma c}{p} \cdot \omega_2
 \end{align*}
-
 Зібравши всі коефіцієнти, отримуємо такий вигляд матриці:
 \begin{align*}
 [\theta] = \dfrac{1}{p} \begin{pmatrix}
-\alpha & -\beta a c & \beta a d \\
-\beta & \alpha + \beta b & 0 \\
-0 & \beta a & \alpha
-\end{pmatrix}
+\alpha & \gamma a d -\beta a c & \beta a d - \gamma b d \\
+\beta & \alpha + \beta b & \gamma d \\
+\gamma & \beta a & \alpha + \gamma c
+\end{pmatrix}.
 \end{align*}
 
 Запишемо характеристичний многочлен даної матриці:
@@ -372,14 +366,16 @@ M_{2 \times 2}[\theta] = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}
 \det [\theta],\ M_{2 \times 2}[\theta],\ \tr [\theta] \in \mathbb{Z}.
 \end{align*}
 
+Надалі обмежуємось випадком, коли $\gamma = 0$.
+
 Обчислимо кожний коефіцієнт.
 \begin{align*}
-\tr [\theta] = \dfrac{1}{p} (3 \alpha + \beta b) \\
-\det [\theta] = \dfrac{1}{p^3} \left( \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 ac \right)
+\tr [\theta] = \dfrac{1}{p} (3 \alpha + \beta b), \\
+\det [\theta] = \dfrac{1}{p^3} \left( \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 ac \right).
 \end{align*}
 Детальніше розпишемо знаходження $M_{2 \times 2}[\theta]$. Маємо
 \begin{align*}
-M_{2 \times 2}[\theta] & = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta] = \\
+M_{2 \times 2}[\theta] & = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{23}[\theta] \\
 & = \dfrac{1}{p^2} \det \begin{pmatrix}
 \alpha & -\beta \alpha c \\
 \beta & \alpha + \beta b
@@ -389,19 +385,21 @@ M_{2 \times 2}[\theta] & = M_{12}^{12}[\theta] + M_{13}^{13}[\theta] + M_{23}^{2
 \end{pmatrix} + \dfrac{1}{p^2} \det \begin{pmatrix}
 \alpha + \beta b & 0 \\
 \beta a & \alpha
-\end{pmatrix} = \\
-& = \dfrac{1}{p^2} \left( \alpha^2 + \alpha \beta b + \beta^2 \alpha c + \alpha^2 + \alpha^2 + \alpha \beta b \right) = \\ 
-& = \dfrac{1}{p^2} \left( 3 \alpha^2 + \beta^2 a c + 2 \alpha \beta b\right)
+\end{pmatrix} \\
+ & = \dfrac{1}{p^2} \left( \alpha^2 + \alpha \beta b + \beta^2 \alpha c + \alpha^2 + \alpha^2 + \alpha \beta b \right) = \\ 
+& = \dfrac{1}{p^2} \left( 3 \alpha^2 + \beta^2 a c + 2 \alpha \beta b\right).
 \end{align*}
 
 Із урахуванням необіхдних умов на ці числа, запишемо цю умову в термінах конгруентних рівнянь:
 \begin{equation}
+\label{system_of_equations_when_theta_cubed_in_ring}
     \begin{cases}
-      \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 a c & \equiv 0 \pmod {p^3} \\
-    3\alpha^2 + \beta^2 ac + 2 \alpha \beta b & \equiv 0 \pmod {p^2} \\
-      3 \alpha + \beta b & \equiv 0 \pmod p 
-    \end{cases}\,.
+      \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 a c & \equiv 0 \pmod {p^3}, \\
+    3\alpha^2 + \beta^2 ac + 2 \alpha \beta b & \equiv 0 \pmod {p^2}, \\
+      3 \alpha + \beta b & \equiv 0 \pmod p.
+    \end{cases}
 \end{equation}
+\iffalse
 \textcolor{red}{Надалі припускаємо, що $p$ -- просте число та $\alpha \neq 0$.} Тоді можна підібрати елемент $\alpha^{-1}$ -- оборотний елемент класу лишків $\mathbb{Z}_p$ відносно множення. Третє, друге, перше рівняння домножуємо на відповідно $\alpha^{-1},\ \alpha^{-2},\ \alpha^{-3}$ -- отримуємо наступне:
 \begin{equation*}
     \begin{cases}
@@ -416,13 +414,13 @@ t = \beta \alpha^{-1}
 \end{align}
 Задача звелась до розв'язання системи конгруентних рівнянь відносно $t$, якщо $p$ -- просте число: 
 \begin{equation}
-\label{system_congruent_equations}
     \begin{cases}
       a^2 d t^3 + ac t^2 + bt + 1 & \equiv 0 \pmod {p^3} \\
       act^2 + 2bt + 3 & \equiv 0 \pmod {p^2} \\
       3 + bt & \equiv 0 \pmod p 
     \end{cases}\,.
 \end{equation}
+\fi
 
 \iffalse
 Підіб'ємо підсумок:
@@ -430,45 +428,56 @@ t = \beta \alpha^{-1}
 Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Тоді $\Lambda$ -- немаксимальне $\iff$ існує розв'язок системи рівнянь \eqref{system_congruent_equations}.
 \end{proposition}
 \fi
-На цьому ще не все. Розпишемо елемент $\omega_1$ через лінійну комбінацію $\{1,\theta,\theta^2\}$. Маємо наступне:
+Цієї системи ще недостатньо. Розпишемо елемент $\omega_1$ через лінійну комбінацію $\{1,\theta,\theta^2\}$ (повернемо $\gamma$ тимчасово). Проте спочатку обчислимо $\theta^2$ окремо:
 \begin{align*}
-\omega_1 = \xi \cdot 1 + \eta \cdot \dfrac{\alpha + \beta \omega_1}{p} + \zeta \cdot \dfrac{\alpha^2 + 2 \alpha \beta \omega_1 + \beta^2 (b \omega_1 + a \omega_2 - ac)}{p^2}
+\theta^2 & = \left( \dfrac{\alpha + \beta \omega_1 + \gamma \omega_2}{2} \right)^2 \\
+& = \dfrac{\alpha^2 + \beta^2 \omega_1^2 + \gamma^2 \omega_2^2 + 2 \alpha \beta \omega_1 + 2\alpha \gamma \omega_2 + 2 \beta \gamma ad}{p^2} \\
+& = \dfrac{\alpha^2 + \beta^2 (b\omega_1 + a \omega_2 - ac) + \gamma^2 (\alpha \omega_1 + c \omega_2 - bd)}{p^2} \\ & + \dfrac{2\alpha \beta \omega_1 + 2 \alpha \gamma \omega_2 + 2 \beta \gamma ad}{p^2}
+\end{align*}
+Маємо наступне:
+\begin{align*}
+\omega_1 = \xi \cdot 1 + \eta \cdot \dfrac{\alpha + \beta \omega_1}{p} + \zeta \cdot \dfrac{\alpha^2 + 2 \alpha \beta \omega_1 + \beta^2 (b \omega_1 + a \omega_2 - ac)}{p^2}.
 \end{align*}
 Прирівнюючи коефіцієнти, отримуємо наступне:
 \begin{align*}
-\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0 \\
-\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 1 \\
-\zeta \cdot \dfrac{\beta^2 a}{p^2} = 0
+\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0, \\
+\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 1, \\
+\zeta \cdot \dfrac{\beta^2 a}{p^2} = 0.
 \end{align*}
-Отже, звідси $\zeta = 0$, а також $\eta = \dfrac{p}{\beta}$. Проте оскільки $p$ -- просте число за припущенням, то $\beta \in \{1,p\}$. Далі, маємо $\xi = - \dfrac{\alpha}{\beta}$.
+Звідси $\zeta = 0$, а також $\eta = \dfrac{p}{\beta}$. Проте оскільки $p$ -- просте число за припущенням, то $\beta \in \{1,p\}$. Далі, маємо $\xi = - \dfrac{\alpha}{\beta}$.
 
-Якщо $\beta = 1$, то звідси $\xi = -\alpha$, отримуємо цілий коефіцієнт.
+Якщо $\beta = 1$, то звідси $\xi = -\alpha$ -- цілий коефіцієнт.
 
-Якщо $\beta = p$, то звідси $\xi = -\dfrac{\alpha}{p}$. Отже, вимагаємо $\alpha \equiv 0 \pmod p$. Проте в цьому випадку $\theta = \dfrac{\alpha + \beta \omega_1}{p} = \dfrac{\alpha}{p} + \omega_1 \in \Lambda$. Тобто буде $\Lambda = \tilde{\Lambda}$, не виникне розширення.
+Якщо $\beta = p$, то звідси $\xi = -\dfrac{\alpha}{p}$. Отже, вимагаємо $\alpha \equiv 0 \pmod p$. Проте в цьому випадку $\theta = \dfrac{\alpha + \beta \omega_1}{p} = \dfrac{\alpha}{p} + \omega_1 \in \Lambda$. Тобто буде $\Lambda = \tilde{\Lambda}$, через це не виникне розширення.
 
 \begin{lemma}
 Нехай $\Lambda$ -- кубічне кільце та $\theta = \dfrac{\alpha + \beta \omega_1}{p}$ при $\beta \neq 1$. Тоді кільце не допускає розширення вигляду $\tilde{\Lambda} = \left< 1,\theta,\theta^2\right>$.
 \end{lemma}
 
-\textcolor{red}{Надалі припускаємо, що $\beta = 1$.}
+Надалі припускаємо, що $\beta = 1$.
 
 Аналогічно проведемо процедуру для $\omega_2$. Отримуємо:
 \begin{align*}
-\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0 \\
-\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 0 \\
-\zeta \cdot \dfrac{\beta^2 a}{p^2} = 1
+\xi + \eta \cdot \dfrac{\alpha}{p} + \zeta \cdot \dfrac{\alpha^2 - \beta^2 ac}{p^2} = 0, \\
+\eta \cdot \dfrac{\beta}{p} + \zeta \cdot \dfrac{2\alpha\beta + \beta^2 b}{p^2} = 0, \\
+\zeta \cdot \dfrac{\beta^2 a}{p^2} = 1.
 \end{align*}
 
-Звідси $\zeta = \dfrac{p^2}{a}$. Отже, $a \in \{1,p,p^2\}$. Далі, $\eta \cdot \dfrac{1}{p} + \dfrac{p^2}{a} \cdot \dfrac{2\alpha + b}{p^2} = 0$. Звідси $\eta = -\dfrac{p(2\alpha+b)}{a}$. Нарешті, $\xi = \dfrac{\alpha^2 + \alpha b + ac}{a}$.
+Звідси $\zeta = \dfrac{p^2}{a}$, отже залишаються $a \in \{1,p,p^2\}$. Далі, друге рівняння дає $\eta = -\dfrac{p(2\alpha+b)}{a}$. Нарешті, здобудемо $\xi = \dfrac{\alpha^2 + \alpha b + ac}{a}$.
 
 \begin{lemma}
 Нехай $\Lambda$ -- кубічне кільце та $\theta = \dfrac{\alpha + \omega_1}{p}$. Тоді кільце не допускає розширення вигляду $\tilde{\Lambda} = \left< 1,\theta,\theta^2\right>$, якщо $a \notin \{1,p,p^2\}$.
 \end{lemma}
 
-Розглянемо кожний $a$ окремо.
+Розглянемо кожний $a \in \{1,p,p^2\}$ окремо.
 \subsubsection{$a = 1$} Усі числа $\zeta,\eta,\xi$ -- цілі, тож не потребує додаткових обмежень.
 
-\subsubsection{$a = p$} Тоді $\zeta,\eta$ -- цілі, але $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p}$, тож додатково треба додати обмеження $\alpha^2 + \alpha b + ac \equiv 0 \pmod p$. Маючи умову $a = p$, ми отримуємо
+\subsubsection{$a = p$} Числа $\zeta,\eta$ -- цілі, однак $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p}$, тож додатково потрібно додати обмеження:
+\begin{equation*}
+\alpha^2 + \alpha b + ac \equiv 0 \pmod p.
+\end{equation*}
+\iffalse
+Маючи умову $a = p$, ми отримуємо
 \begin{align*}
 \alpha(\alpha+b) \equiv 0 \pmod p \iff \left[ \begin{gathered} \alpha \equiv 0 \pmod p \\ \alpha \equiv -b \pmod p \end{gathered} \right. .
 \end{align*}
@@ -478,44 +487,55 @@ t = \beta \alpha^{-1}
 Нехай $\Lambda$ -- кубічне кільце та $a = p$, а також $p \mid b,c,d$. Тоді кільце $\tilde{\Lambda} = \left<1,\theta,\theta^2\right>$ буде розширенням при $\theta = \dfrac{\omega_1}{p}$.
 \end{lemma}
 
+
 Якщо $\alpha \equiv -b \pmod p$, то із третього рівняння системи отримуємо $-2b \equiv 0 \pmod p$. Якщо $p \neq 2$, то тоді $p \mid b$, але тоді знову $\alpha \equiv 0 \pmod p$. Отримуємо такі самі обмеження.
 
 Утім при $\alpha \equiv -b \pmod p$ та при $p = 2$ ситуація змінюється. Залишається варіант -- коли $\alpha = 1$, а тому $b \equiv 1 \pmod 2$. Утім із другого рівняння системи випливає, що $3 + 2c + 2b \equiv 0 \pmod 4$, проте якщо спуститися до $\pmod 2$, ми отримуємо $1 \equiv 0 \pmod 2$, що неможливо. 
+\fi
 
-\subsubsection{$a = p^2$} Тоді $\zeta$ -- ціле, решта $\eta = -\dfrac{2\alpha + b}{p}$ та $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p^2}$. Отже, маємо два додаткових обмеження:
-\begin{align*}
--2\alpha - b \equiv 0 \pmod p \\
-\alpha^2 + \alpha b + ac \equiv 0 \pmod {p^2}
-\end{align*}
-Отримуємо $\alpha \equiv 0 \pmod p$. Внаслідок чого $b \equiv 0 \pmod p$. Всі решта рівняння виконуються.
+\subsubsection{$a = p^2$} Число $\zeta$ -- ціле, решта $\eta = -\dfrac{2\alpha + b}{p}$ та $\xi = \dfrac{\alpha^2 + \alpha b + ac}{p^2}$. Отже, потрібно записати два обмеження:
+\begin{equation*}
+\begin{cases}
+-2\alpha - b & \equiv 0 \pmod p, \\
+\alpha^2 + \alpha b + ac & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Додаючи третє рівняння системи \eqref{system_of_equations_when_theta_cubed_in_ring} та перше рівняння щойно отриманої системи, отримуємо $\alpha \equiv 0 \pmod p$.
+\iffalse
+Внаслідок чого $b \equiv 0 \pmod p$. Всі решта рівняння виконуються.
 
 \begin{lemma}
 Нехай $\Lambda$ -- кубічне кільце та $a = p^2$, а також $p \mid b$. Тоді кільце $\tilde{\Lambda} = \left<1,\theta,\theta^2\right>$ буде розширенням при $\theta = \dfrac{\omega_1}{p}$.
 \end{lemma}
+\fi
 
 Нормалізуємо новоутворене кубічне кільце $\tilde{\Lambda}$. Маємо наступне:
 \begin{align*}
-\theta \cdot \theta^2 = \theta^3 = \det [\theta] - M_{2 \times 2}[\theta] \cdot \theta + \tr[\theta] \cdot \theta^2
+\theta \cdot \theta^2 = \theta^3 = \det [\theta] - M_{2 \times 2}[\theta] \cdot \theta + \tr[\theta] \cdot \theta^2.
 \end{align*}
-Оберемо новий базис $\left\{ 1,\ \theta-\tr[\theta],\ \theta^2 + M_{2 \times 2}[\theta] \right\}$. Для зручності позначу цей базис за $\{1,\tilde{\omega}_1,\tilde{\omega}_2\}$. У результаті за процедурою нормалізації базису вище отримуємо
+Оберемо новий базис $\left\{ 1,\ \theta-\tr[\theta],\ \theta^2 + M_{2 \times 2}[\theta] \right\}$. Для зручності позначимо цей базис за $\{1,\tilde{\omega}_1,\tilde{\omega}_2\}$. У результаті за процедурою нормалізації базису вище отримуємо
 \begin{align*}
-\tilde{\omega}_1 \cdot \tilde{\omega}_2 = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta]
+\tilde{\omega}_1 \cdot \tilde{\omega}_2 = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta].
 \end{align*}
 Визначимо, які числа $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$ визначені в кільці $\tilde{\Lambda} = \left< 1, \tilde{\omega}_1,\tilde{\omega}_2 \right>$.
 \begin{align*}
-\tilde{\omega}_1^2 = (\theta - \tr [\theta])^2 = \theta^2 - 2 \theta \tr [\theta] + (\tr [\theta])^2 \\ = \tilde{b} (\theta - \tr [\theta]) + \tilde{a} (\theta^2 + M_{2 \times 2}[\theta]) - \tilde{a} \tilde{c} = \tilde{b} \tilde{\omega}_1 + \tilde{a} \tilde{\omega}_2 - \tilde{a} \tilde{c}
+\tilde{\omega}_1^2 & = (\theta - \tr [\theta])^2 = \theta^2 - 2 \theta \tr [\theta] + (\tr [\theta])^2 \\ 
+& = \tilde{b} (\theta - \tr [\theta]) + \tilde{a} (\theta^2 + M_{2 \times 2}[\theta]) - \tilde{a} \tilde{c} = \tilde{b} \tilde{\omega}_1 + \tilde{a} \tilde{\omega}_2 - \tilde{a} \tilde{c}.
 \end{align*}
-Звідси випливає, що $\tilde{a} = 1,\ \tilde{b} = - 2 \tr [\theta]$ та $\tilde{c} = \tr^2 [\theta] + M_{2 \times 2}[\theta]$. Далі,
+Звідси випливає, що $\tilde{a} = 1,\ \tilde{b} = - 2 \tr [\theta],\ \tilde{c} = \tr^2 [\theta] + M_{2 \times 2}[\theta]$. Далі,
 \begin{align*}
-\tilde{\omega}_1 \cdot \tilde{\omega}_2 = (\theta - \tr [\theta])(\theta^2 + M_{2 \times 2}[\theta]) =\\ = (\det [\theta] - M_{2 \times 2}[\theta] \theta + \tr [\theta] \theta^2) + M_{2 \times 2}[\theta] \theta - \tr[\theta] \theta^2 - \tr [\theta] M_{2 \times 2}[\theta] \\
-= \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta] = \tilde{a} \tilde{d}
+\tilde{\omega}_1 \cdot \tilde{\omega}_2 & = (\theta - \tr [\theta])(\theta^2 + M_{2 \times 2}[\theta]) \\
+& = (\det [\theta] - M_{2 \times 2}[\theta] \theta + \tr [\theta] \theta^2) + M_{2 \times 2}[\theta] \theta \\
+& \qquad - \tr[\theta] \theta^2 - \tr [\theta] M_{2 \times 2}[\theta] \\
+& = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta] = \tilde{a} \tilde{d}.
 \end{align*}
 Звідси $\tilde{d} = \det [\theta] - \tr [\theta] M_{2 \times 2}[\theta]$.
 
 Отже, кубічне кільце $\tilde{\Lambda}$ задається числами
-\begin{align*}
+\begin{equation}
+\label{a_b_c_d_for_extended_ring_where_theta_cubed_in_tilde_lambda}
 (\tilde{a},\tilde{b},\tilde{c},\tilde{d}) = (1,\ -2 \tr [\theta],\ \tr^2[\theta] + M_{2 \times 2}[\theta],\ \det [\theta] - \tr[\theta] M_{2 \times 2}[\theta]).
-\end{align*}
+\end{equation}
 
 \subsection{$\theta^3 \notin \tilde{\Lambda}$}
 Увесь цей час, маючи кільце $\Lambda$, ми розширювали кільце $\tilde{\Lambda}$ таким чином, що $\{1,\theta,\theta^2\}$ був обов'язково базисом. Чи можна розширити кільце так, щоб в базисі лише один елемент не потрапляв у $\tilde{\Lambda}$?
@@ -524,52 +544,53 @@ t = \beta \alpha^{-1}
 \begin{align*}
 \theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}
 \end{align*}
-Для кубічного кільця необхідно, щоб $\omega_1 \theta$ та $\theta^2$ потрапляли в $\tilde{\Lambda}$.
+при $\alpha,\beta \in \mathbb{Z}$. Для кубічного кільця треба, щоб $\omega_1 \theta$ та $\theta^2$ лежали в $\tilde{\Lambda}$.
 \begin{align*}
 \omega_1 \theta & = \omega_1 \dfrac{\alpha + \beta \omega_1 + \omega_2}{p} = \dfrac{ad + \alpha \omega_1 + \beta (b\omega_1 + a\omega_2 - ac)}{p} \\
-& = x + y \omega_1 + z \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}
+& = x + y \omega_1 + z \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}.
 \end{align*}
 Шукаючи числа $x,y,z$, отримуємо наступне:
 \begin{align*}
-x = \dfrac{ad - \beta ac - \alpha \beta a}{p} \\
-y = \dfrac{\alpha + \beta b - \beta^2 a}{p} \\
-z = \beta a
+x & = \dfrac{ad - \beta ac - \alpha \beta a}{p}, \\
+y & = \dfrac{\alpha + \beta b - \beta^2 a}{p}, \\
+z & = \beta a.
 \end{align*}
 Оскільки $x,y \in \mathbb{Z}$, то звідси маємо
 \begin{equation*}
 \begin{cases}
-ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p \\
-\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p
+ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p, \\
+\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p.
 \end{cases}
 \end{equation*}
 Проведемо схожу процедуру з $\theta^2$.
 \begin{align*}
-\theta^2 & = \dfrac{\alpha^2 + \beta^2 (b \omega_1 + a \omega_2 - ac) + (d \omega_1 + c \omega_2 - bd) + 2 \alpha \beta \omega_1 + 2 \alpha \omega_2 + 2 \beta ad }{p^2} \\
-& = x + y \omega_1 + z \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}
+\theta^2 & = \dfrac{\alpha^2 + \beta^2 (b \omega_1 + a \omega_2 - ac) + (d \omega_1 + c \omega_2 - bd)}{p^2} \\
+& \qquad + \dfrac{2 \alpha \beta \omega_1 + 2 \alpha \omega_2 + 2 \beta ad}{p^2} \\
+& = x + y \omega_1 + z \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}.
 \end{align*}
 Шукаючи коефіцієнти, отримуємо
 \begin{align*}
-x = \dfrac{-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a}{p^2} \\
-y = \dfrac{\beta^2 b + d - \beta c - \beta^3 a}{p^2} \\
-z = \dfrac{c +\beta^2 a + 2\alpha}{p}
+x & = \dfrac{-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a}{p^2}, \\
+y & = \dfrac{\beta^2 b + d - \beta c - \beta^3 a}{p^2}, \\
+z & = \dfrac{c +\beta^2 a + 2\alpha}{p}.
 \end{align*}
 Оскільки знову $x,y,z \in \mathbb{Z}$, маємо отримати
 \begin{equation*}
 \begin{cases}
-c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+c +\beta^2 a + 2\alpha & \equiv 0 \pmod p, \\
+\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}.
 \end{cases}
 \end{equation*}
 Разом маємо систему конгруентних рівнянь:
 \begin{equation}
-\label{system_of_congruent_equations}
+\label{system_of_equation_where_theta_cubed_not_in_tilde_lambda}
 \begin{cases}
-ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p \\
-\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p \\
-c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p, \\
+\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p, \\
+c +\beta^2 a + 2\alpha & \equiv 0 \pmod p, \\
+- \beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}.
 \end{cases}
 \end{equation}
 
@@ -579,74 +600,660 @@ c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
 
 Нормалізуємо розширене кільце $\tilde{\Lambda} = \left<1, \omega_1, \theta\right>$. Пригадаємо, що
 \begin{align*}
-\omega_1 \theta = \beta a \cdot 1 + \dfrac{\alpha + \beta b - \beta^2 a}{p} \cdot \omega_1 + \dfrac{-\beta a c + ad - \beta \alpha a}{p} \cdot \theta
+\omega_1 \theta = \beta a \cdot 1 + \dfrac{\alpha + \beta b - \beta^2 a}{p} \cdot \omega_1 + \dfrac{-\beta a c + ad - \beta \alpha a}{p} \cdot \theta.
 \end{align*}
-Тоді нормальним базисом буде система $\left\{ 1,\omega_1-\beta a, \theta - \dfrac{\alpha+\beta b - \beta^2 a}{p} \right\} = \left\{1,\tilde{\omega}_1,\tilde{\omega}_2\right\}$. Знайдемо оновлені значення  $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$ нового кільця.
+Нормальним базисом буде система $\left\{ 1,\ \omega_1-\beta a,\ \theta - \dfrac{\alpha+\beta b - \beta^2 a}{p} \right\} = \left\{1,\tilde{\omega}_1,\tilde{\omega}_2\right\}$. Знайдемо оновлені значення  $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$ нового кільця.
 \begin{align*}
-\tilde{\omega}_1^2 = \tilde{b} \tilde{\omega}_1 + \tilde{a} \tilde{\omega}_2 - \tilde{a} \tilde{c}
+\tilde{\omega}_1^2 = \tilde{b} \tilde{\omega}_1 + \tilde{a} \tilde{\omega}_2 - \tilde{a} \tilde{c}.
 \end{align*}
 Підставимо $\tilde{\omega}_1,\tilde{\omega}_2$ до цього рівняння -- отримуємо
 \begin{align*}
-(b \omega_1 + a \omega_2 - ac) - 2 \beta a \omega_1 + \beta^2 a^2 \\ = \tilde{b} (\omega_1 - \beta a) + \tilde{a} \left( \dfrac{\alpha + \beta \omega_1 + \omega_2}{p} - \dfrac{\alpha + \beta b - \beta^2 a}{p}\right) - \tilde{a} \tilde{c} 
+(b \omega_1 + a \omega_2 - ac) - 2 \beta a \omega_1 + \beta^2 a^2 \\ = \tilde{b} (\omega_1 - \beta a) + \tilde{a} \left( \dfrac{\alpha + \beta \omega_1 + \omega_2}{p} - \dfrac{\alpha + \beta b - \beta^2 a}{p}\right) - \tilde{a} \tilde{c}.
 \end{align*}
 Залишилось прирівняти коефіцієнти. У результаті виникне наступне:
 \begin{align*}
-\tilde{a} = p a \\
-\tilde{b} = b - 3 \beta a \\
-\tilde{c} = \dfrac{c - 2 \beta b + 3 \beta^2 a}{p}
+\tilde{a} & = p a, \\
+\tilde{b} & = b - 3 \beta a, \\
+\tilde{c} & = \dfrac{c - 2 \beta b + 3 \beta^2 a}{p}.
 \end{align*}
 Число $\tilde{d}$ знайдемо із даного добутку:
 \begin{align*}
-\tilde{\omega}_1 \tilde{\omega}_2 = \tilde{a} \tilde{d}
+\tilde{\omega}_1 \tilde{\omega}_2 = \tilde{a} \tilde{d}.
 \end{align*}
 За процедурою нормалізації ліва частина матиме такий вигляд:
 \begin{align*}
-\dfrac{-\beta a c + ad - \beta \alpha a}{p}+ \dfrac{\alpha + \beta b - \beta^2 a}{p} \cdot \beta a = \tilde{a} \tilde{d}
+\dfrac{-\beta a c + ad - \beta \alpha a}{p}+ \dfrac{\alpha + \beta b - \beta^2 a}{p} \cdot \beta a = \tilde{a} \tilde{d}.
 \end{align*}
 У результаті отримуємо наступне:
 \begin{align*}
-\tilde{d} = \dfrac{-\beta^3 a + \beta^2 b - \beta c + d}{p^2}
+\tilde{d} & = \dfrac{-\beta^3 a + \beta^2 b - \beta c + d}{p^2}.
 \end{align*}
 
-Отже, $\left( \tilde{a},\tilde{b},\tilde{c},\tilde{d} \right) = \left( pa,\ b - 3 \beta a,\ \dfrac{c - 2 \beta b + 3 \beta^2 a}{p},\ \dfrac{-\beta^3 a + \beta^2 b - \beta c + d}{p^2} \right)$.
+Запишемо окремо отримані результати:
+\begin{equation}
+\label{a_b_c_d_for_extended_ring_where_theta_cubed_not_in_tilde_lambda}
+\left( \tilde{a},\tilde{b},\tilde{c},\tilde{d} \right) = \left( pa,\ b - 3 \beta a,\ \dfrac{c - 2 \beta b + 3 \beta^2 a}{p},\ \dfrac{-\beta^3 a + \beta^2 b - \beta c + d}{p^2} \right).
+\end{equation}
 
-\begin{remark}
-Число $\tilde{c} \in \mathbb{Z}$, оскільки зі системи випливає, що чисельник
+
+\begin{remark} $\tilde{c} \in \mathbb{Z}$, оскільки зі системи випливає, що чисельник
 \begin{align*}
-c - 2 \beta b + 3 \beta^2 a = (c + \beta^2 a + 2\alpha) - 2(\alpha + \beta b- \beta^2 a) \equiv 0 \pmod p
+c - 2 \beta b + 3 \beta^2 a = (c + \beta^2 a + 2\alpha) - 2(\alpha + \beta b- \beta^2 a) \equiv 0 \pmod p.
 \end{align*}
-Також число $\tilde{d} \in \mathbb{Z}$, оскільки із системи
+Також $\tilde{d} \in \mathbb{Z}$, оскільки зі системи
 \begin{align*}
--\beta^3 a + \beta^2 b - \beta c + d \equiv 0 \pmod {p^2}
+-\beta^3 a + \beta^2 b - \beta c + d \equiv 0 \pmod {p^2}.
 \end{align*} 
 \end{remark}
 
 \subsubsection{Заміна $\omega_1$} Припустимо, що $\{1,\theta,\omega_2\}$ буде базисом кільця $\tilde{\Lambda}$, де $\theta \notin \Lambda$. Цього разу елемент $\theta$ матиме вигляд:
 \begin{align*}
-\theta = \dfrac{\alpha + \omega_1 + \beta \omega_2}{p}
+\theta = \dfrac{\alpha + \omega_1 + \beta \omega_2}{p}.
 \end{align*}
 
-Підемо іншим шляхом. Ми можемо замінити базис $\{1,\omega_1,\omega_2\}$ кільця $\Lambda$ на базис $\{1,\omega_2,\omega_1\}$ кільця $\Lambda$, а далі розширитися до кільця $\tilde{\Lambda}$, замінивши $\omega_1$ на елемент $\theta = \dfrac{\alpha + \beta \omega_2 + \omega_1}{p}$ уже за готовим алгоритмом.
+Проденструємо інший спосіб задля уникнення повторної процедури. Замінимо базис $\{1,\omega_1,\omega_2\}$ кільця $\Lambda$ на базис $\{1,\omega_2,\omega_1\}$ кільця $\Lambda$, а далі розширимось до кільця $\tilde{\Lambda}$, замінивши $\omega_1$ на елемент $\theta = \dfrac{\alpha + \beta \omega_2 + \omega_1}{p}$ уже за готовим алгоритмом.
 
-При заміні базиса $\{1,\omega_1,\omega_2\}$ на $\{1,\omega_1',\omega_2'\} = \{1,\omega_2,\omega_1\}$ четвірка $(a,b,c,d)$ кільця $\Lambda$ заміниться на четвірку $(a',b',c',d') = (d,c,b,a)$. Дійсно,
+При заміні базиса $\{1,\omega_1,\omega_2\}$ на $\{1,\omega_1',\omega_2'\} = \{1,\omega_2,\omega_1\}$ четвірка $(a,b,c,d)$ кільця $\Lambda$ заміниться на четвірку $(a',b',c',d') = (d,c,b,a)$, бо
 \begin{align*}
-\omega_1'^2 = b' \omega_1' + a' \omega_2' - a' c' \\
-d \omega_1 + c \omega_2 - bd = b' \omega_2 + a' \omega_1 - a' c'
+\omega_1'^2 & = b' \omega_1' + a' \omega_2' - a' c', \\
+d \omega_1 + c \omega_2 - bd & = b' \omega_2 + a' \omega_1 - a' c',
 \end{align*}
-Отже, звідси $b' = c,\ a' = d$. Аналогічно, розписавши
+тобто звідси $b' = c,\ a' = d$; крім того,
 \begin{align*}
-\omega_2'^2 = d' \omega_1' + c' \omega_2' - b' d',
+\omega_2'^2 & = d' \omega_1' + c' \omega_2' - b' d',
 \end{align*}
-ми здобудемо $c' = b,\ d' = a$.
+тому здобудемо $c' = b,\ d' = a$.
 
-Таким чином, необхідно буде розв'язати ту саму систему рівнянь \eqref{system_of_congruent_equations}, замінивши літери $a$ на $d$ і навпаки та $b$ на $c$ і навпаки.
+Таким чином, необхідно буде розв'язати ту саму систему рівнянь \eqref{system_of_equation_where_theta_cubed_not_in_tilde_lambda}, замінивши місцми літери $a,d$ та $b,c$.
 
 Нормальним базисом буде система $\left\{ 1,\ \omega_2 - \beta d, \theta - \dfrac{\alpha + \beta c - \beta^2 d}{p} \right\}$, а четвірка кільця $\tilde{\Lambda}$ має такий вигляд: \\ $\left( \tilde{a},\tilde{b},\tilde{c},\tilde{d}\right) = \left( pd,\ c - 3 \beta d,\ \dfrac{b-2\beta c + 3 \beta^2 d}{p},\ \dfrac{-\beta^3 d + \beta^2 c - \beta b + a}{p^2}\right)$.
+\newpage
+
+\chapter{Розв'язання системи конгруентних рівнянь}\label{chaper2}
+Нехай $\Lambda$ -- немаксимальне кубічне кільце. Розглянемо елемент $\theta \notin \Lambda$. Мета: розширити до кубічного кільця $\tilde{\Lambda} = \Lambda[\theta] \supsetneq \Lambda$.
+
+\section{Система рівнянь при $\theta^3 \notin \tilde{\Lambda}$}
+Необхідно розв'язати систему конгруентних рівнянь \eqref{system_of_equation_where_theta_cubed_not_in_tilde_lambda}:
+\begin{equation*}
+\begin{cases}
+ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p, \\
+\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p, \\
+c +\beta^2 a + 2\alpha & \equiv 0 \pmod p, \\
+\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+
+\subsection{$p > 3$}
+Припустимо, що $p \mid a$. Тоді система \eqref{system_of_equation_where_theta_cubed_not_in_tilde_lambda} спроститься до такого вигляду:
+\begin{equation}\label{system_two_one_case_when_p_divides_a}
+\begin{cases}
+\alpha + \beta b & \equiv 0 \pmod p, \\
+c + 2\alpha & \equiv 0 \pmod p, \\
+\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation}
+
+Зауважимо, що $2\alpha \equiv -c \pmod p$. Завдяки умові $p \neq 2$, дане рівняння має розв'язок відносно $\alpha$. Домножуючи перше рівняння на $2$, отримуємо $2 \alpha + 2 \beta b \equiv 0 \pmod p$, тобто $-c + 2 \beta b \equiv 0 \pmod p$. Отже, $2 \beta b \equiv c \pmod p$. Останнє має розв'язок відносно $\beta$ тоді й лише тоді, коли $\gcd(2b,p) \mid c$.
+
+Припустимо, що $p \nmid b$. Тоді останнє згадане рівняння має єдиний розв'язок відносно $\beta$. Підставимо значення $\alpha,\beta$ (точніше кажучи, $2\beta b$ та $2\alpha$) в останні два рівняння системи \eqref{system_two_one_case_when_p_divides_a}. Для цього передостаннє рівняння домножимо на $8b^3$, а останнє -- на $8b^2$. У результаті чого отримуємо таку систему:
+\begin{equation*}
+\begin{cases}
+2 \beta b & \equiv c \pmod p, \\
+2 \alpha & \equiv -c \pmod p, \\
+-2 b^2 c^2 + 8b^3 d - ac^3 & \equiv 0 \pmod {p^2}, \\
+- ac^3 - 8b^3d + 8abcd + 2b^2c^2 & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Із передостаннього можна виразити $8b^3d - 2b^2c^2$ та підставити до останнього, щоб спростити систему.
+
+\begin{remark}
+Коректніше було б підняти $2\alpha$ до $\pmod {p^2}$, тобто записати в такому вигляді:
+\begin{align*}
+2 \alpha \equiv -c + p k \pmod {p^2},
+\end{align*}
+де $k \in \{0,1,\dots,p-1\}$. Проте оскільки $\alpha,\beta \in \{0,1,\dots,p-1\}$, то можна не записувати доданок $pk$. Аналогічне зауваження стосується до $2 b\beta$.
+\end{remark}
+
+У результаті маємо систему:
+\begin{equation}
+\label{system_of_equations_when_p_mid_a_and_p_nmid_b}
+\begin{cases}
+2 \beta b & \equiv c \pmod p, \\
+2 \alpha & \equiv -c \pmod p, \\
+-2 b^2 c^2 + 8b^3 d - ac^3 & \equiv 0 \pmod {p^2}, \\
+-ac^3 + 4abcd & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation}
+
+\begin{proposition}
+\label{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}
+Нехай задано кільце $\Lambda$ при $p \mid a,\ p \nmid b$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p} \iff $ виконується система \eqref{system_of_equations_when_p_mid_a_and_p_nmid_b}.
+\end{proposition}
+
+Припустимо, що $p \mid b$. Тоді, повернувшись до \eqref{system_two_one_case_when_p_divides_a} та до рівняння $2\beta b \equiv c \pmod {p}$, отримуємо $p \mid c$, а внаслідок чого $\alpha = 0$. Якщо третє рівняння системи спустити до $\pmod p$, то ми отримуємо $d \equiv 0 \pmod p$. У результаті залишається розв'язати таке рівняння:
+\begin{align*}
+\beta^2 b + d - \beta^2 c - \beta^3 a \equiv 0 \pmod {p^2}.
+\end{align*}
+Оскільки відомо, що $p \mid a,b,c,d$, а тому $a = p \tilde{a},\ b = p \tilde{b},\ c = p \tilde{c},\ d = p \tilde{d}$, то можна рівняння переписати таким чином:
+\begin{align*}
+-\beta^3 \tilde{a} + \beta^2 \tilde{b} - \beta^2 \tilde{c} + \tilde{d} \equiv 0 \pmod p.
+\end{align*}
+Якщо $\tilde{a} \equiv 0 \pmod p$, отримуємо спрощену версію рівняння:
+\begin{align*}
+(\tilde{b} - \tilde{c})\beta^2 + \tilde{d} \equiv 0 \pmod p.
+\end{align*}
+Чи існує розв'язок рівняння, залежить від символа Лежандра $\left( \dfrac{\tilde{d}}{p} \right)$.
+
+Нехай тепер $\tilde{a} \not\equiv 0 \pmod p$. Маємо
+\begin{align*}
+-\beta^3 + (\tilde{b} -\tilde{c}) a^{-1} \beta^2  + \tilde{d} \tilde{a}^{-1} \equiv 0 \pmod p.
+\end{align*}
+Задача полягає в розв'язанні кубічного рівняння. Його можна звести до кубічного рівняння з лінійним доданком, якщо провести заміну $\beta = y + \gamma$. Такий $\gamma$ існуватиме при $p \neq 3$. Далі залежить від символа Лежандра $\left( \dfrac{\Delta}{p} \right)$, де $\Delta$ -- дискримінант рівняння $y^3 + uy + v = 0$. Детальне розв'язання кубічного конгруентного рівняння можна переглянути в \cite{ahmad2012cubic}.
 
 \iffalse
-\section{Розв'язання системи конгруентних рівнянь}
-\subsection{Випадок, коли $p$ -- просте число, де $p \neq 3$}
+Якщо $p = 3$, то виникне $\tilde{b} \equiv \tilde{c} \pmod 3$, внаслідок чого
+\begin{align*}
+\beta^3 \equiv (\tilde{d} \tilde{a}^{-1}) \pmod 3
+\end{align*}
+Дане рівняння має розв'язок $\iff (\tilde{d} \tilde{a}^{-1})^{2} \equiv 1 \pmod 3$. Іншими словами, $\tilde{d}^2 \equiv \tilde{a}^2 \pmod 3$.
+\fi
 
+Надалі $p \nmid a$. Маємо систему
+\begin{equation*}
+\begin{cases}
+d - \beta c - \alpha \beta & \equiv 0 \pmod p, \\
+\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p, \\
+c +\beta^2 a + 2\alpha & \equiv 0 \pmod p, \\
+\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Із другого рівняння знайдемо $\alpha$:
+\begin{align*}
+\alpha \equiv \beta^2 a - \beta b \pmod p.
+\end{align*}
+Підставимо всюди $\alpha$ -- у результаті перше рівняння можна не писати, оскільки виконується четверте рівняння, а разом виникне така система:
+\begin{equation*}
+%\label{system_of_equations_when_a_nmid_p}
+\begin{cases}
+3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p, \\
+-\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2}, \\
+-2 a^2 \beta^4 + 3 a b \beta^3 - 2 a c \beta^2 - b^2 \beta^2 + 2 a d \beta + b c \beta - bd & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Розпишемо останню рівність таким чином:
+\begin{align*}
+& ab \beta^3 - b^2 \beta^2 + b c \beta - bd - 2a^2 \beta^4 + 2 ab \beta^3 - 2 ac \beta^2 + 2 ad \beta \\
+& \equiv -2a^2 \beta^4 + 2ab \beta^3 - 2 ac\beta^2 + 2 ad \beta \\
+& \equiv 2a\beta (-a \beta^3 + b \beta^2 - c \beta + d) \equiv 0 \pmod {p^2}.
+\end{align*}
+Останнє рівняння виконується автоматично. Залишиться така система:
+\begin{equation}
+\label{system_of_equations_when_a_nmid_p}
+\begin{cases}
+\alpha & \equiv \beta^2 a - \beta b \pmod p, \\
+3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p, \\
+-\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation}
+
+\begin{proposition}
+Нехай задано кільце $\Lambda$ при $p \nmid a$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha+ \beta \omega_1 + \omega_2}{p} \iff$ виконується система \eqref{system_of_equations_when_a_nmid_p}.
+\end{proposition}
+
+%WRONG
+\iffalse
+Підставивши $\alpha$ в перше рівняння та знизивши четверте рівняння до $\pmod p$, отримуємо два рівняння, які віднімемо -- у результаті
+\begin{align*}
+c \beta (\beta - 1) \equiv 0 \pmod p
+\end{align*}
+Отримали необхідну умову для розв'язання системи. Отже, кільце $\Lambda$ при $p \nmid a,\ p \nmid c$, можливо, розширюється елементами вигляду $\theta = \dfrac{\alpha + \omega_2}{p}$ або $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$. Інших варіантів нема.
+
+\subsection*{$\beta = 0$}
+Підставивши дане значення, отримуємо систему:
+\begin{equation*}
+\begin{cases}
+d & \equiv 0 \pmod p \\
+\alpha & \equiv 0 \pmod p \\
+c & \equiv 0 \pmod p \\
+d & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Оскільки ми розглядали кільце $\Lambda$, де $p \nmid c$, то цей випадок не підходить.
+
+\subsection*{$\beta = 1$}
+Підставимо це значення:
+\begin{equation*}
+\begin{cases}
+d - c - \alpha & \equiv 0 \pmod p \\
+\alpha & \equiv a - b \pmod p \\
+c + a + 2\alpha & \equiv 0 \pmod p \\
+ b + d - c - a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Перше рівняння після підставлення $\alpha$ дає $b+d-c-a \equiv 0 \pmod p$, яке можна опустити через четверте рівняння. Також підставимо $\alpha$ в третє рівняння.
+\begin{equation*}
+\begin{cases}
+\alpha & \equiv a - b \pmod p \\
+c + 3a - 2b & \equiv 0 \pmod p \\
+ b + d - c - a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Залишилося підставити $\alpha \equiv a-b + pm \pmod {p^2}$ в останнє рівняння. Враховуючи решта рівнянь системи, отримуємо наступне:
+\begin{align*}
+b (a-b+c-d) \equiv 0 \pmod {p^2}
+\end{align*}
+Отже, останнє рівняння виконується автоматично.
+
+\begin{lemma}
+Нехай задано кубічне кільце $\Lambda$ при $p \nmid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$, де число $\alpha \equiv a -b \pmod p \iff \begin{cases} p \mid c + 3a - 2b \\ p^2 \mid -a+b-c+d \end{cases}$.
+\end{lemma}
+
+Тепер розглянемо кільце $\Lambda$ при $p \mid c$. Система рівнянь матиме такий вигляд:
+\begin{equation*}
+\begin{cases}
+d - \beta^3 a + \beta^2 b & \equiv 0 \pmod p \\
+\alpha & \equiv \beta^2 a - \beta b \pmod p \\
+3 \beta^2 a & \equiv 2 \beta b \pmod p \\
+\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Із третього рівняння випливає, що або $\beta = 0$ та $\alpha = 0$, або дана змінна шукається за рівнянням $3 \beta a \equiv 2 b \pmod p$. Для другого випадку, якщо друге рівняння домножимо на $9a$, отримуємо
+\begin{align*}
+9 a \alpha \equiv (3 \beta a)^2 - (3 \beta a) 3 \beta \pmod p \\
+9 a \alpha \equiv -2b^2 \pmod p
+\end{align*}
+
+Отримали необхідну умову для розв'язання системи. Отже, кільце $\Lambda$ при $p \nmid a,\ p \nmid c$, можливо, розширюється елементами вигляду $\theta = \dfrac{\omega_2}{p}$, або $\theta = \dfrac{\alpha+\beta\omega_1 + \omega_2}{p}$, де числа $\alpha,\beta$ беруться з системи $\begin{cases} 9 a \alpha \equiv -2b^2 \pmod p \\  3 \beta a \equiv 2 b \pmod p \end{cases}$. Інших варіантів нема.
+
+\subsubsection*{$\beta = 0$} Тоді система дає обмеження $p \mid d^2$.
+\begin{lemma}
+Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{p} \iff p^2 \mid d$. 
+\end{lemma}
+
+\subsubsection*{$3 a \beta \equiv 2 b \pmod p$} Третє рівняння домножимо на $27a^2$ -- отримуємо
+\begin{align*}
+27a^2 d - (3 \beta a)^3 + 3b (3 \beta a)^2 \equiv 0 \pmod p \\
+27 a^2 d + 4 b^3 \equiv 0 \pmod p
+\end{align*}
+Перепишемо систему рівнянь:
+\begin{equation*}
+\begin{cases}
+27 a^2 d + 4 b^3 & \equiv 0 \pmod p \\
+9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \\
+\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
+-\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+Зробимо підстановку $3a \beta$ та $9a \alpha$ в останні два рівняння. Для цього піднімемо їх:
+\begin{align*}
+3 a \beta \equiv 2b + pk \pmod {p^2} \\
+9a \alpha \equiv -2b^2 + pm \pmod {p^2}
+\end{align*}
+Четверте рівняння домножимо на $27a^2$ -- після перетворень отримуємо
+\begin{align*}
+27 a^2 d + 4b^3 - 12 b^2 c \equiv 0 \pmod {p^2}
+\end{align*}
+Отже, перше рівняння системи можна опустити.
+
+Останнє рівняння домножимо на $81a^2$ -- в результаті:
+\begin{align*}
+-(9 a \alpha)^2 - 9 a c (3a\beta)^2 - 81 a^2bd + 54 a^2 d (3\beta a) - 9 ac (9 a \alpha) - (9 a \alpha) (3 a \beta)^2 \\ \equiv 0 \pmod {p^2}
+\end{align*}
+Підставивши та розкривши дужки, одержимо
+\begin{align*}
+27a^2 bd + 54a^2 dkp - 18ab^2 c + 4b^4 + 8b^3 kp \equiv 0 \pmod {p^2}
+\end{align*}
+Згрупуємо доданки таким чином:
+\begin{align*}
+b (27a^2 d + 4b^3) - 18ab^2c + (4b^3 + 27a^2d) 2k p \equiv 0 \pmod {p^2}
+\end{align*}
+Знаючи, що $27a^2 d + 4b^3 \equiv 12 b^2c \pmod {p^2}$, підставимо це.
+\begin{align*}
+12b^3 c - 18ab^2c \equiv 0 \pmod {p^2}
+\end{align*}
+Доданок $12b^2 c \cdot 2kp$ зник, оскільки $pc \equiv 0 \pmod {p^2}$. Отже, система має вигляд:
+\begin{equation*}
+\begin{cases}
+9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \\
+27 a^2 d + 4b^3 - 12 b^2 c & \equiv 0 \pmod {p^2} \\
+b^2 c (2b - 3a) & \equiv 0 \pmod {p^2}
+\end{cases}
+\end{equation*}
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
+Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$ при $\begin{cases} 9 a \alpha & \equiv -2 b^2 \pmod p \\
+3 a \beta & \equiv 2 b \pmod p \end{cases} \iff \begin{cases} p^2 \mid 27 a^2 d + 4b^3 - 12b^2 c \\ p^2 \mid b^2 c (2b-3a) \end{cases}$.
+\end{proposition}
+\fi
+
+\subsection{$p = 2$} 
+Повторимо кроки для першого частинного випадку. Припустимо, що $2 \mid a$. Тоді система спроститься до вигляду:
+\begin{equation*}
+\begin{cases}
+\alpha + \beta b & \equiv 0 \pmod 2, \\
+c & \equiv 0 \pmod 2, \\
+\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {4}, \\
+-\alpha^2 - bd - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {4}.
+\end{cases}
+\end{equation*}
+Маємо $\alpha \equiv -\beta b \pmod 2$, а також $2 \mid c$. Залишилося знайти $\beta$. Зауважимо, що останнє рівняння виконується автоматично, адже
+\begin{align*}
+-\alpha^2 - bd - \alpha c - \alpha \beta^2 a \equiv b(-\beta^2 b - d + \beta c + \beta^3 a) \equiv 0 \pmod {4}.
+\end{align*}
+Для знаходження $\beta$ треба скористатися рівнянням $-\beta^3 a + \beta^2 b - \beta c + d \equiv 0 \pmod 4$. Оскільки $p = 2$, у нас існують два можливих розв'язки.
+
+$\beta = 0$ -- розв'язок $\iff 4 \mid d$. $\beta = 1$ -- розв'язок $\iff 4 \mid -a+b-c+d$.
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $2 \mid a$. Тоді $2 \mid c$.
+\begin{itemize}
+\item Припустимо $4 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
+\item Припустимо $4 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(-b) \mod 2 + \omega_1 + \omega_2}{2}$.
+\end{itemize}
+Якщо жодне припущення не виконується, то не існує розширення.
+\end{proposition}
+
+Надалі $2 \nmid a$. Простіше кажучи, $a \equiv 1 \pmod 2$. Маємо систему
+\begin{equation*}
+\begin{cases}
+d - \beta c - \alpha \beta & \equiv 0 \pmod 2, \\
+\alpha + \beta b - \beta^2 & \equiv 0 \pmod 2, \\
+c +\beta^2 & \equiv 0 \pmod 2, \\
+\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {4}, \\
+-\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {4}.
+\end{cases}
+\end{equation*}
+Аналогічно маємо $\alpha \equiv \beta^2 - \beta b \pmod 2$. Якщо підставити $\alpha$ в перше рівняння, то отримуємо четверте рівняння, тож перше рівняння можна не писати.
+
+Нехай $\beta = 0$ -- розв'язок. Із системи випливає, що $\alpha = 0$, а також $2 \mid c,\ 4 \mid d$. Якщо маємо $2 \mid c,\ 4 \mid d$, то четверте рівняння перепишеться як $\beta^2 b - \beta c - \beta^3 a \equiv 0 \pmod 4$, тому $\beta = 0$ буде тут розв'язком. Також $\beta$ буде розв'язком третього рівняння та останнього (оскільки $\alpha = 0$ із другого).
+
+Нехай $\beta = 1$ -- розв'язок. Із системи випливає, що $\alpha \equiv 1-b \pmod 2$, а також $4 \mid -a+b-c+d$ та $2 \nmid c$. Підставимо $\alpha$ в останнє рівняння:
+\begin{align*}
+-\alpha^2 - \beta^2 ac - bd + 2\beta a d - \alpha c - \alpha \beta^2 a \equiv \\
+\equiv -(1-b)^2 - \beta^2 ac - bd + 2 \beta ad - (1-b) c - (1-b) \beta^2 \equiv \\
+ab - ac + 2ad - a - b^2 + bc - bd + 2b - c - 1 \boxed{\equiv}
+\end{align*}
+Підставимо умову, де $d \equiv a-b+c \pmod 4$, тоді
+\begin{align*}
+\boxed{\equiv} -2a^2 - 2ab + ac - a + 2b - c -1 = \\
+= a - 2a(a-1) + 2b(1-a) - c - 1 + ac \boxed{\equiv}
+\end{align*} 
+Оскільки $2 \nmid a$, то $2a (a-1) \equiv 0 \pmod 4$ та $2b(1-a) \equiv 0 \pmod 4$;
+\begin{align*}
+\boxed{\equiv} a - c - 1 + ac = (1+c)(a-1) \overset{2\nmid a,\ 2 \nmid c}{\equiv} 0 \pmod 4.
+\end{align*} 
+Навпаки, якщо $2 \nmid c$ та $4 \mid -a+b-c+d$, то, підставивши $\alpha \equiv \beta^2 - \beta b$ в п'яте рівняння, отримуємо, що $\beta = 1$ задовольняє дане рівняння так само, як й третє та четверте.
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $2 \nmid a$.
+\begin{itemize}
+\item Припустимо $4 \mid d,\ 2 \mid c$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
+\item Припустимо $4 \mid -a+b-c+d$ та $2 \nmid c$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(a-b) \mod 2 + \omega_1 + \omega_2}{2}$. 
+\end{itemize}
+Якщо жодне припущення не виконується, то не існує розширення.
+\end{proposition}
+
+\subsection{$p = 3$} Якщо $3 \mid a$ та $3 \nmid b$, то можемо скористатися результатом твердження \ref{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}. Якщо $3 \mid b$, то (за аналогічними міркуваннями після твердження \ref{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}) маємо $\alpha = 0$ та $3 \mid c$, а $\beta$ шукати можна з рівняння
+\begin{align*}
+-a \beta^3 + b \beta^2 - c \beta + d \equiv 0 \pmod {9}.
+\end{align*}
+Зазначимо, що $\beta = 0$ -- розв'язок $\iff 9 \mid d$; $\beta = 1$ -- розв'язок $\iff 9 \mid -a+b-c+d$ та $\beta = 2$ -- розв'язок $\iff 9 \mid -8a+4b-2c+d$.
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $3 \mid a,\ 3 \nmid b$.
+\begin{itemize}
+\item Припустимо $9 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
+\item Припустимо $9 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_1+\omega_2}{2}$.
+\item Припустимо $9 \mid -8a+4b-2c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{2\omega_1+\omega_2}{2}$.
+\end{itemize}
+Якщо жодне припущення не виконується, то не існує розширення.
+\end{proposition}
+
+Надалі $3 \nmid a$. Розв'язуючи систему при $p>3$, ми отримали $\alpha \equiv \beta^2 a - \beta b \pmod p$ а також умови:
+\begin{equation*}
+\begin{cases}
+3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p, \\
+-\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2}. \\
+\end{cases}
+\end{equation*}
+(абсолютно аналогічна система, як при $p > 3$). Якщо $p = 3$, перше рівняння спроститься до $2\beta b \equiv c \pmod 3$. Рівняння має (єдиний) розв'язок тоді й лише тоді, коли $\gcd(2b,3) \mid -c$.
+
+Припустимо, що $3 \nmid b$. Передусім підставимо $2\beta b$ в рівність з $\alpha$, тоді отримуємо
+\begin{align*}
+\alpha \equiv c^2 a - 2b^2 c.
+\end{align*}
+Далі друге рівняння системи домножимо на $8b^3$ -- матимемо наступне:
+%\begin{equation*}
+%\begin{cases}
+%-ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9 \\
+%-a^2 c^4 - ab^2 c^3 + 2b^4 c^2 + 8 ab^3 c d - 8b^5 d & \equiv 0 \pmod 9
+%\end{cases}
+%\end{equation*}
+\begin{align*}
+-ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9.
+\end{align*}
+\iffalse
+В останньому рівнянні можна прибрати вираз $-ab^2 c^3 + 2b^4 c^2 - 8b^5 d$, адже дорівнює нулю за $\pmod 9$, завдяки першому рівнянню.
+\begin{equation*}
+\begin{cases}
+-ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9 \\
+-a^2 c^4 + 8 ab^3 c d & \equiv 0 \pmod 9
+\end{cases}
+\end{equation*}
+\fi
+
+Припустимо, що $3 \mid b$. Тоді автоматично $3 \mid c$. Аналогічно маємо, що $\beta = 0 \iff 9 \mid d$, також $\beta = 1 \iff 9 \mid -a+b-c+d$ та $\beta = 2 \iff 9 \mid - 8a+4b-2c+d$.
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $3 \nmid a,\ 3 \mid b,\ 3 \mid c$.
+\begin{itemize}
+\item Припустимо $9 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
+\item Припустимо $9 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(a-b) \mod 2 + \omega_1+\omega_2}{2}$.
+\item Припустимо $9 \mid -8a+4b-2c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(4a-2b) \mod 2 + 2\omega_1+\omega_2}{2}$.
+\end{itemize}
+Якщо жодне припущення не виконується, то не існує розширення.
+\end{proposition}
+
+
+\iffalse
+\section{Частинний випадок максимального кубічного кільця}
+Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Спробуємо розширити кільце елементом $\theta = \dfrac{\alpha + \beta \omega_1}{p}$ при $p = 2$. Оскільки ми хочемо $\tilde{\Lambda} \supsetneq \Lambda$, то перш за все уникнемо випадків, коли $2 \mid \alpha$ та $2 \mid \beta$ водночас (інакше $\theta \in \Lambda$). Для розширення нам необхідно, щоб система \eqref{system_congruent_equations} була розв'язною.
+
+Із точністю до $\pmod 2$, єдина опція залишається -- це обрати $b = 1$. Решта чисел $a,c,d$ із точністю до $\pmod {2^3}$ зобов'язані приймати такі значення:
+\begin{center}
+\begin{tabular}{c|c|c}
+$a$ & $c$ & $d$ \\
+\hline
+$1$ & $3$ & $3$ \\
+$1$ & $7$ & $7$ \\
+$3$ & $1$ & $3$ \\
+$3$ & $5$ & $7$ \\
+$5$ & $3$ & $7$ \\
+$5$ & $7$ & $3$ \\
+$7$ & $1$ & $7$ \\
+$7$ & $5$ & $3$
+\end{tabular}
+\end{center}
+Отримуємо розв'язок $t \equiv -3 \cdot (1)^{-1} = 3 \equiv 5 \pmod 8$. Іншими словами, $\beta \equiv 5 \alpha \pmod 8$. Запишемо всі можливі значення $\alpha,\beta$:
+\begin{center}
+\begin{tabular}{c|c}
+$\alpha$ & $\beta$ \\
+\hline
+$1$ & $5$ \\
+\iffalse $2$ & $2$ \\ \fi
+$3$ & $7$ \\
+\iffalse $4$ & $4$ \\ \fi
+$5$ & $1$ \\
+\iffalse $6$ & $6$ \\ \fi
+$7$ & $3$ \\
+\end{tabular}
+\end{center}
+Саме при таких параметрах можливе строге розширення $\tilde{\Lambda} \supset \Lambda$. Чи можна буде ще розширити, залежить від значень $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$, які формують кільце $\tilde{\Lambda}$.
+
+Експериментально були отримані наступні дані:
+\begin{itemize}
+\item Якщо $\alpha = 1,\ \beta = 5$, тобто $\theta = \dfrac{1 + 5 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{5}$.
+\iffalse
+\begin{tabular}{c|c|c|c|c}
+$a$ & $c$ & $d$ & $\alpha$ & $\beta$ \\
+\hline
+$1$ & $3$ & $3$ & $1$ & $5$ \\
+$1$ & $7$ & $7$ & $1$ & $5$ \\
+$3$ & $1$ & $3$ & $1$ & $5$ \\
+$3$ & $5$ & $7$ & $1$ & $7$ \\
+$5$ & $3$ & $7$ & $1$ & $5$ \\
+$5$ & $7$ & $3$ & $1$ & $5$ \\
+$7$ & $1$ & $7$ & $1$ & $5$ \\
+$7$ & $5$ & $3$ & $1$ & $5$ \\
+\end{tabular}
+\fi
+\item Якщо $\alpha = 3,\ \beta = 7$, тобто $\theta = \dfrac{3 + 7 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{7}$.
+\item У всіх інших випадках, тобто при $\omega = \dfrac{5 + \omega_1}{2}$ або $\omega = \dfrac{7 + 3 \omega_1}{2}$ розширення не існує (простим $p \neq 3$).
+\end{itemize}
+
+Розглянемо тепер $\tilde{\Lambda} \supset \Lambda$, що заданий числами $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$. При певних умов спробуємо дістати ще одне розширення $\tilde{\tilde{\Lambda}} \supset \tilde{\Lambda} \supset \Lambda$.
+
+Експериметально було встановлено, що при $b \in \{1,3,5,7\}$ та всіх можливих $a,c,d$ (які задані до $\pmod 8$), які утворюють кільця, а також задовольняють умову системи, ми маємо розширення $\Lambda \supset \tilde{\Lambda}$. Подальше розширення елементом $\tilde{\tilde{\theta}} = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{q}$, де $q = 2$ або $q > 3$ -- просте, не допускається. Залишається перевірити, чи можливе розширення при простому $q = 3$.
+
+Виявляється, що при $q = 3$ теж нема можливостей для розширення.
+
+Зауважимо, що при $\alpha = 1, \beta = 1$ маємо $\tr [\theta] = \dfrac{1}{2} (3+b)$, звідси $2 \tr [\theta] = 3 + b$, або $\tilde{b} = -3 - b$.
+
+Отже, для розширення треба, щоб $3 \mid \tilde{b}$, тобто треба $3 \mid b$.
+\fi
+
+
+\iffalse
+Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
+\begin{align*}
+\omega_1 \cdot 1 = \omega_1 = 0 \cdot 1 + 1 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\omega_1 \cdot \omega_1 = -ac + b \omega_1 + a \omega_2 \\
+\omega_1 \cdot \omega_2 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2
+\end{align*}
+Водночас для множення на $\omega_2$ маємо
+\begin{align*}
+\omega_2 \cdot 1 = \omega_2 = 0 \cdot 1 + 0 \cdot \omega_1 + 1 \cdot \omega_2 \\
+\omega_2 \cdot \omega_1 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
+\omega_2 \cdot \omega_2 = -bd + d \omega_1 + c 
+\end{align*}
+Звідси отримуємо матриці
+\begin{align*}
+[\omega_1] = \begin{pmatrix}
+0 & -ac & ad \\
+1 & b & 0 \\
+0 & a & 0
+\end{pmatrix},\quad [\omega_2] = \begin{pmatrix}
+0 & ad & -bd \\
+0 & 0 & d \\
+1 & 0 & c
+\end{pmatrix}
+\end{align*}
+\fi
+
+%\iffalse
+\section{Система рівнянь при $\theta^3 \in \tilde{\Lambda}$}
+Необхідно розв'язати систему рівнянь \eqref{system_of_equations_when_theta_cubed_in_ring}:
+\begin{equation*}
+    \begin{cases}
+      \alpha^3 + \alpha^2 \beta b + \beta^3 a^2 d + \alpha \beta^2 a c & \equiv 0 \pmod {p^3}, \\
+    3\alpha^2 + \beta^2 ac + 2 \alpha \beta b & \equiv 0 \pmod {p^2}, \\
+      3 \alpha + \beta b & \equiv 0 \pmod p.
+    \end{cases}
+\end{equation*}
+Необхідно припустити, що $\beta = 1$, інакше розширень не виникне. Тож задача спроститься до системи:
+\begin{equation*}
+    \begin{cases}
+      \alpha^3 + \alpha^2 b + a^2 d + \alpha a c & \equiv 0 \pmod {p^3}, \\
+    3\alpha^2 + ac + 2 \alpha b & \equiv 0 \pmod {p^2}, \\
+      3 \alpha + b & \equiv 0 \pmod p.
+    \end{cases}\
+\end{equation*}
+
+\subsection{$p > 3$}
+Останнє рівняння має розв'язок відносно $\alpha$, оскільки $p \neq 3$. Підставимо $3\alpha$ в друге та перше рівняння. Для цього домножимо на $3$ та на $27$. Отримуємо:
+\begin{equation*}
+\begin{cases}
+2b^3 + 27a^2 d - 9abc & \equiv 0 \pmod {p^3}, \\
+b^2 & \equiv 3ac \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Вони є достатніми умовами, щоб $\alpha$ задовольняла систему.
+
+Пригадаємо, що кубічному кільцю відповідає кубічна форма, дискримінант якої обчислюється за формулою \eqref{discriminant_of_cubic_form}. Сприймаючи дискримінант за функцію від чотирьох змінних, знайдемо частинну похідну за аргументом $d$:
+\begin{align*}
+\Delta'_d = -4b^3 + 18 abc - 54a^2 d.
+\end{align*}
+Тоді умову $2b^3 + 27a^2d - 9abc \equiv 0 \pmod {p^3}$ після множення на $2$ (при $p \neq 2$) можна записати таким чином:
+\begin{align*}
+\Delta'_d \equiv 0 \pmod {p^3}.
+\end{align*}
+
+Також пригадаємо, що для розширення треба вимагати, щоб $a \in \{1,p,p^2\}$.
+
+При $a = 1$ не виникало додаткових обмежень.
+
+При $a = p$ виникло обмеження:
+\begin{align*}
+\alpha^2 + \alpha b + ac \equiv 0 \pmod p.
+\end{align*}
+Домножимо на $9$, після чого підставимо $3\alpha$ в дане рівняння та $a = p$ -- у результаті
+\begin{align*}
+-2b^2 \equiv 0 \pmod p.
+\end{align*}
+При $p \neq 2$ отримуємо умову $p \mid b$. Із цього випливає, що $\alpha = 0$.
+
+При $a = p^2$ виникли два обмеження:
+\begin{equation*}
+\begin{cases}
+-2\alpha - b & \equiv 0 \pmod p, \\
+\alpha^2 + \alpha b + ac & \equiv 0 \pmod {p^2}.
+\end{cases}
+\end{equation*}
+Останнє рівняння аналогічним чином перепишеться як
+\begin{align*}
+-2b^2 \equiv 0 \pmod {p^2}.
+\end{align*}
+При $p \neq 2$ матимемо знову обмеження $p \mid b$. Аналогічно $\alpha = 0$, а умова $-2\alpha - b \equiv 0 \pmod p$ виконується автоматично.
+
+\begin{proposition}
+Нехай $\Lambda$ -- кубічне кільце при $a \in \{1,p,p^2\}$. Припустимо, що $b^2 \equiv 3 ac \pmod {p^2},\ \Delta'_d \equiv 0 \pmod {p^3}$, а також $p \mid b$ при $a \neq 1$. Тоді кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{(-b)\mod p + \omega_1}{2}$.
+\end{proposition}
+
+Формулювання можна дещо спростити: для $a = p^2$ нам досить лише вимагати $p \mid b$, а для $a = p$ -- лише $p \mid b,c,d$.
+
+\subsection{$p = 2$} Система \eqref{system_of_equations_when_theta_cubed_in_ring} розв'язується один в один. Ситуація з $a = 1$ не змінюється. Однак при $a = p$ рівність $-2b^2 \equiv 0 \pmod p$ виконується автоматично, тож не треба вимагати $2 \mid b$. При $a = p^2$ маємо $-2b^2 \equiv 0 \pmod {p^2}$, що все одно породжує обмеження $2 \mid b$.
+
+\subsection{$p = 3$} Система \eqref{system_of_equations_when_theta_cubed_in_ring} перепишеться таким чином:
+\begin{equation*}
+    \begin{cases}
+      \alpha^3 + \alpha^2 b + a^2 d + \alpha a c & \equiv 0 \pmod {p^3}, \\
+    3\alpha^2 + ac + 2 \alpha b & \equiv 0 \pmod {p^2}, \\
+     b & \equiv 0 \pmod p.
+    \end{cases}
+\end{equation*}
+Отже, в будь-якому випадку отримуємо $3 \mid b$.
+
+При $a = p$ матимемо $\alpha^2 + \alpha b + ac \equiv \alpha^2 \equiv 0 \pmod 3$, тож автоматично $\alpha = 0$. Тоді система дає обмеження $p^2 \mid ac$ та $p^3 \mid a^2d$. 
+
+При $a = p^2$ із рівняння $-2\alpha -b \equiv 0 \pmod 3$ випливатиме $\alpha = 0$. Далі знову $p^2 \mid ac$ та $p^3 \mid a^2d$.
+
+При $a = 1$ можемо мати $\alpha \in \{0,1,2\}$ за умовою, що виконується система вище. 
+
+%OLD
+\iffalse
 Маємо рівняння
 \begin{align*}
 bt \equiv p-3 \pmod p.
@@ -873,486 +1480,7 @@ t \in \{2,5,8,11,14,17,20,23,26\} \text{ при } d \equiv 1 \pmod 3
 4ac + 4b + 3 \equiv 2b + 3 \equiv 0 \pmod 9
 \end{align*}
 Останнє можливе лише при $b \equiv 3 \pmod 9$. Також маємо $4ac \equiv -6 \equiv 3 \pmod 9$.
-\fi
-
-\newpage
-
-\chapter{Розв'язання системи конгруентних рівнянь}\label{chaper2}
-Нехай $\Lambda$ -- немаксимальне кубічне кільце. Розглянемо елемент $\theta \notin \Lambda$. Хочемо розширити до кубічного кільця $\tilde{\Lambda} = \Lambda[\theta] \supsetneq \Lambda$.
-
-\section{Система рівнянь при $\theta^3 \notin \tilde{\Lambda}$}
-Необхідно розв'язати систему конгруентних рівнянь \ref{system_of_congruent_equations}:
-\begin{equation}
-\begin{cases}
-ad - \beta ac - \alpha \beta a & \equiv 0 \pmod p \\
-\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p \\
-c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation}
-
-\subsection{$p > 3$}
-Припустимо, що $p \mid a$. Тоді система \eqref{system_of_congruent_equations} спроститься до вигляду:
-\begin{equation}\label{system_case_when_a_is_zero}
-\begin{cases}
-\alpha + \beta b & \equiv 0 \pmod p \\
-c + 2\alpha & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation}
-
-Зауважимо, що $2\alpha \equiv -c \pmod p$. Завдяки умові $p \neq 2$, дане рівняння має розв'язок відносно $\alpha$. Домножуючи перше рівняння на $2$, отримуємо $2 \alpha + 2 \beta b \equiv 0 \pmod p$, тобто $-c + 2 \beta b \equiv 0 \pmod p$. Отже, $2 \beta b \equiv c \pmod p$. Останнє має розв'язок відносно $\beta$ тоді й лише тоді, коли $\gcd(2b,p) \mid c$.
-
-Припустимо, що $p \nmid b$. Тоді останнє згадане рівняння має єдиний розв'язок відносно $\beta$. Підставимо значення $\alpha,\beta$ (точніше кажучи, $2\beta b$ та $2\alpha$) в останні два рівняння системи \eqref{system_case_when_a_is_zero}. Для цього передостаннє рівняння домножимо на $8b^3$, а останнє -- на $8b^2$. У результаті чого отримуємо таку систему:
-\begin{equation*}
-\begin{cases}
-2 \beta b & \equiv c \pmod p \\
-2 \alpha & \equiv -c \pmod p \\
--2 b^2 c^2 + 8b^3 d - ac^3 & \equiv 0 \pmod {p^2} \\
-- ac^3 - 8b^3d + 8abcd + 2b^2c^2 & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Із передостаннього можна виразити $8b^3d - 2b^2c^2$ та підставити до останнього, щоб спростити систему.
-
-Коректніше було б підняти $2\alpha$ до $\pmod {p^2}$, тобто записати в такому вигляді:
-\begin{align*}
-2 \alpha \equiv -c \textcolor{red}{+ p k} \pmod {p^2},
-\end{align*}
-де $k \in \{0,1,\dots,p-1\}$. Проте оскільки $\alpha,\beta \in \{0,1,\dots,p-1\}$, то можна не записувати доданок $\textcolor{red}{+pk}$. Аналогічне зауваження стосується до $2 b\beta$.
-
-\begin{proposition}
-\label{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}
-Нехай задано кільце $\Lambda$ при $p \mid a,\ p \nmid b$.\\
-Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$ $\iff \\ \begin{cases} -2b^2c^2 + 8b^3d - ac^3 \equiv 0 \pmod {p^2} \\
--ac^3 + 4abcd \equiv 0 \pmod {p^2}
-\end{cases}$.\\
-Числа $\alpha,\beta$ шукаються в рівняннях $\begin{cases}
-2 \beta b & \equiv c \pmod p \\
-2 \alpha & \equiv -c \pmod p \end{cases}$.
-\end{proposition}
-
-Припустимо, що $p \mid b$. Тоді, повернувшись до \eqref{system_case_when_a_is_zero} та до рівняння $2\beta b \equiv c \pmod {p}$, отримуємо $p \mid c$, а внаслідок чого $\alpha = 0$. Якщо третє рівняння системи спустити до $\pmod p$, то ми отримуємо $d \equiv 0 \pmod p$. У результаті залишається розв'язати таке рівняння:
-\begin{align*}
-\beta^2 b + d - \beta^2 c - \beta^3 a \equiv 0 \pmod {p^2}
-\end{align*}
-Оскільки відомо, що $p \mid a,b,c,d$, а тому $a = p \tilde{a},\ b = p \tilde{b},\ c = p \tilde{c},\ d = p \tilde{d}$, то можна рівняння переписати таким чином:
-\begin{align*}
--\beta^3 \tilde{a} + \beta^2 \tilde{b} - \beta^2 \tilde{c} + \tilde{d} \equiv 0 \pmod p
-\end{align*}
-Якщо $\tilde{a} \equiv 0 \pmod p$, отримуємо спрощену версію рівняння:
-\begin{align*}
-(\tilde{b} - \tilde{c})\beta^2 + \tilde{d} \equiv 0 \pmod p.
-\end{align*}
-Чи існує розв'язок рівняння, залежить від символа Лежандра $\left( \dfrac{\tilde{d}}{p} \right)$.
-
-Нехай тепер $\tilde{a} \not\equiv 0 \pmod p$. Маємо
-\begin{align*}
--\beta^3 + (\tilde{b} -\tilde{c}) a^{-1} \beta^2  + \tilde{d} \tilde{a}^{-1} \equiv 0 \pmod p
-\end{align*}
-Задача полягає в розв'язанні кубічного рівняння. Його можна звести до кубічного рівняння з лінійним доданком, якщо провести заміну $\beta = y + \gamma$. Такий $\gamma$ існуватиме лише при $p \neq 3$. Далі залежить від символа Лежандра $\left( \dfrac{\Delta}{p} \right)$, де $\Delta$ -- дискримінант рівняння $y^3 + uy + v = 0$.
-
-Якщо $p = 3$, то виникне $\tilde{b} \equiv \tilde{c} \pmod 3$, внаслідок чого
-\begin{align*}
-\beta^3 \equiv (\tilde{d} \tilde{a}^{-1}) \pmod 3
-\end{align*}
-Дане рівняння має розв'язок $\iff (\tilde{d} \tilde{a}^{-1})^{2} \equiv 1 \pmod 3$. Іншими словами, $\tilde{d}^2 \equiv \tilde{a}^2 \pmod 3$.
-
-\textcolor{red}{Надалі $p \nmid a$}. Маємо систему
-\begin{equation*}
-\begin{cases}
-d - \beta c - \alpha \beta & \equiv 0 \pmod p \\
-\alpha + \beta b - \beta^2 a & \equiv 0 \pmod p \\
-c +\beta^2 a + 2\alpha & \equiv 0 \pmod p \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Із другого рівняння знайдемо $\alpha$:
-\begin{align*}
-\alpha \equiv \beta^2 a - \beta b \pmod p
-\end{align*}
-Підставимо всюди $\alpha$ -- у результаті перше рівняння можна не писати, оскільки виконується четверте рівняння, а разом виникне така система:
-\begin{equation*}
-%\label{system_of_equations_when_a_nmid_p_and_b_nmid_p}
-\begin{cases}
-3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p \\
--\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2} \\
--2 a^2 \beta^4 + 3 a b \beta^3 - 2 a c \beta^2 - b^2 \beta^2 + 2 a d \beta + b c \beta - bd & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Розпишемо останню рівність таким чином:
-\begin{align*}
-ab \beta^3 - b^2 \beta^2 + b c \beta - bd - 2a^2 \beta^4 + 2 ab \beta^3 - 2 ac \beta^2 + 2 ad \beta \\
-\equiv -2a^2 \beta^4 + 2ab \beta^3 - 2 ac\beta^2 + 2 ad \beta \\
-= 2a\beta (-a \beta^3 + b \beta^2 - c \beta + d) \equiv 0 \pmod {p^2}
-\end{align*}
-Останнє рівняння виконується автоматично. Разом маємо систему:
-\begin{equation}
-\label{system_of_equations_when_a_nmid_p_and_b_nmid_p}
-\begin{cases}
-3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p \\
--\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation}
-
-%WRONG
-\iffalse
-Підставивши $\alpha$ в перше рівняння та знизивши четверте рівняння до $\pmod p$, отримуємо два рівняння, які віднімемо -- у результаті
-\begin{align*}
-c \beta (\beta - 1) \equiv 0 \pmod p
-\end{align*}
-Отримали необхідну умову для розв'язання системи. Отже, кільце $\Lambda$ при $p \nmid a,\ p \nmid c$, можливо, розширюється елементами вигляду $\theta = \dfrac{\alpha + \omega_2}{p}$ або $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$. Інших варіантів нема.
-
-\subsection*{$\beta = 0$}
-Підставивши дане значення, отримуємо систему:
-\begin{equation*}
-\begin{cases}
-d & \equiv 0 \pmod p \\
-\alpha & \equiv 0 \pmod p \\
-c & \equiv 0 \pmod p \\
-d & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Оскільки ми розглядали кільце $\Lambda$, де $p \nmid c$, то цей випадок не підходить.
-
-\subsection*{$\beta = 1$}
-Підставимо це значення:
-\begin{equation*}
-\begin{cases}
-d - c - \alpha & \equiv 0 \pmod p \\
-\alpha & \equiv a - b \pmod p \\
-c + a + 2\alpha & \equiv 0 \pmod p \\
- b + d - c - a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Перше рівняння після підставлення $\alpha$ дає $b+d-c-a \equiv 0 \pmod p$, яке можна опустити через четверте рівняння. Також підставимо $\alpha$ в третє рівняння.
-\begin{equation*}
-\begin{cases}
-\alpha & \equiv a - b \pmod p \\
-c + 3a - 2b & \equiv 0 \pmod p \\
- b + d - c - a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - ac - bd + 2 \beta a d - \alpha c - \alpha a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Залишилося підставити $\alpha \equiv a-b + pm \pmod {p^2}$ в останнє рівняння. Враховуючи решта рівнянь системи, отримуємо наступне:
-\begin{align*}
-b (a-b+c-d) \equiv 0 \pmod {p^2}
-\end{align*}
-Отже, останнє рівняння виконується автоматично.
-
-\begin{lemma}
-Нехай задано кубічне кільце $\Lambda$ при $p \nmid c$.\\
-Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \omega_1 + \omega_2}{p}$, де число $\alpha \equiv a -b \pmod p \iff \begin{cases} p \mid c + 3a - 2b \\ p^2 \mid -a+b-c+d \end{cases}$.
-\end{lemma}
-
-Тепер розглянемо кільце $\Lambda$ при $p \mid c$. Система рівнянь матиме такий вигляд:
-\begin{equation*}
-\begin{cases}
-d - \beta^3 a + \beta^2 b & \equiv 0 \pmod p \\
-\alpha & \equiv \beta^2 a - \beta b \pmod p \\
-3 \beta^2 a & \equiv 2 \beta b \pmod p \\
-\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Із третього рівняння випливає, що або $\beta = 0$ та $\alpha = 0$, або дана змінна шукається за рівнянням $3 \beta a \equiv 2 b \pmod p$. Для другого випадку, якщо друге рівняння домножимо на $9a$, отримуємо
-\begin{align*}
-9 a \alpha \equiv (3 \beta a)^2 - (3 \beta a) 3 \beta \pmod p \\
-9 a \alpha \equiv -2b^2 \pmod p
-\end{align*}
-
-Отримали необхідну умову для розв'язання системи. Отже, кільце $\Lambda$ при $p \nmid a,\ p \nmid c$, можливо, розширюється елементами вигляду $\theta = \dfrac{\omega_2}{p}$, або $\theta = \dfrac{\alpha+\beta\omega_1 + \omega_2}{p}$, де числа $\alpha,\beta$ беруться з системи $\begin{cases} 9 a \alpha \equiv -2b^2 \pmod p \\  3 \beta a \equiv 2 b \pmod p \end{cases}$. Інших варіантів нема.
-
-\subsubsection*{$\beta = 0$} Тоді система дає обмеження $p \mid d^2$.
-\begin{lemma}
-Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
-Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{p} \iff p^2 \mid d$. 
-\end{lemma}
-
-\subsubsection*{$3 a \beta \equiv 2 b \pmod p$} Третє рівняння домножимо на $27a^2$ -- отримуємо
-\begin{align*}
-27a^2 d - (3 \beta a)^3 + 3b (3 \beta a)^2 \equiv 0 \pmod p \\
-27 a^2 d + 4 b^3 \equiv 0 \pmod p
-\end{align*}
-Перепишемо систему рівнянь:
-\begin{equation*}
-\begin{cases}
-27 a^2 d + 4 b^3 & \equiv 0 \pmod p \\
-9 a \alpha & \equiv -2 b^2 \pmod p \\
-3 a \beta & \equiv 2 b \pmod p \\
-\beta^2 b + d - \beta^2 c - \beta^3 a & \equiv 0 \pmod {p^2} \\
--\alpha^2 - \beta^2 a c - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-Зробимо підстановку $3a \beta$ та $9a \alpha$ в останні два рівняння. Для цього піднімемо їх:
-\begin{align*}
-3 a \beta \equiv 2b + pk \pmod {p^2} \\
-9a \alpha \equiv -2b^2 + pm \pmod {p^2}
-\end{align*}
-Четверте рівняння домножимо на $27a^2$ -- після перетворень отримуємо
-\begin{align*}
-27 a^2 d + 4b^3 - 12 b^2 c \equiv 0 \pmod {p^2}
-\end{align*}
-Отже, перше рівняння системи можна опустити.
-
-Останнє рівняння домножимо на $81a^2$ -- в результаті:
-\begin{align*}
--(9 a \alpha)^2 - 9 a c (3a\beta)^2 - 81 a^2bd + 54 a^2 d (3\beta a) - 9 ac (9 a \alpha) - (9 a \alpha) (3 a \beta)^2 \\ \equiv 0 \pmod {p^2}
-\end{align*}
-Підставивши та розкривши дужки, одержимо
-\begin{align*}
-27a^2 bd + 54a^2 dkp - 18ab^2 c + 4b^4 + 8b^3 kp \equiv 0 \pmod {p^2}
-\end{align*}
-Згрупуємо доданки таким чином:
-\begin{align*}
-b (27a^2 d + 4b^3) - 18ab^2c + (4b^3 + 27a^2d) 2k p \equiv 0 \pmod {p^2}
-\end{align*}
-Знаючи, що $27a^2 d + 4b^3 \equiv 12 b^2c \pmod {p^2}$, підставимо це.
-\begin{align*}
-12b^3 c - 18ab^2c \equiv 0 \pmod {p^2}
-\end{align*}
-Доданок $12b^2 c \cdot 2kp$ зник, оскільки $pc \equiv 0 \pmod {p^2}$. Отже, система має вигляд:
-\begin{equation*}
-\begin{cases}
-9 a \alpha & \equiv -2 b^2 \pmod p \\
-3 a \beta & \equiv 2 b \pmod p \\
-27 a^2 d + 4b^3 - 12 b^2 c & \equiv 0 \pmod {p^2} \\
-b^2 c (2b - 3a) & \equiv 0 \pmod {p^2}
-\end{cases}
-\end{equation*}
-
-\begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце при $p \nmid a,\ p \mid c$.\\
-Кільце $\Lambda$ допускає розширення елементом $\theta = \dfrac{\alpha + \beta \omega_1 + \omega_2}{p}$ при $\begin{cases} 9 a \alpha & \equiv -2 b^2 \pmod p \\
-3 a \beta & \equiv 2 b \pmod p \end{cases} \iff \begin{cases} p^2 \mid 27 a^2 d + 4b^3 - 12b^2 c \\ p^2 \mid b^2 c (2b-3a) \end{cases}$.
-\end{proposition}
-\fi
-
-\subsection{$p = 2$} 
-Повторимо кроки для першого частинного випадку. Припустимо, що $2 \mid a$. Тоді система спроститься до вигляду:
-\begin{equation*}
-\begin{cases}
-\alpha + \beta b & \equiv 0 \pmod 2 \\
-c & \equiv 0 \pmod 2 \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {4} \\
--\alpha^2 - bd - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {4}
-\end{cases}
-\end{equation*}
-Маємо $\alpha \equiv -\beta b \pmod 2$, а також $2 \mid c$. Залишилося знайти $\beta$. Зауважимо, що останнє рівняння виконується автоматично, адже
-\begin{align*}
--\alpha^2 - bd - \alpha c - \alpha \beta^2 a \equiv b(-\beta^2 b - d + \beta c + \beta^3 a) \equiv 0 \pmod {4}
-\end{align*}
-Отже для знаходження $\beta$ треба скористатися рівнянням $-\beta^3 a + \beta^2 b - \beta c + d \equiv 0 \pmod 4$. Оскільки $p = 2$, у нас існують два можливих розв'язки.
-
-$\beta = 0 \iff 4 \mid d$, а також $\beta = 1 \iff 4 \mid -a+b-c+d$.
-
-\begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце при $2 \mid a$. Тоді $2 \mid c$.
-\begin{itemize}
-\item Припустимо $4 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
-\item Припустимо $4 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(-b) \mod 2 + \omega_1 + \omega_2}{2}$.
-\end{itemize}
-Якщо жодне припущення не виконується, то не існує розширення.
-\end{proposition}
-
-\textcolor{red}{Надалі $2 \nmid a$}. Простіше кажучи, $a \equiv 1 \pmod 2$. Маємо систему
-\begin{equation*}
-\begin{cases}
-d - \beta c - \alpha \beta & \equiv 0 \pmod 2 \\
-\alpha + \beta b - \beta^2 & \equiv 0 \pmod 2 \\
-c +\beta^2 & \equiv 0 \pmod 2 \\
-\beta^2 b + d - \beta c - \beta^3 a & \equiv 0 \pmod {4} \\
--\alpha^2 - \beta^2 ac - bd + 2 \beta a d - \alpha c - \alpha \beta^2 a & \equiv 0 \pmod {4}
-\end{cases}
-\end{equation*}
-Аналогічно маємо $\alpha \equiv \beta^2 - \beta b \pmod 2$. Якщо підставити $\alpha$ в перше рівняння, то отримуємо четверте рівняння, тож перше рівняння можна не писати.
-
-Нехай $\beta = 0$ -- розв'язок. Із системи випливає, що $\alpha = 0$, а також $2 \mid c,\ 4 \mid d$. Якщо маємо $2 \mid c,\ 4 \mid d$, то четверте рівняння перепишеться як $\beta^2 b - \beta c - \beta^3 a \equiv 0 \pmod 4$, тому $\beta = 0$ буде тут розв'язком. Також $\beta$ буде розв'язком третього рівняння та останнього (оскільки $\alpha = 0$ із другого).
-
-Нехай $\beta = 1$ -- розв'язок. Із системи випливає, що $\alpha \equiv 1-b \pmod 2$, а також $4 \mid -a+b-c+d$ та $2 \nmid c$. Підставимо $\alpha$ в останнє рівняння:
-\begin{align*}
--\alpha^2 - \beta^2 ac - bd + 2\beta a d - \alpha c - \alpha \beta^2 a \equiv \\
-\equiv -(1-b)^2 - \beta^2 ac - bd + 2 \beta ad - (1-b) c - (1-b) \beta^2 \equiv \\
-ab - ac + 2ad - a - b^2 + bc - bd + 2b - c - 1 \boxed{\equiv}
-\end{align*}
-Підставимо умову, де $d \equiv a-b+c \pmod 4$, тоді
-\begin{align*}
-\boxed{\equiv} -2a^2 - 2ab + ac - a + 2b - c -1 = \\
-= a - 2a(a-1) + 2b(1-a) - c - 1 + ac \boxed{\equiv}
-\end{align*} 
-Оскільки $2 \nmid a$, то $2a (a-1) \equiv 0 \pmod 4$ та $2b(1-a) \equiv 0 \pmod 4$
-\begin{align*}
-\boxed{\equiv} a - c - 1 + ac = (1+c)(a-1) \overset{2\nmid a,\ 2 \nmid c}{\equiv} 0 \pmod 4
-\end{align*} 
-Навпаки, якщо $2 \nmid c$ та $4 \mid -a+b-c+d$, то, підставивши $\alpha \equiv \beta^2 - \beta b$ в п'яте рівняння, отримуємо, що $\beta = 1$ задовольняє дане рівняння так само, як й третє та четверте.
-
-\begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце при $2 \nmid a$.
-\begin{itemize}
-\item Припустимо $4 \mid d,\ 2 \mid c$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
-\item Припустимо $4 \mid -a+b-c+d$ та $2 \nmid c$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(a-b) \mod 2 + \omega_1 + \omega_2}{2}$. 
-\end{itemize}
-Якщо жодне припущення не виконується, то не існує розширення.
-\end{proposition}
-
-\subsection{$p = 3$} Якщо $3 \mid a$ та $3 \nmid b$, то можемо скористатися результатом \ref{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}. Якщо $3 \mid b$, то (за аналогічними міркуваннями після \ref{extension_for_p_mid_a_p_nmid_b_when_p_bigger_than_3}) маємо $\alpha = 0$ та $3 \mid c$, а $\beta$ шукати можна з рівняння
-\begin{align*}
--a \beta^3 + b \beta^2 - c \beta + d \equiv 0 \pmod {9}
-\end{align*}
-Зазначимо, що $\beta = 0 \iff 9 \mid d$, також $\beta = 1 \iff 9 \mid -a+b-c+d$ та $\beta = 2 \iff 9 \mid -8a+4b-2c+d$.
-
-\begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце при $3 \mid a,\ 3 \nmid b$.
-\begin{itemize}
-\item Припустимо $9 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
-\item Припустимо $9 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_1+\omega_2}{2}$.
-\item Припустимо $9 \mid -8a+4b-2c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{2\omega_1+\omega_2}{2}$.
-\end{itemize}
-Якщо жодне припущення не виконується, то не існує розширення.
-\end{proposition}
-
-\textcolor{red}{Надалі $3 \nmid a$}. Розв'язуючи систему при $p>3$, ми отримали $\alpha \equiv \beta^2 a - \beta b \pmod p$ а також умови:
-\begin{equation*}
-\begin{cases}
-3 \beta^2 a - 2 \beta b + c & \equiv 0 \pmod p \\
--\beta^3 a + \beta^2 b - \beta c + d & \equiv 0 \pmod {p^2} \\
-\end{cases}
-\end{equation*}
-(абсолютно аналогічна система, як при $p > 3$). Якщо $p = 3$, перше рівняння спроститься до $2\beta b \equiv c \pmod 3$. Рівняння має (єдиний) розв'язок тоді й лише тоді, коли $\gcd(2b,3) \mid -c$.
-
-Припустимо, що $3 \nmid b$. Передусім підставимо $2\beta b$ в рівність з $\alpha$, тоді отримуємо
-\begin{align*}
-\alpha \equiv c^2 a - 2b^2 c
-\end{align*}
-Далі друге рівняння системи домножимо на $8b^3$ -- матимемо наступне:
-%\begin{equation*}
-%\begin{cases}
-%-ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9 \\
-%-a^2 c^4 - ab^2 c^3 + 2b^4 c^2 + 8 ab^3 c d - 8b^5 d & \equiv 0 \pmod 9
-%\end{cases}
-%\end{equation*}
-\begin{align*}
--ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9
-\end{align*}
-\iffalse
-В останньому рівнянні можна прибрати вираз $-ab^2 c^3 + 2b^4 c^2 - 8b^5 d$, адже дорівнює нулю за $\pmod 9$, завдяки першому рівнянню.
-\begin{equation*}
-\begin{cases}
--ac^3 - 2b^2 c^2 + 8b^3 d & \equiv 0 \pmod 9 \\
--a^2 c^4 + 8 ab^3 c d & \equiv 0 \pmod 9
-\end{cases}
-\end{equation*}
-\fi
-
-Припустимо, що $3 \mid b$. Тоді автоматично $3 \mid c$. Аналогічно маємо, що $\beta = 0 \iff 9 \mid d$, також $\beta = 1 \iff 9 \mid -a+b-c+d$ та $\beta = 2 \iff 9 \mid - 8a+4b-2c+d$.
-
-\begin{proposition}
-Нехай $\Lambda$ -- кубічне кільце при $3 \nmid a,\ 3 \mid b,\ 3 \mid c$.
-\begin{itemize}
-\item Припустимо $9 \mid d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{\omega_2}{2}$.
-\item Припустимо $9 \mid -a+b-c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(a-b) \mod 2 + \omega_1+\omega_2}{2}$.
-\item Припустимо $9 \mid -8a+4b-2c+d$, тоді $\Lambda$ допускає розширення елементом $\theta = \dfrac{(4a-2b) \mod 2 + 2\omega_1+\omega_2}{2}$.
-\end{itemize}
-Якщо жодне припущення не виконується, то не існує розширення.
-\end{proposition}
-
-
-\iffalse
-\section{Частинний випадок максимального кубічного кільця}
-Нехай $\Lambda$ -- кубічне кільце, яке задається числами $(a,b,c,d)$. Спробуємо розширити кільце елементом $\theta = \dfrac{\alpha + \beta \omega_1}{p}$ при $p = 2$. Оскільки ми хочемо $\tilde{\Lambda} \supsetneq \Lambda$, то перш за все уникнемо випадків, коли $2 \mid \alpha$ та $2 \mid \beta$ водночас (інакше $\theta \in \Lambda$). Для розширення нам необхідно, щоб система \eqref{system_congruent_equations} була розв'язною.
-
-Із точністю до $\pmod 2$, єдина опція залишається -- це обрати $b = 1$. Решта чисел $a,c,d$ із точністю до $\pmod {2^3}$ зобов'язані приймати такі значення:
-\begin{center}
-\begin{tabular}{c|c|c}
-$a$ & $c$ & $d$ \\
-\hline
-$1$ & $3$ & $3$ \\
-$1$ & $7$ & $7$ \\
-$3$ & $1$ & $3$ \\
-$3$ & $5$ & $7$ \\
-$5$ & $3$ & $7$ \\
-$5$ & $7$ & $3$ \\
-$7$ & $1$ & $7$ \\
-$7$ & $5$ & $3$
-\end{tabular}
-\end{center}
-Отримуємо розв'язок $t \equiv -3 \cdot (1)^{-1} = 3 \equiv 5 \pmod 8$. Іншими словами, $\beta \equiv 5 \alpha \pmod 8$. Запишемо всі можливі значення $\alpha,\beta$:
-\begin{center}
-\begin{tabular}{c|c}
-$\alpha$ & $\beta$ \\
-\hline
-$1$ & $5$ \\
-\iffalse $2$ & $2$ \\ \fi
-$3$ & $7$ \\
-\iffalse $4$ & $4$ \\ \fi
-$5$ & $1$ \\
-\iffalse $6$ & $6$ \\ \fi
-$7$ & $3$ \\
-\end{tabular}
-\end{center}
-Саме при таких параметрах можливе строге розширення $\tilde{\Lambda} \supset \Lambda$. Чи можна буде ще розширити, залежить від значень $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$, які формують кільце $\tilde{\Lambda}$.
-
-Експериментально були отримані наступні дані:
-\begin{itemize}
-\item Якщо $\alpha = 1,\ \beta = 5$, тобто $\theta = \dfrac{1 + 5 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{5}$.
-\iffalse
-\begin{tabular}{c|c|c|c|c}
-$a$ & $c$ & $d$ & $\alpha$ & $\beta$ \\
-\hline
-$1$ & $3$ & $3$ & $1$ & $5$ \\
-$1$ & $7$ & $7$ & $1$ & $5$ \\
-$3$ & $1$ & $3$ & $1$ & $5$ \\
-$3$ & $5$ & $7$ & $1$ & $7$ \\
-$5$ & $3$ & $7$ & $1$ & $5$ \\
-$5$ & $7$ & $3$ & $1$ & $5$ \\
-$7$ & $1$ & $7$ & $1$ & $5$ \\
-$7$ & $5$ & $3$ & $1$ & $5$ \\
-\end{tabular}
-\fi
-\item Якщо $\alpha = 3,\ \beta = 7$, тобто $\theta = \dfrac{3 + 7 \omega_1}{2}$, то існує розширення елементом $\sigma = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{7}$.
-\item У всіх інших випадках, тобто при $\omega = \dfrac{5 + \omega_1}{2}$ або $\omega = \dfrac{7 + 3 \omega_1}{2}$ розширення не існує (простим $p \neq 3$).
-\end{itemize}
-
-Розглянемо тепер $\tilde{\Lambda} \supset \Lambda$, що заданий числами $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$. При певних умов спробуємо дістати ще одне розширення $\tilde{\tilde{\Lambda}} \supset \tilde{\Lambda} \supset \Lambda$.
-
-Експериметально було встановлено, що при $b \in \{1,3,5,7\}$ та всіх можливих $a,c,d$ (які задані до $\pmod 8$), які утворюють кільця, а також задовольняють умову системи, ми маємо розширення $\Lambda \supset \tilde{\Lambda}$. Подальше розширення елементом $\tilde{\tilde{\theta}} = \dfrac{\tilde{\alpha} + \tilde{\beta} \tilde{\omega}_1}{q}$, де $q = 2$ або $q > 3$ -- просте, не допускається. Залишається перевірити, чи можливе розширення при простому $q = 3$.
-
-Виявляється, що при $q = 3$ теж нема можливостей для розширення.
-
-Зауважимо, що при $\alpha = 1, \beta = 1$ маємо $\tr [\theta] = \dfrac{1}{2} (3+b)$, звідси $2 \tr [\theta] = 3 + b$, або $\tilde{b} = -3 - b$.
-
-Отже, для розширення треба, щоб $3 \mid \tilde{b}$, тобто треба $3 \mid b$.
-\fi
-
-
-\iffalse
-Розпишемо матриці $[\omega_1],\ [\omega_2]$ оператора множення. Для множення на $\omega_1$ маємо
-\begin{align*}
-\omega_1 \cdot 1 = \omega_1 = 0 \cdot 1 + 1 \cdot \omega_1 + 0 \cdot \omega_2 \\
-\omega_1 \cdot \omega_1 = -ac + b \omega_1 + a \omega_2 \\
-\omega_1 \cdot \omega_2 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2
-\end{align*}
-Водночас для множення на $\omega_2$ маємо
-\begin{align*}
-\omega_2 \cdot 1 = \omega_2 = 0 \cdot 1 + 0 \cdot \omega_1 + 1 \cdot \omega_2 \\
-\omega_2 \cdot \omega_1 = ad = ad \cdot 1 + 0 \cdot \omega_1 + 0 \cdot \omega_2 \\
-\omega_2 \cdot \omega_2 = -bd + d \omega_1 + c 
-\end{align*}
-Звідси отримуємо матриці
-\begin{align*}
-[\omega_1] = \begin{pmatrix}
-0 & -ac & ad \\
-1 & b & 0 \\
-0 & a & 0
-\end{pmatrix},\quad [\omega_2] = \begin{pmatrix}
-0 & ad & -bd \\
-0 & 0 & d \\
-1 & 0 & c
-\end{pmatrix}
-\end{align*}
+%\fi
 \fi
 
 \newpage
@@ -1364,9 +1492,9 @@ $7$ & $5$ & $3$ & $1$ & $5$ \\
 Нехай кубічне кільце $\Lambda$ має розширення $\tilde{\Lambda}$, причому $[\tilde{\Lambda}: \Lambda] = p$. Тоді $\Delta_\Lambda = p^2 \Delta_{\tilde{\Lambda}}$. Іншими словами, $p^2 \mid \Delta_\Lambda$.
 \end{proposition}
 
-На жаль, у зворотний бік дане твердження не виконується. Можна розглянути кубічне кільце $\Lambda$, яке задається числами $(6,6,1,0)$. Його дискримінант $\Delta_\Lambda = 12$, причому $2^2 \mid 12$. Утім оскільки $2 \mid a$, то обов'язково $2 \mid c$, проте не в даному випадку, тому ніякого розширення нема.
+На жаль, у зворотний бік дане твердження не виконується. Можна розглянути кубічне кільце $\Lambda$, яке задається числами $(6,6,1,0)$. Його дискримінант $\Delta_\Lambda = 12$, причому $2^2 \mid 12$. Проте ані заміною одного базисного елементу, ані заміною двох базисних елементів (навіть при $\gamma \neq 0$) не виникне розширеня.
 
-Також вимушений зауважити, чому розглядаються два випадки розширень окремо. Можна взяти кільце $\Lambda$, яке задається числами $(2,2,0,2)$, у нього дискримінант $\Delta_\Lambda = -496$. Хоча $4 \mid -496$, але дане кільце не допускає розширення простим числом $p=2$ шляхом заміни одного з двох базисних елементів. Проте, замінюючи два базисні одночасно, ми досягнемо розширення при $p=2$.
+Також варто зауважити, чому розглядаються два випадки розширень окремо. Можна взяти кільце $\Lambda$, яке задається числами $(2,2,0,2)$, у нього дискримінант $\Delta_\Lambda = -496$. Хоча $4 \mid -496$, але дане кільце не допускає розширення простим числом $p=2$ шляхом заміни одного з двох базисних елементів. Проте, замінюючи два базисні одночасно, ми досягнемо розширення при $p=2$.
 
 \section{Про зображення кубічних кілець}
 Нехай $\Lambda$ -- кубічне кільце та $M \subset \Lambda$ -- максимальне надкільце. Факторгрупа $M/_\Lambda$ буде абелевою, тому за основною теоремою про абелеві групи запишемо його в такому вигляді:
@@ -1376,11 +1504,12 @@ M/_\Lambda = \mathbb{Z}_{n_1(\Lambda)} \oplus \mathbb{Z}_{n_2(\Lambda)},
 де числа $n_1(\Lambda) \mid n_2(\Lambda)$.
 
 \begin{theorem}
+\cite{drozd1967representations}
 \label{integral_representation_theorem}
 Кубічне кільце $\Lambda$ має скінченне число неізоморфних нерозкладених зображень $\iff n_1(\Lambda)$ -- вільне від квадратів.
 \end{theorem}
 
-\section{Кільця, що допускають лише розширення простим числом $p = 2$}
+\section{Деякі кільця, що допускають лише розширення простим числом $p = 2$}
 I. Розглянемо кільце $\Lambda$, яке задається числами $(a,a,2^k-a,2^k-a)$, де число $k \geq 2$ та $a \neq 0$. Його дискримінант $\Delta_\Lambda = 2^{2k+2}a(a-2^k)$. Отже, можливо, щонайбільше $k+1$ розширень простим числом $p = 2$.
 
 \begin{lemma}
@@ -1425,11 +1554,11 @@ I. Розглянемо кільце $\Lambda$, яке задається чис
 \begin{itemize}
 \item $p \mid \tilde{a}$, тобто $p \mid 2^{k-2}a$. Оскільки $p>3$, то звідси маємо $p \mid a$. Отже $p \mid \tilde{b}$, але тоді обов'язково $p \mid \tilde{c}$, тобто $p \mid 1$, що неможливо.
 
-\item $p \nmid \tilde{a}$, тобто $p \nmid 2^{k-2} a$. Оскільки $p>3$, то звідси $p \nmid a$. Отже, $p \nmid \tilde{b}$. Значить, необхідно розглянути систему рівнянь \eqref{system_of_equations_when_a_nmid_p_and_b_nmid_p}. Підставивши наші $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$, матимемо такий вигляд:
+\item $p \nmid \tilde{a}$, тобто $p \nmid 2^{k-2} a$. Оскільки $p>3$, то звідси $p \nmid a$. Отже, $p \nmid \tilde{b}$. Значить, необхідно розглянути систему рівнянь \eqref{system_of_equations_when_a_nmid_p}. Підставивши наші $\tilde{a},\tilde{b},\tilde{c},\tilde{d}$, матимемо такий вигляд:
 \begin{equation*}
 \begin{cases}
-3 \cdot 2^{k-2} a \beta^2  + 2a \beta + 1 & \equiv 0 \pmod p \\
-- 2^{k-2} a \beta^3 - a\beta^2 - \beta & \equiv 0 \pmod {p^2} \\
+3 \cdot 2^{k-2} a \beta^2  + 2a \beta + 1 & \equiv 0 \pmod p, \\
+- 2^{k-2} a \beta^3 - a\beta^2 - \beta & \equiv 0 \pmod {p^2}. \\
 \end{cases}
 \end{equation*}
 Зауважимо, що $\beta \neq 0$, інакше отримали б $1 \equiv 0 \pmod p$ із першого рівняння. Тому можемо скоротити на $\beta$ друге рівняння. Якщо спустити всі рівняння до $\pmod p$ та додати, то отримуємо $2^{k-1} \beta \equiv -1 \pmod p$ (розв'язок існує), внаслідок чого $\alpha \equiv -1 \pmod p$. Підставивши в друге рівняння, отримуємо обмеження $a \equiv 2^{k} \pmod {p^2}$.
@@ -1437,7 +1566,7 @@ I. Розглянемо кільце $\Lambda$, яке задається чис
 Отже, більше нема розширень простим числом $p > 3$. Аналогічним чином прийдемо то неможливості розширюватися числом $p = 3$.
 \end{proof}
 
-Отже, кубічне кільце $\Lambda \leftrightarrow (a,a,2^k-a,2^k-a)$ при $k \geq 2$ та $4 \nmid a$ та $a \not\equiv 0 \pmod {p^2}$ (де $p$ -- просте) розширюється до максимального кільця $\tilde{M} \leftrightarrow (2^{k-2}a, -a,1,0)$, причому $[M:\Lambda]^2 = \dfrac{\Delta_\Lambda}{\Delta_M} = 2^{2k+2}$. Тобто $[M:\Lambda] = 2^{k+1}$.
+Отже, кубічне кільце $\Lambda \leftrightarrow (a,a,2^k-a,2^k-a)$ при $k \geq 2$ та $4 \nmid a$ та $a \not\equiv 0 \pmod {p^2}$ розширюється до максимального кільця $\tilde{M} \leftrightarrow (2^{k-2}a, -a,1,0)$, причому $[M:\Lambda]^2 = \dfrac{\Delta_\Lambda}{\Delta_M} = 2^{2k+2}$. Тобто $[M:\Lambda] = 2^{k+1}$.
 
 Розглянемо факторгрупу $M/_\Lambda$. Пригадаємо, що коли маємо вкладення $\mathbb{Z}^3 \hookrightarrow \mathbb{Z}^3$, то їхні базисні елементи мають бути пропорційними. Зокрема базис $\left\{ 1, \dfrac{\omega_1 - a}{2}, \dfrac{\omega_1+\omega_2}{2^k} \right\}$ кільця $M$ пропорційний базису $\{1,\omega_1-a,\omega_1+\omega_2\}$ кільця $\Lambda$. Відображення $\Lambda \hookrightarrow M$ задається як $(x,y,z) \mapsto (x,2y, 2^k z)$. Отже, $\Lambda \cong \mathbb{Z} \oplus \mathbb{Z} \oplus 2^k \mathbb{Z}$, а також $M \cong \mathbb{Z} \oplus 2\mathbb{Z} \oplus \mathbb{Z}$. Значить, факторгрупа $M/_\Lambda \cong \mathbb{Z}/_{2\mathbb{Z}} \oplus \mathbb{Z}/_{2^k\mathbb{Z}} = \mathbb{Z}_2 \oplus \mathbb{Z}_{2^k}$.
 
@@ -1462,6 +1591,7 @@ II. Розглянемо кільце $\Lambda$, яке задається чи�
 
 Аналогічними міркуваннями доведемо, що $\Lambda/_M \cong \mathbb{Z}/_{2^k \mathbb{Z}}$. Отже, досліджене кільце $\Lambda$ задовольнує теорему \ref{integral_representation_theorem}. 
 
+\iffalse
 \section{Кільце, що допускає різні максимальні кільця}
 Розглянемо кільце $\Lambda \leftrightarrow (4,4,4,4)$, його дискримінант $\Delta_\Lambda = -4096$. Розглянемо наступну діаграму.
 \begin{figure}
@@ -1475,7 +1605,7 @@ II. Розглянемо кільце $\Lambda$, яке задається чи�
 & & \underset{(16,-32,22,-5)}{\tilde{\tilde{\Lambda}}} &
 \end{tikzcd}
 \end{figure}
-
+\fi
 
 \newpage
 
@@ -1483,16 +1613,24 @@ II. Розглянемо кільце $\Lambda$, яке задається чи�
 \chapter*{Висновки}
 \addcontentsline{toc}{chapter}{Висновки}
 
-У роботі ??????
+Перша частина роботи була присвячена спробі теоретичного розв'язанна системи конгруентних рівнянь, які врешті-решт дали вичерпану відповідь не лише на спроби розширення кілець, а й на майбутній вигляд нормального базиса та числа, які задають кільце. Для простих чисел $p = 2,\ p = 3$ було повністю класифіковано для обох варіантів розширень. Для простих чисел $p > 3$ відповідь була надана: частково при заміні одного базисного елементу та повністю при заміні двох базисних елементів. Частково, оскільки виникає серйозна складність розв'язання кубічних конгруентних рівнянь, попри існуючи способи пошуку коренів.
+
+Друга частина описувала деякі кубічні кільця, які допускали розширення суто простим числом $p =2$. Успішно знайдено за допомогою Python та теоретично перевірено, що кільце $\Lambda \leftrightarrow (a,a,2^k-a,2^k-a)$ при додаткових обмежень та кільце $\Lambda \leftrightarrow (0,b,2^k,0)$ задовольняють теорему. Також було перевірено алгоритмічно, що другий спосіб розширення -- за допомогою заміни двох базисних елементів -- не є безпідставним (для цього розглядалось кільце $\Lambda \leftrightarrow (2,2,0,2)$).
+
+Очікується подальша класифікація кубічних кілець, які підпадають під умови теореми про їхні цілочисельні зображення.
 
 \newpage
 
+\iffalse
 \phantomsection
 \renewcommand{\bibname}{Список використаних джерел}
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Список використаних джерел}
 \itemsep=0pt
+
+\bibitem{cubic_congruence_equations}
+Qadeer Ahmad, Cubic congruence equations, \url{https://www.diva-portal.org/smash/get/diva2:531029/FULLTEXT01#:~:text=A\%20cubic\%20congruence\%20equation\%20be,\%E2\%89\%A1\%201\%20(mod\%20p).}
 
 \bibitem{boyko-thesis}
 Бойко В.М.,
@@ -1523,19 +1661,47 @@ Popovych R.O., Boyko V.M., Nesterenko M.O., Lutfullin M.V., Realizations of real
 
 
 \end{thebibliography}
+\fi
+
+\phantomsection
+\renewcommand{\bibname}{Список використаних джерел}
+\bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
+\bibliography{ref}
+
 
 \appendix
 
-\chapter{Назва додатку}\label{appendix1}
+\chapter{Алгоритмічний пошук максимального кільця}\label{appendix1}
 
-\section{Назва секції додатку}\label{appendix1.1}
+\section{Класи CubicRing, ChainOfCubicRings}\label{appendix1.1}
+Даний клас складається з полів: числа $a,b,c,d$, що задають кубічне кільце; базиси second\_basis, third\_basis (оскільки перший базис завжди одиничка, немає потреби визначати first\_basis); нарешті, alpha,beta.
+
+Базис second\_basis (аналогічно third\_basis) в класі CubicRing задається масивом $[x,y,z]$. Це означає, що базисний елемент $\tilde{\omega}_1 = x \cdot 1 + y \cdot \omega_1 + z \cdot \omega_2$. Початковими базисами завжди будуть елементи $\omega_1$ (тобто масив $[0,1,0]$) та $\omega_2$ (тобто масив $[0,0,1]$).
+
+Поле $\alpha,\beta$ є індикаторами, чи можна розширити дане кільце елементом $\theta = \dfrac{\alpha+\beta \omega_1}{2}$ (тобто заміною одного базисного елементу). За замовчуванням $\alpha = -1,\ \beta = -1$, а якщо при розширенні параметри не зміняться, то розширення не передбачується.
+
+Існує також метод swap\_basis\_elements(), який змінює місцями останні два базисні елементи, внаслідок чого оновлює значення $a,b,c,d$.
+
+Для збережння ланцюга розширень кілець скористуємось структурою даних deque. Це буде єдиним полем даного класу. Він складається з методів: add\_ring() (додати кільце в цей ланцюг), get\_last\_ring() (здобути останнє кільце), get\_all\_ring() (вивести всі кільця).
+
+\section{Процес ітеративного розширення кільця}\label{appendix1.2}
+Процес розширення через зміну одного базисного елемента відбувається в функції try\_extend(CubicRing), де передається безпосередньо кубічне кільце, яке хочемо розширити. Складається із кількох етаів:
+\begin{itemize}
+\item перевірити на можливість розширення (шукаємо $\alpha,\beta$);
+\item якщо успішно, ми створюємо нове розширене кільце;
+\item якщо безуспіше, змінити місцями базисні елементи та повторити;
+\item інакше не існує розширення (залишається $\alpha = -1,\beta = -1)$.
+\end{itemize}
+У функції extend\_with\_prime\_2(CubicRing). відбувається перевірка на можливість розширення при простому числі $p = 2$. У нас чотири варіанти розширення: $(\alpha,\beta) \in \{ (0,0),(0,1),(1,0),(1,1) \}$. Передавши кубічне кільце в цю функцію (а тому й значення $a,b,c,d$), ми розв'язуємо систему. Якщо система працює, то оновлюємо значення $\alpha,\beta$ переданого кубічного кільця.
+
+У функції create\_an\_extended\_ring(CubicRing) уже створюється нове розширене кільце (якщо таке можливе): саме там обчислюємо нові значення $a,b,c,d$ та записуємо новий базис.
+
+Створюємо об'єкт класу CubicRing, а також об'єкт класу ChainOfCubicRings, куди додаємо стартове кільце. Проводимо процес розширювання, допоки дискримінант ділиться націло на число, яким хочемо провести розширення. Кожне новостворене розширене кільце додається в об'єкт класу ChainOfCubicRings.
 
 \end{document}
 
 \newpage
 
-\bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
-\bibliography{ref}
 
 
 
